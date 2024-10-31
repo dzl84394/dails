@@ -29,7 +29,7 @@
         <spring-cloud.version>2023.0.0</spring-cloud.version>
         <guava.version>33.1.0-jre</guava.version>
         <gson.version>2.9.0</gson.version>
-        <!--        <lombok.version>1.18.32</lombok.version>-->
+        <lombok.version>1.18.32</lombok.version>
         <fastjson.version>2.0.51</fastjson.version>
         <druid.version>1.2.23</druid.version>
         <mysql.version>8.3.0</mysql.version>
@@ -38,10 +38,11 @@
         <mybatis-plus.version>3.5.5</mybatis-plus.version>
 
         <jsoup.version>1.17.2</jsoup.version>
-        <dails.version>1.7-SNAPSHOT</dails.version>
+
         <quartz.version>2.5.0-rc1</quartz.version>
         <mybatis.plus.version>3.5.3.2</mybatis.plus.version>
         <guava.version>33.1.0-jre</guava.version>
+        <dails.version>1.7-SNAPSHOT</dails.version>
     </properties>
 
 
