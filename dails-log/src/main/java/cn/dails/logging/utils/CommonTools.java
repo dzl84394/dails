@@ -1,7 +1,7 @@
 package cn.dails.logging.utils;
 
-import com.google.gson.JsonObject;
-import org.aspectj.lang.JoinPoint;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         import com.alibaba.fastjson.JSONObject;
+																																																																																																																																																										 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.reflect.MethodSignature;
 
 import java.io.IOException;
@@ -66,13 +66,13 @@ public class CommonTools {
 	public static String getExceptionSimpleInfo(Throwable e) {
 		if (e == null)
 			return null;
-//		JSONObject json = new JSONObject();
-	      JsonObject json = new JsonObject();
-		json.addProperty("id", System.identityHashCode(e));
-		json.addProperty("class", e.getClass().getName());
-		json.addProperty("msg", e.getMessage());
+		JSONObject json = new JSONObject();
+//	      JsonObject json = new JsonObject();
+		json.put("id", System.identityHashCode(e));
+		json.put("class", e.getClass().getName());
+		json.put("msg", e.getMessage());
 		if (e.getStackTrace() != null && e.getStackTrace().length > 0) {
-			json.addProperty("topStack", e.getStackTrace()[0].toString());
+			json.put("topStack", e.getStackTrace()[0].toString());
 		}
 		return json.toString();
 	}

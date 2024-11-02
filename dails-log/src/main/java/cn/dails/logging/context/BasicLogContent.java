@@ -3,7 +3,6 @@ package cn.dails.logging.context;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.serializer.ValueFilter;
-import jakarta.servlet.ServletResponse;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,10 +67,10 @@ public class BasicLogContent {
 				Object[] inputs = (Object[]) value;
 				List<Object> inputsStringList = new ArrayList<>(inputs.length);
 				for (Object input : inputs) {
-					if (input instanceof ServletResponse){
-						//防止serverResponse的getOutputStream被read
-						continue;
-					}
+//					if (input instanceof ServletResponse){
+//						//防止serverResponse的getOutputStream被read
+//						continue;
+//					}
 					try {
 						JSON.toJSONString(input);
 						inputsStringList.add(input);

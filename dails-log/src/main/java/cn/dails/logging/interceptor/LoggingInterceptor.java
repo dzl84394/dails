@@ -5,7 +5,7 @@ import cn.dails.logging.context.LogContent;
 import cn.dails.logging.context.ThreadContext;
 import cn.dails.logging.utils.CommonTools;
 import cn.dails.logging.utils.LoggingUtils;
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -50,11 +50,10 @@ public class LoggingInterceptor {
 		} finally {
 			costMillis = System.currentTimeMillis() - startTimeMillis;
 		}
-		Gson gson = new Gson();
 		List<Object> inputsStringList = new ArrayList<>(point.getArgs().length);
 		for (Object element : point.getArgs()) {
 			try {
-					inputsStringList.add(gson.toJson(element));
+					inputsStringList.add(JSONObject.toJSONString(element));
 					
 			} catch (Exception e) {
 

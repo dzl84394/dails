@@ -2,13 +2,12 @@ package cn.dails.logging.interceptor;
 
 import cn.dails.base.bean.BaseRequest;
 import cn.dails.base.bean.BaseResponse;
-import cn.dails.base.exceptions.MyException;
 import cn.dails.logging.annotation.LoggingExclude;
 import cn.dails.logging.context.LogContent;
 import cn.dails.logging.context.ThreadContext;
 import cn.dails.logging.utils.CommonTools;
 import cn.dails.logging.utils.LoggingUtils;
-import com.google.gson.Gson;
+import com.alibaba.fastjson.JSONObject;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -82,30 +81,10 @@ public class RequestMappingInterceptor {
 
 		Object result = null;
 		Throwable exception = null;
-		try {
-			result = point.proceed();
-		} catch (MyException e) {
-			exception = e;
-			if (result==null) {
-				BaseResponse base = new BaseResponse();
-				base.bindErrorCode(e.getErrorCode());
-				base.bindResultDesc(e.getResultDesc());
-				base.buildFaild();
-				result = base;
-			}
-		}  catch (Throwable e) {
-			exception = e;
-			BaseResponse base = new BaseResponse();
-//			base.bindErrorCode();
-			base.bindResultDesc(e.getMessage());
-			base.buildFaild();
-			result = base;
+		result = point.proceed();
+
+		costMillis = System.currentTimeMillis() - startTimeMillis;
 			
-			
-		} finally {
-			costMillis = System.currentTimeMillis() - startTimeMillis;
-			
-		}
 //		MethodLogContent logContent = new MethodLogContent(method, point.getArgs(), result, costMillis,
 //				concurrency.getValue(), totalConcurrency.getValue(), exception);
 
@@ -142,12 +121,10 @@ public class RequestMappingInterceptor {
 		LoggingExclude exclude = method.getAnnotation(LoggingExclude.class);
 		if (exclude == null || !exclude.inputExclude() ){
 			List<Object> inputsStringList = new ArrayList<>(point.getArgs().length);
-			Gson gson = new Gson();
-//		String userJson = gson.toJson(logContent.getOutput());
 			for (Object element : point.getArgs()) {
 				try {
 					if (element instanceof BaseRequest) {
-						inputsStringList.add(gson.toJson(element));
+						inputsStringList.add(JSONObject.toJSONString(element));
 					}
 				} catch (Exception e) {
 					inputsStringList.add(_json_serialize_error);

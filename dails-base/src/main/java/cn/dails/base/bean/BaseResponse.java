@@ -18,7 +18,6 @@ public class BaseResponse<T> implements Serializable{
 
 	public BaseResponse ok() {
 		this.resultCode = ResultCode.SUCCESS.value();
-		this.message = ResultCode.SUCCESS.getResultDesc();
 		return this;
 	}
 	public BaseResponse buildSuccess() {
@@ -55,13 +54,7 @@ public class BaseResponse<T> implements Serializable{
 		return this;
 	}
 
-	public BaseResponse bindErrorCode(int errorCode) {
-		ResultCode resultCode = ResultCode.valueOf(errorCode);
-		this.resultCode = errorCode;
-		this.message = resultCode.series().toString();
-		return this;
 
-	}
 
 
 

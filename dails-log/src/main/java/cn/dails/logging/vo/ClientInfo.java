@@ -1,18 +1,18 @@
 package cn.dails.logging.vo;
 
 
-import com.google.gson.annotations.SerializedName;
+import com.alibaba.fastjson2.annotation.JSONField;
 
 public class ClientInfo {
 
 	private String clientId;
 
-//	@JSONField(name = "clientIP")
-	@SerializedName("clientIp")
+	@JSONField(name = "clientIP")
+//	@SerializedName("clientIp")
 	private String clientIp;
 
-//	@JSONField(name = "clientUA")
-	@SerializedName("clientUA")
+	@JSONField(name = "clientUA")
+//	@SerializedName("clientUA")
 	private String ua;
 
 	private String appName;
