@@ -76,6 +76,10 @@
                         <artifactId>tomcat-embed-websocket</artifactId>
                         <groupId>org.apache.tomcat.embed</groupId>
                     </exclusion>
+                    <exclusion>
+                        <artifactId>snakeyaml</artifactId>
+                        <groupId>org.yaml</groupId>
+                    </exclusion>
                 </exclusions>
             </dependency>
             <dependency>
@@ -94,7 +98,11 @@
                 <artifactId>logback-core</artifactId>
                 <version>${logback.version}</version>
             </dependency>
-
+            <dependency>
+                <groupId>org.yaml</groupId>
+                <artifactId>snakeyaml</artifactId>
+                <version>${snakeyaml.version}</version>
+            </dependency>
             <dependency>
                 <artifactId>tomcat-embed-core</artifactId>
                 <groupId>org.apache.tomcat.embed</groupId>
