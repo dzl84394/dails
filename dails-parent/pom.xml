@@ -13,6 +13,8 @@
         <module>../dails-dependencies</module>
         <module>../dails-log</module>
         <module>../dails-example</module>
+        <module>../samples</module>
+
 
     </modules>
 
@@ -60,71 +62,71 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
                 <version>${spring-boot.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>logback-classic</artifactId>
-                        <groupId>ch.qos.logback</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>tomcat-embed-core</artifactId>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>tomcat-embed-el</artifactId>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>tomcat-embed-websocket</artifactId>
-                        <groupId>org.apache.tomcat.embed</groupId>
-                    </exclusion>
-                    <exclusion>
-                        <artifactId>snakeyaml</artifactId>
-                        <groupId>org.yaml</groupId>
-                    </exclusion>
-                </exclusions>
+<!--                <exclusions>-->
+<!--&lt;!&ndash;                    <exclusion>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <artifactId>logback-classic</artifactId>&ndash;&gt;-->
+<!--&lt;!&ndash;                        <groupId>ch.qos.logback</groupId>&ndash;&gt;-->
+<!--&lt;!&ndash;                    </exclusion>&ndash;&gt;-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>tomcat-embed-core</artifactId>-->
+<!--                        <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>tomcat-embed-el</artifactId>-->
+<!--                        <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>tomcat-embed-websocket</artifactId>-->
+<!--                        <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                    </exclusion>-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>snakeyaml</artifactId>-->
+<!--                        <groupId>org.yaml</groupId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
             </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>logback-core</artifactId>
-                        <groupId>ch.qos.logback</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-core</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.yaml</groupId>
-                <artifactId>snakeyaml</artifactId>
-                <version>${snakeyaml.version}</version>
-            </dependency>
-            <dependency>
-                <artifactId>tomcat-embed-core</artifactId>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <version>${tomcat.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <artifactId>tomcat-annotations-api</artifactId>
-                        <groupId>org.apache.tomcat</groupId>
-                    </exclusion>
-                </exclusions>
-            </dependency>
-            <dependency>
-                <artifactId>tomcat-embed-el</artifactId>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <version>${tomcat.version}</version>
-            </dependency>
-            <dependency>
-                <artifactId>tomcat-embed-websocket</artifactId>
-                <groupId>org.apache.tomcat.embed</groupId>
-                <version>${tomcat.version}</version>
-            </dependency>
+<!--            <dependency>-->
+<!--                <groupId>ch.qos.logback</groupId>-->
+<!--                <artifactId>logback-classic</artifactId>-->
+<!--                <version>${logback.version}</version>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>logback-core</artifactId>-->
+<!--                        <groupId>ch.qos.logback</groupId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>ch.qos.logback</groupId>-->
+<!--                <artifactId>logback-core</artifactId>-->
+<!--                <version>${logback.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <groupId>org.yaml</groupId>-->
+<!--                <artifactId>snakeyaml</artifactId>-->
+<!--                <version>${snakeyaml.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <artifactId>tomcat-embed-core</artifactId>-->
+<!--                <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                <version>${tomcat.version}</version>-->
+<!--                <exclusions>-->
+<!--                    <exclusion>-->
+<!--                        <artifactId>tomcat-annotations-api</artifactId>-->
+<!--                        <groupId>org.apache.tomcat</groupId>-->
+<!--                    </exclusion>-->
+<!--                </exclusions>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <artifactId>tomcat-embed-el</artifactId>-->
+<!--                <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                <version>${tomcat.version}</version>-->
+<!--            </dependency>-->
+<!--            <dependency>-->
+<!--                <artifactId>tomcat-embed-websocket</artifactId>-->
+<!--                <groupId>org.apache.tomcat.embed</groupId>-->
+<!--                <version>${tomcat.version}</version>-->
+<!--            </dependency>-->
 
             <dependency>
                 <groupId>org.springframework.cloud</groupId>

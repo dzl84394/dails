@@ -1,0 +1,54 @@
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+    lease-expiration-duration-in-seconds: 90 #租约过期时间
+    lease-renewal-interval-in-seconds: 30 # 租约续约间隔
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+spring:
+  application:
+    name: eureka-server
+  security:
+    enabled: true
+    user:
+      name: admin
+      password: eureka
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+---
+spring:
+  profiles: dev
+eureka:
+  instance:
+    hostname: localhost
+logging:
+  config: classpath:logback-dev.xml
+---
+spring:
+  profiles: stg
+eureka:
+  instance:
+    hostname: localhost
+logging:
+  config: classpath:logback-stg.xml
+---
+spring:
+  profiles: prd
+eureka:
+  instance:
+    hostname: localhost
+logging:
+  config: classpath:logback-prd.xml
