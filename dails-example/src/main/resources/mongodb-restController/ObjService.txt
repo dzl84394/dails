@@ -1,0 +1,67 @@
+package ${url}.service.impl;
+
+import java.util.List;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+
+import ${url}.dao.${Objname}Dao;
+import ${domainUrl}.${Objname};
+import ${url}.service.I${Objname}Service;
+
+@Service
+public class ${Objname}Service implements I${Objname}Service {
+
+	@Autowired
+	private ${Objname}Dao dao;
+
+	private final Logger logger = LogManager.getLogger(this.getClass());
+	
+	@Override
+	public ${Objname} save(${Objname} obj) {
+		dao.save(obj);
+		return obj;
+	}
+
+	@Override
+	public void delete(String id) {
+		dao.deleteById(id);		
+	}
+
+	@Override
+	public void delete(${Objname} obj) {
+		dao.delete(obj);			
+	}
+
+	@Override
+	public ${Objname} findById(String id) {
+		return dao.findById(id).get();
+	}
+
+	@Override
+	public ${Objname} findBySample(${Objname} sample) {
+		return null;
+	}
+
+	@Override
+	public List<${Objname}> findAll() {
+		return (List<${Objname}>) dao.findAll();
+	}
+
+	
+	@Override
+	public Page<${Objname}> findAll(Pageable pageRequest) {
+		return null;
+	}
+
+
+	
+	
+
+
+}

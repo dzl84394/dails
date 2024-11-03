@@ -1,0 +1,5 @@
+package ${url}.bean.vo;
+
+public class ${Objname}ResponseVo {
+
+}

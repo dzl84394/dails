@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${id}" />
+
+
+
+	<div class="container">
+
+
+		<div class="row">
+
+			<div class="col-sm-9 blog-main">
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">{Objname} show</h2>
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+					<hr />
+
+					showForm
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+						<a type="button" class="btn btn-success" th:href="@{'/{objname}/indexView'}">返回列表</a>
+						<a type="button" class="btn btn-info" th:href="@{'/{objname}/editView?id='+${id}}">编辑</a>
+
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+</body>
+<script type="text/javascript" src="/static/pms/js/{objname}.js"></script>
+<script th:inline="javascript">
+	show();
+</script>
+
+</html>

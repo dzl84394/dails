@@ -1,0 +1,7 @@
+package ${url}.bean.vo;
+
+import cn.dails.base.bean.PageVo;
+
+public class ${Objname}RequestVo extends PageVo {
+
+}

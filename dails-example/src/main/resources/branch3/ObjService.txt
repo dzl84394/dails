@@ -1,0 +1,54 @@
+package ${url}.service.impl;
+
+
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
+
+import java.util.Date;
+import java.util.List;
+
+
+import ${url}.dao.${Objname}Dao;
+import ${domainUrl}.${Objname}Entity;
+import ${url}.service.I${Objname}Service;
+import ${url}.bean.vo.${Objname}RequestVo;
+
+
+@Service
+@Slf4j
+public class ${Objname}Service extends ServiceImpl<${Objname}Dao,${Objname}Entity> implements I${Objname}Service {
+
+   @Autowired
+      private ${Objname}Dao dao;
+
+      @Override
+      public IPage<${Objname}Entity> findPage(${Objname}RequestVo vo) {
+          IPage<${Objname}Entity> page = new Page<>();
+          page.setCurrent(vo.getCurrentPage());
+          page.setSize(vo.getSize());
+
+          LambdaQueryWrapper<${Objname}Entity> wrapper = new LambdaQueryWrapper<>();
+           wrapper.orderByDesc(${Objname}Entity::getCreateDate);
+          page = dao.selectPage(page,wrapper);
+
+          return page;
+      }
+
+      @Override
+      public List<${Objname}Entity> findList(${Objname}RequestVo vo) {
+          LambdaQueryWrapper<${Objname}Entity> wrapper = new LambdaQueryWrapper<>();
+
+          List<${Objname}Entity> list = dao.selectList(wrapper);
+          return list;
+      }
+
+
+
+}
