@@ -14,6 +14,8 @@
     <packaging>pom</packaging>
     <modules>
         <module>spring-eureka-sample</module>
+        <module>spring-gateway-sample</module>
+        <module>auth-sample</module>
     </modules>
 
     <properties>
