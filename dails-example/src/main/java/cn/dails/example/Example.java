@@ -1,6 +1,7 @@
 package cn.dails.example;
 
 public abstract class Example {
+	private String serviceName;
 	private String rooturl;
 
 	private String url;
@@ -32,6 +33,12 @@ public abstract class Example {
 	}
 	public void setRooturl(String rooturl) {
 		this.rooturl = rooturl;
+	}
+	public String getServiceName() {
+		return serviceName;
+	}
+	public void setServiceName(String serviceName) {
+		this.serviceName =  serviceName;
 	}
 	public String getUrl() {
 		return url;

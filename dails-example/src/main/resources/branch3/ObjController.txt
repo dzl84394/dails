@@ -88,11 +88,15 @@ public class ${Objname}Controller {
 	public BaseResponse<${Objname}ResponseVo> findById(@RequestParam("id") Long id,HttpServletRequest request) {
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
-		if (id==null){
-            response.setResultCode(ResultCode.FAILED);
-        	response.bindErrorCode("400").setResultDesc("id不能为空");
+        if (id==null){
+            response.buildFaild(5001,"miss parameter： id");
+            return response;
         }
-		${Objname}Entity obj =  service.getById(id);
+        ${Objname}Entity obj =  service.getById(id);
+        if (obj==null){
+            response.buildFaild(5002,"not found entity byid:"+id);
+            return response;
+        }
 		response.setData(obj);
 		return response;
 	}

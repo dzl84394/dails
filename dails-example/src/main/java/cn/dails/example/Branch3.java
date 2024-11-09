@@ -31,6 +31,8 @@ public class Branch3 extends Example {
         }
 
         Tools.mkFile(workUrl + "/controller");
+        Tools.mkFile(workUrl + "/conf");
+        Tools.mkFile(workUrl + "/bean");
         Tools.mkFile(workUrl + "/bean/vo");
         Tools.mkFile(workUrl + "/controller");
         Tools.mkFile(workUrl + "/dao");
@@ -44,7 +46,11 @@ public class Branch3 extends Example {
         Tools.mkFile(getRooturl() + "/src/main/resources/static/pms/utils");
         Tools.mkFile(getRooturl() + "/src/main/resources/templates");
         Tools.mkFile(getJsUrl());
-        //addLauncher();
+        addLauncher();
+        addConf();
+        String utiljs = getRooturl() + "/src/main/resources/static/pms/utils/util.js";
+        File utiljsfile = new File(utiljs);
+        createUtilJs(utiljsfile,defFile+"/views/util.js");
     }
 
 
@@ -71,21 +77,25 @@ public class Branch3 extends Example {
         urlString = getJsUrl() +"/" ;
         File jsFile = new File(urlString +name2+".js");
         createJs(jsFile, name2,defFile+"/views/obj.js");
+
+
+
     }
 
     private void addLauncher() {
         // branch1 添加 Launcher.java
 
-        File file = new File(getWorkUrl() + "/Launcher.java");
+        File file = new File(getWorkUrl() + "/"+getServiceName()+"Launcher.java");
         if (!file.exists()) {
             try {
                 file.createNewFile();
                 System.out.println("新增文件: " + file.getName());
                 BufferedWriter output = new BufferedWriter(new FileWriter(file));
-                String string = readFile(defFile+"/Launcher.txt");
+                String string = readFile(defFile+"/Application.txt");
 
                 String myurl = getUrl().replaceAll("/", ".");
                 string = string.replaceAll("\\$\\{url\\}", myurl);
+                string = string.replaceAll("\\$\\{serviceName\\}", getServiceName());
                 output.write(string);
                 output.close();
             } catch (Exception e) {
@@ -97,6 +107,7 @@ public class Branch3 extends Example {
         }
 
     }
+
 
     public void addController() {
         System.out.println(System.getProperty("user.dir"));// user.dir指定了当前的路径
@@ -139,6 +150,40 @@ public class Branch3 extends Example {
 
 
     }
+
+    public void addConf() {
+        String workUrl = getWorkUrl();
+        Tools.mkFile(workUrl + "/conf");
+        File metaHandler = new File(workUrl + "/conf/MetaHandler.java" );
+        File mybatisPlusConfig = new File(workUrl + "/conf/MybatisPlusConfig.java" );
+        createConf(metaHandler, defFile+"/MetaHandler.txt");
+
+        createConf(mybatisPlusConfig, defFile+"/MybatisPlusConfig.txt");
+
+
+
+    }
+
+    private void createConf(File file, String mobanUrl) {
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("createNewFile: " + file.getName());
+                String name = file.getName();
+                BufferedWriter output = new BufferedWriter(new FileWriter(file));
+
+                String string = readFile(mobanUrl);
+
+                output.write(string);
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("已存在JS: " + file.getName());
+        }
+    }
+
 
     private void createFile(File file, String domainUrl, String name, String mobanUrl) {
         if (!file.exists()) {
@@ -196,11 +241,12 @@ public class Branch3 extends Example {
                 if (name.equals("new.html")) {
                     for (int i = 0; i < filedNames.length; i++) {
                         if (!filedNames[i].equals("serialVersionUID") && !filedNames[i].equals("id")) {
-                            temp +=   "               <div class='form-group col-lg-12'>"
-                                    + "						<label for='"+filedNames[i]+"' class='col-sm-2 control-label'>"+filedNames[i]+"</label>" + "						<div class='col-sm-10'>"
-                                    + "							<input type='text' class='form-control' name='"+filedNames[i]+"' id='"+filedNames[i]+"' />"
-                                    + "						</div>"
-                                    + "					</div>";
+                            temp +=   "               <div class='form-group col-lg-12'> \n"
+                                    + "						<label for='"+filedNames[i]+"' class='col-sm-2 control-label'>"+filedNames[i]+"</label>\n"
+                                    + "						<div class='col-sm-10'>\n"
+                                    + "							<input type='text' class='form-control' name='"+filedNames[i]+"' id='"+filedNames[i]+"' />\n"
+                                    + "						</div>\n"
+                                    + "					</div>\n";
                         }
                     }
                     string = string.replace("newForm", temp);
@@ -209,8 +255,10 @@ public class Branch3 extends Example {
                     for (int i = 0; i < filedNames.length; i++) {
 
                         if (!filedNames[i].equals("id") && !filedNames[i].equals("serialVersionUID")) {
-                            temp += "	<div>  \n"
-                                    + "		<span class='label label-default'>" + filedNames[i] +"</span> \n <p id='" + filedNames[i] + "'></p>	</div> \n";
+                            temp +=   "                     <div>  \n"
+                                    + "                         <span class='label label-default'>" + filedNames[i] +"</span> \n "
+                                    + "                         <p id='" + filedNames[i] + "'></p>	\n"
+                                    + "                     </div> \n";
                         }
                     }
                     string = string.replace("showForm", temp);
@@ -229,6 +277,28 @@ public class Branch3 extends Example {
             System.out.println("已存在JSP: " + file.getName());
         }
     }
+
+    private void createUtilJs(File file, String mobanUrl) {
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+                System.out.println("createNewFile: " + file.getName());
+                String name = file.getName();
+                BufferedWriter output = new BufferedWriter(new FileWriter(file));
+
+                String string = readFile(mobanUrl);
+
+                output.write(string);
+                output.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.out.println("已存在JS: " + file.getName());
+        }
+    }
+
+
 
     private void createJs(File file,String ObjName, String mobanUrl) {
         if (!file.exists()) {

@@ -5,11 +5,13 @@ public enum ResultCode {
 //1，ACCEPTED 接受，但是可能不知道最终结果不知道状态
 //2 SUCCESS 成功
 //4, FAILED 拒绝 鉴权或参数不对，遇到异常 缺少参数，服务端问题，未找到对象、对象已存在，幂等拒绝异常了
-    ACCEPTED(3000,Series.ACCEPTED, "Early Hints"),
+
     SUCCESS(200,Series.SUCCESSFUL, "OK"),
+    ACCEPTED(3000,Series.ACCEPTED, "Early Hints"),
 //    REJECTED(4000,Series.REJECTED, "REJECTED"),//拒绝
     FAILED(5000,Series.FAILED, "Server Error"),//失败
-    FAILED5002(5002,Series.FAILED, "Server Error");
+    FAILED5001(5001,Series.FAILED, "missing parameter"),
+    FAILED5002(5002,Series.FAILED, "not found entity");
 //    CONTINUE(100,HttpStatus.Series.INFORMATIONAL, "Continue"),
     private static final ResultCode[] VALUES = values();
     private final int value;

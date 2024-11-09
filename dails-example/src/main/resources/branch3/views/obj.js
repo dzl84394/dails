@@ -13,7 +13,7 @@ function findPage(){
         }),
         async : false,
         success : function(result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -22,6 +22,9 @@ function findPage(){
 			if(currentPage<1)currentPage=1;
 			var total = result.data.total;//总条数
 			var pages =result.data.pages;
+			if(pages<1)pages=1;
+
+
  			var listDiv = $("#tbodylist")
 
             listDiv.empty();
@@ -81,7 +84,7 @@ function save(){
             data
         }),
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -100,7 +103,7 @@ function show(){
             id:$("#id").val()
         },
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -123,7 +126,7 @@ function editshow(){
             id:$("#id").val()
         },
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -149,7 +152,7 @@ function deleteObj(id){
                 data
             }),
             success: function (result) {
-                if(result.resultCode != 'SUCCESS'){
+                if(result.resultCode != '200'){
                     alert("接口异常")
                     return;
                 }

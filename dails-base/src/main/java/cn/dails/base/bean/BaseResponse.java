@@ -48,9 +48,9 @@ public class BaseResponse<T> implements Serializable{
 		return this;
 	}
 
-	public BaseResponse buildFaild(Integer errorCode,String resultDesc) {
+	public BaseResponse buildFaild(Integer errorCode,String msg) {
 		this.resultCode = errorCode;
-		this.message = resultDesc;
+		this.message = msg;
 		return this;
 	}
 
