@@ -1,0 +1,177 @@
+/* 全局初始化 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 自适应 */
+@media screen and (min-width: 256px) {
+    .left {
+        height: 40%;
+    }
+
+    .right {
+        height: 60%;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .left {
+        height: 40%;
+    }
+
+    .right {
+        height: 60%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .container-fluid {
+        display: flex;
+    }
+
+    .left {
+        width: 50%;
+        height: 100%;
+    }
+
+    .right {
+        width: 50%;
+        height: 100%;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .container-fluid {
+        display: flex;
+    }
+
+    .left {
+        width: 66.67%;
+        height: 100%;
+    }
+
+    .right {
+        width: 33.33%;
+        height: 100%;
+    }
+}
+
+/*  */
+.container-fluid {
+    height: 100vh;
+    background-color: #6366f1;
+}
+
+/* 左边 */
+.left {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 文字-欢迎光临 */
+.t-welcome {
+    color: #fdfdfd;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+}
+
+/* 文字-盐城迈优个性化基台订单系统 */
+.t-myorder {
+    color: #fdfdfd;
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+}
+
+/* 右边 */
+.right {
+    background-color: #fdfdfd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* 文字-迈优CRM */
+.t-mycrm {
+    font-weight: 700;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
+    color: #1f2937 "
+
+}
+
+/* 线 */
+.line {
+    height: 1px;
+    width: 60px;
+    background-color: #d1d5db;
+}
+
+/* 文字-用户名密码登录 */
+.form-signin-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: #d1d5db;
+}
+
+.t-login {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+}
+
+/* 输入框 */
+input {
+    width: 250px;
+    line-height: 32px;
+    font-size: 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    margin-bottom: 18px;
+    background-size: 14px;
+    background-position: 9px 9px;
+    background-repeat: no-repeat;
+    padding-left: 32px;
+
+    /* 点击后外框不变 */
+    outline: none;
+
+}
+
+input::placeholder {
+    color: #d1d5db;
+}
+
+#username {
+    background-image: url("img/username.png");
+}
+
+#password {
+    background-image: url("img/password.png");
+}
+
+/* 按钮 */
+button {
+    width: 250px;
+    line-height: 32px;
+    border: none;
+    border-radius: 16px;
+    background-color: #6366f1;
+    font-size: 14px;
+    color: #fdfdfd;
+}
+
+button:hover {
+    background-color: rgb(145, 151, 244);
+}
+
+button:active {
+    background-color: rgb(82, 89, 195);
+}

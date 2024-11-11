@@ -1,4 +1,4 @@
-package cn.dails.domain;
+package cn.dails.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import lombok.Data;

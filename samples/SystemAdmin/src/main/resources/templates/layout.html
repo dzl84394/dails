@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+
+      layout:decorate="layout/layout"
+      >
+<head th:fragment="head">
+    <meta charset="utf-8"/>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <link rel="shortcut icon" type="image/x-icon" href="/static/logo.ico"  />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+    <link rel="stylesheet"
+          href="/static/pms/bootstrap-3.4.1-dist/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet"
+          href="/static/pms/bootstrap-3.4.1-dist/css/bootstrap-theme.css"/>
+    <link rel="stylesheet"
+          href="/static/pms/layout.css"/>
+
+
+
+
+
+    <script type="text/javascript"
+            src="/static/pms/bootstrap-3.4.1-dist/js/jquery-1.12.4.min.js"></script>
+
+    <script type="text/javascript"
+            src="/static/pms/bootstrap-3.4.1-dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/static/pms/utils/util.js"></script>
+    <script type="text/javascript"
+            src="/static/pms/bootstrap-paginator.js"></script>
+
+
+
+
+
+    <title>盐城迈优 MIYO</title>
+
+</head>
+<body>
+<!-- Fixed navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"
+     th:fragment="header">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span> <span
+                    class="icon-bar"></span> <span class="icon-bar"></span> <span
+                    class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" th:href="@{/sales/indexView}">首页</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+
+
+                <li id="nav_device"  ><a th:href="@{/device/indexView}">硬件管理</a></li>
+                <li id="nav_subProject"  ><a th:href="@{/subProject/indexView}">服务管理</a></li>
+                <li id="nav_user"  ><a th:href="@{/user/indexView}">服务治理</a></li>
+<!--                <li id="nav_sysBu"><a th:href="@{/sysBu/indexView}">BU管理</a></li>-->
+<!--                <li id="nav_sysUser"><a th:href="@{/sysUser/indexView}">人员配置</a></li>-->
+<!--                <li id="nav_sysPermission"><a th:href="@{/sysPermission/indexView}">权限</a></li>-->
+<!--                <li id="nav_subPorject"><a th:href="@{/subPorject/indexView}">子系统</a></li>-->
+                <li id="nav_sales" ><a th:href="@{/sales/indexView}">订单管理</a></li>
+                <li id="nav_plantingSystem"   ><a th:href="@{/plantingSystem/indexView}">种植系统管理</a></li>
+                <li id="nav_raw"  ><a th:href="@{/raw/indexView}">派料单</a></li>
+
+
+<!--                <li id="nav_part" ><a th:href="@{/part/indexView}">零件管理</a></li>-->
+            </ul>
+            <ul class="nav navbar-nav navbar-right"  >
+                <li>
+
+                </li>
+                <li class="active"><a th:href="@{/user/showView}">个人中心
+                    <span class="sr-only">(current)</span>
+                </a></li>
+                <li><a th:href="@{/logout}">退出</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+
+                <li   ><a th:href="@{/login}">登录</a></li>
+            </ul>
+
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
+
+
+
+
+<div class="sidebar-offcanvas"  th:fragment="device_sidebar">
+    <div class="list-group" id ="confComm_sidebar">
+        <a  href="/user/updateProfile" class="list-group-item">机房管理</a>
+        <a  href="/consignee/indexView" class="list-group-item">机柜管理</a>
+        <a  href="/user/updatePasswd" class="list-group-item">服务器管理</a>
+    </div>
+</div>
+
+
+<div class="sidebar-offcanvas"  th:fragment="project_sidebar">
+    <div class="list-group" id ="device_project">
+        <a  href="/user/updateProfile" class="list-group-item">子系统</a>
+        <a  href="/consignee/indexView" class="list-group-item">微服务</a>
+        <a  href="/user/updatePasswd" class="list-group-item">中间件</a>
+    </div>
+</div>
+
+</body>
+
+<script th:inline="javascript">
+    setActive("nav_home", null)
+
+
+</script>
+</html>
