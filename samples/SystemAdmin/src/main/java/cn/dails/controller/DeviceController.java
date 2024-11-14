@@ -30,8 +30,32 @@ public class DeviceController {
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
-	public ModelAndView indexView(HttpServletRequest request) {
+	public ModelAndView indexView(@RequestParam(value = "deviceType", required = false) String deviceType
+			,@RequestParam(value = "currentPage", required = false) Long currentPage
+			,@RequestParam(value = "size", required = false) Long size,  HttpServletRequest request) {
+
 		ModelAndView mav = new ModelAndView("device/index");
+		if ("dc".equals(deviceType)){
+			mav = new ModelAndView("device/centerIndex");
+		} else if ("room".equals(deviceType)) {
+			mav = new ModelAndView("device/roomIndex");
+		}else if ("机柜".equals(deviceType)) {
+			mav = new ModelAndView("device/rackIndex");
+		}else if ("物理机".equals(deviceType)) {
+			mav = new ModelAndView("device/rackIndex");
+		}else if ("虚机".equals(deviceType)) {
+			mav = new ModelAndView("device/virtualIndex");
+		}else if ("容器pks".equals(deviceType)) {
+			mav = new ModelAndView("device/pksIndex");
+		}
+//		DeviceRequestVo vo = new DeviceRequestVo();
+//		vo.setDeviceType(deviceType);
+//		if(size == null) size=10L;
+//		if(currentPage == null) currentPage=10L;
+//		vo.setSize(size);
+//		vo.setCurrentPage(currentPage);
+//		IPage<DeviceEntity> page = service.findPage(vo);
+//		mav.addObject("page", page);
 		return mav;																				
 	}																							
 																								

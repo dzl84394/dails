@@ -1,8 +1,9 @@
 
-function findPage(){
+function findPage(deviceType){
 	var data = new Object();
 	data.size  = 10;
 	data.currentPage  = currentPage;
+	data.deviceType = deviceType;
 	$.ajax({
         type : "post",
         url : "/device/findPage",
@@ -36,12 +37,18 @@ function findPage(){
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.deviceType+"</td>"
+
+
+                 + "<td>"+index.deviceCenter+"</td>"
+                 + "<td>"+index.deviceCenterSn+"</td>"
                  + "<td>"+index.deviceRoom+"</td>"
                  + "<td>"+index.deviceRoomSn+"</td>"
-                 + "<td>"+index.location+"</td>"
-                 + "<td>"+index.locationSn+"</td>"
+                 + "<td>"+index.row+"</td>"
+                 + "<td>"+index.rowSn+"</td>"
                  + "<td>"+index.seat+"</td>"
                  + "<td>"+index.seatSn+"</td>"
+                 + "<td>"+index.seatNum+"</td>"
+
                  + "<td>"+index.ip+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/device/showView?id="+index.id+"'>展示</a>"

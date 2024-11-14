@@ -18,23 +18,30 @@ public class DeviceEntity extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
-    private String deviceType;
+    private String deviceType;//
     //机房
     // ，机柜，机位，物理机，存储，网络设备，云主机，pks
-
+    private String deviceCenter;
+    private String deviceCenterSn;
     //机房
     private String deviceRoom;
     private String deviceRoomSn;
 
     //机柜
-    private String location;//位置，搂-层-房间号-排行-第几个
-    private String locationSn;
+    private String rowcell;//位置，搂层房间号-X排Y行-第几个
+    private String rowcellSn;
 
     //物理机
-    private String seat;
-    private String seatSn;
+    private String seat;//机位，45U
+    private String seatNum;//3U
+    private String seatSn;//SZF-1121A-1205-3U
 
-    private String ip;//依赖设备
+
+    private String lscpu;//cpu信息
+    private String freem;//内存情况
+    private String disk;//磁盘情况
+    private String os;
+    private String ip;//依赖设备.网络设备忽略
 
 
 }

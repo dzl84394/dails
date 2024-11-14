@@ -13,7 +13,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import java.util.Date;
 import java.util.List;
-
+import com.google.common.base.Strings;
 
 import cn.dails.dao.DeviceDao;
 import cn.dails.dao.entity.DeviceEntity;
@@ -34,7 +34,11 @@ public class DeviceService extends ServiceImpl<DeviceDao,DeviceEntity> implement
           page.setCurrent(vo.getCurrentPage());
           page.setSize(vo.getSize());
 
+
           LambdaQueryWrapper<DeviceEntity> wrapper = new LambdaQueryWrapper<>();
+          if (!Strings.isNullOrEmpty(vo.getDeviceType())){
+              wrapper.eq(DeviceEntity::getDeviceType,vo.getDeviceType());
+          }
            wrapper.orderByDesc(DeviceEntity::getCreateDate);
           page = dao.selectPage(page,wrapper);
 
@@ -44,7 +48,9 @@ public class DeviceService extends ServiceImpl<DeviceDao,DeviceEntity> implement
       @Override
       public List<DeviceEntity> findList(DeviceRequestVo vo) {
           LambdaQueryWrapper<DeviceEntity> wrapper = new LambdaQueryWrapper<>();
-
+          if (!Strings.isNullOrEmpty(vo.getDeviceType())){
+              wrapper.eq(DeviceEntity::getDeviceType,vo.getDeviceType());
+          }
           List<DeviceEntity> list = dao.selectList(wrapper);
           return list;
       }

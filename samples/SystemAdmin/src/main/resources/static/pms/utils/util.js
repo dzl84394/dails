@@ -452,41 +452,18 @@ function initSelect(){
 }
 
 function setActive(nav, sidebar) {
-    $("#nav_article").removeClass("active");
+
     $("#nav_subPorject").removeClass("active");
-    $("#nav_checkItem").removeClass("active");
-    $("#nav_info").removeClass("active");
+    $("#nav_device").removeClass("active");
+
 
     var dnav = $("#" + nav)
     dnav.addClass("active");
 
 
-//    if (nav == 'nav_sys') {
-//        $("#sidebar_sysUser").removeClass("active");
-//        $("#sidebar_sysRole").removeClass("active");
-//        $("#sidebar_sysResource").removeClass("active");
-//
-//
-//    } else if (nav == 'nav_org') {
-//        $("#sidebar_orgInfo").removeClass("active");
-//        $("#sidebar_orgInfo_gonghai").removeClass("active");
-//        $("#sidebar_orgInfo_myOrg").removeClass("active");
-//        $("#sidebar_org_contacter").removeClass("active");
-//        $("#sidebar_org_visitRecord").removeClass("active");
-//
-//    } else if (nav == 'nav_caiji') {
-//        $("#sidebar_caiji_countTotal").removeClass("active");
-//        $("#sidebar_caiji_details").removeClass("active");
-//        $("#sidebar_caiji_uploadView").removeClass("active");
-//    } else if (nav == 'nav_report') {
-//        $("#sidebar_report_orgInfo").removeClass("active");
-//        $("#sidebar_report_contacter").removeClass("active");
-//        $("#sidebar_report_visitRecord").removeClass("active");
-//    }
     if (sidebar == null) return;
 
-//    var dsidebar = $("#" + sidebar)
-//    dsidebar.addClass("active");
+
 
 }
 
@@ -500,3 +477,22 @@ function fun_date(num) {
     return y + "-" + m + "-" + d;
 }
 
+function getParameterValue(parameter){
+    // 获取包含参数的查询字符串部分
+    const queryString = window.location.search;
+    // 使用URLSearchParams对象解析查询字符串
+    const urlParams = new URLSearchParams(queryString);
+    // 获取特定参数的值
+    const parameterValue = urlParams.get(parameter);
+    return parameterValue;
+}
+
+function setParameterValue(key,value){
+    // 获取包含参数的查询字符串部分
+    const queryString = window.location.search;
+      // 修改currentPage为2
+      var newUrl = url.replace(/(\?|&)currentPage=\d+/, '$1currentPage='+value);
+
+      // 重定向到新的URL
+      window.location.href = newUrl;
+}
