@@ -24,8 +24,8 @@ public class ConfCommEntity extends BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String clsType;//区域,pmp
-    private String subType;//省、市、县,
+    private String clsType;//一级分类
+    private String subType;//二级分类
 
     private String code;//编号
     private String name;//名称
@@ -40,8 +40,6 @@ public class ConfCommEntity extends BaseEntity implements Serializable {
 
 
     private int status = 0;//默认是0，-1是错误，，1已过期（不主动展示，但是能翻译）
-    private String mark;//掩码，加密
-    private String ten;//业务
 
 
 }

@@ -43,5 +43,6 @@ public class DeviceEntity extends BaseEntity implements Serializable {
     private String os;
     private String ip;//依赖设备.网络设备忽略
 
-
+    private String env;//DMZ,SF,STG,网管区，环境
+    private String status;//Active', 'Inactive', 'Maintenance'
 }

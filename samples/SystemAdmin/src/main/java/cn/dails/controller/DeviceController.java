@@ -1,8 +1,11 @@
 package cn.dails.controller;
 
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
 import com.alibaba.fastjson.JSONObject;
@@ -62,6 +65,8 @@ public class DeviceController {
 	@RequestMapping(value = { "show/{id}" }, method = { RequestMethod.GET })						
 	public ModelAndView showObj(@PathVariable Long id) {
 		ModelAndView mav = new ModelAndView("device/show");
+		DeviceEntity obj =  service.getById(id);
+		mav.addObject("obj", obj);
 		return mav;
 	}
 
@@ -69,18 +74,24 @@ public class DeviceController {
     public ModelAndView showViewById(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("device/show");
         mav.addObject("id", id);
+		DeviceEntity obj =  service.getById(id);
+		mav.addObject("obj", obj);
         return mav;
     }
 																								
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
 	public ModelAndView newObj() {																
 		ModelAndView mav = new ModelAndView("device/new");
+		DeviceEntity obj =  new DeviceEntity();
+		mav.addObject("obj", obj);
 		return mav;
 	}
 	@RequestMapping(value = { "editView" }, method = { RequestMethod.GET })
     public ModelAndView editView(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("device/edit");
         mav.addObject("id", id);
+		DeviceEntity obj =  service.getById(id);
+		mav.addObject("obj", obj);
         return mav;
     }
 
@@ -135,21 +146,33 @@ public class DeviceController {
 		response.buildSuccess();
 		return response;
 	}
+//	@RequestMapping(value = { "save" }, method = { RequestMethod.POST })
+//	public BaseResponse saveObj(@RequestBody BaseRequest<JSONObject> obj)  {
+//	    DeviceEntity entity = JSONObject.toJavaObject(obj.getData(), DeviceEntity.class);
+//    	Long id = entity.getId();
+//        if (id == null ){
+//            service.save(entity);
+//        }else {
+//            service.saveOrUpdate(entity);
+//        }
+//		BaseResponse response = new BaseResponse();
+//		response.buildSuccess();
+//		return response;
+//	}
+
 	@RequestMapping(value = { "save" }, method = { RequestMethod.POST })
-	public BaseResponse saveObj(@RequestBody BaseRequest<JSONObject> obj)  {
-	    DeviceEntity entity = JSONObject.toJavaObject(obj.getData(), DeviceEntity.class);
-    	Long id = entity.getId();
-        if (id == null ){
-            service.save(entity);
-        }else {
-            service.saveOrUpdate(entity);
-        }
-		BaseResponse response = new BaseResponse();
-		response.buildSuccess();
-		return response;
+	public void saveObj(@ModelAttribute("obj") DeviceEntity obj, HttpServletResponse response) throws IOException {
+		Long id = obj.getId();
+		if (id == null ){
+			service.save(obj);
+		}else {
+			service.saveOrUpdate(obj);
+		}
+
+		response.sendRedirect("indexView");
 	}
 
-	
-	
-	
+
+
+
 }

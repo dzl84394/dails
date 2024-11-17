@@ -13,7 +13,7 @@ import java.io.Serializable;
 @Table(name = "dails_sub_api")
 @TableName(value = "dails_sub_api",autoResultMap = true)
 @Data
-public class SubApi extends BaseEntity implements Serializable {
+public class SubApiEntity extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +26,7 @@ public class SubApi extends BaseEntity implements Serializable {
 
 
 
-    private HttpMethod method;//GET,POST,PUT,DELETE，PATCH部分修改
+    private String method;//GET,POST,PUT,DELETE，PATCH部分修改
     private String path;
 
     private String header;
