@@ -60,7 +60,7 @@
             <ul class="nav navbar-nav">
 
 
-                <li id="nav_device"  ><a th:href="@{/device/indexView}">硬件管理</a></li>
+                <li id="nav_deviceCenter"  ><a th:href="@{/deviceCenter/indexView}">硬件管理</a></li>
                 <li id="nav_subProject"  ><a th:href="@{/subProject/indexView}">服务管理</a></li>
                 <li id="nav_user"  ><a th:href="@{/user/indexView}">服务治理</a></li>
                 <li id="nav_confComm"  ><a th:href="@{/confComm/indexView}">配置管理</a></li>
@@ -86,14 +86,32 @@
 
                 <li   ><a th:href="@{/login}">登录</a></li>
             </ul>
-
         </div>
+
         <!--/.nav-collapse -->
     </div>
+
+
+
+
 </nav>
 
 
+<div class="sidebar-offcanvas"  th:fragment="deviceCenter_sidebar">
+    <span>机房管理</span>
+    <div class="list-group">
+        <a  href="/deviceCenter/indexView" class="list-group-item">数据中心</a>
+        <a  href="/deviceCenter/indexView" class="list-group-item">机房</a>
+        <a  href="/deviceCenter/indexView" class="list-group-item">机柜</a>
 
+    </div>
+    <span>设备管理</span>
+    <div class="list-group">
+        <a  href="/device/indexView" class="list-group-item">物理机</a>
+        <a  href="/device/indexView" class="list-group-item">虚机</a>
+        <a  href="/device/indexView" class="list-group-item">容器</a>
+    </div>
+</div>
 
 <div class="sidebar-offcanvas"  th:fragment="device_sidebar">
     <div class="list-group" id ="confComm_sidebar">
