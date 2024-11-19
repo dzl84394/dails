@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+
+	<div class="container">
+		<div class="blog-header">
+			<h3 class="blog-title">device 添加</h3>
+		</div>
+
+		<div class="row">
+
+			<div th:fragment="deviceForm">
+
+				<form id="deviceForm"  class="form-horizontal"  th:action="@{/device/save}" th:method="post"
+					  th:object="${obj}">
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+               <div class='form-group col-lg-12'> 
+						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceType' id='deviceType' th:value='${obj.deviceType}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceCenter' class='col-sm-2 control-label'>deviceCenter</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenter' id='deviceCenter' th:value='${obj.deviceCenter}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceCenterSn' class='col-sm-2 control-label'>deviceCenterSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenterSn' id='deviceCenterSn' th:value='${obj.deviceCenterSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceRoom' class='col-sm-2 control-label'>deviceRoom</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceRoom' id='deviceRoom' th:value='${obj.deviceRoom}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceRoomSn' class='col-sm-2 control-label'>deviceRoomSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceRoomSn' id='deviceRoomSn' th:value='${obj.deviceRoomSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='rowcell' class='col-sm-2 control-label'>rowcell</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='rowcell' id='rowcell' th:value='${obj.rowcell}' />
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='rowcellSn' class='col-sm-2 control-label'>rowcellSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='rowcellSn' id='rowcellSn' th:value='${obj.rowcellSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='seat' class='col-sm-2 control-label'>seat</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='seat' id='seat' th:value='${obj.seat}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='seatNum' class='col-sm-2 control-label'>seatNum</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='seatNum' id='seatNum' th:value='${obj.seatNum}' />
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='seatSn' class='col-sm-2 control-label'>seatSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='seatSn' id='seatSn'th:value='${obj.seatSn}' />
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='lscpu' class='col-sm-2 control-label'>lscpu</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='lscpu' id='lscpu' th:value='${obj.lscpu}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='freem' class='col-sm-2 control-label'>freem</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='freem' id='freem' th:value='${obj.freem}' />
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='disk' class='col-sm-2 control-label'>disk</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='disk' id='disk' th:value='${obj.disk}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='os' class='col-sm-2 control-label'>os</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='os' id='os' th:value='${obj.os}' />
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='ip' class='col-sm-2 control-label'>ip</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='ip' id='ip' th:value='${obj.ip}' />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-10 col-sm-2">
+<!--							<input type="button" class="btn btn-success" value="保存" onclick='save()' />-->
+							<input type="submit" class="btn btn-success" value="保存"/>
+						</div>
+					</div>
+				</form>
+
+
+
+
+			</div>
+			<!-- /.blog-main -->
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+</body>
+<script type="text/javascript" src="/static/pms/js/device.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+
+</html>

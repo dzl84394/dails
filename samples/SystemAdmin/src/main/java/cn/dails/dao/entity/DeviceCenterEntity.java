@@ -18,6 +18,7 @@ public class DeviceCenterEntity extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
+
     private String deviceType;//数据中心，机房，机柜
     //机房
     // ，机柜，机位，物理机，存储，网络设备，云主机，pks

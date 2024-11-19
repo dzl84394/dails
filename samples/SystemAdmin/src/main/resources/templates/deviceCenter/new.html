@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+
+	<div class="container">
+		<div class="blog-header">
+			<h3 class="blog-title">deviceCenter 添加</h3>
+		</div>
+
+		<div class="row">
+
+			<div th:fragment="deviceCenterForm">
+
+				<form id="deviceCenterForm"  class="form-horizontal"  th:action="@{/deviceCenter/save}" th:method="post"
+					  th:object="${obj}">
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+               <div class='form-group col-lg-12'> 
+						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceType' id='deviceType' th:value='${obj.deviceType}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceCenter' class='col-sm-2 control-label'>deviceCenter</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenter' id='deviceCenter' th:value='${obj.deviceCenter}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceCenterSn' class='col-sm-2 control-label'>deviceCenterSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenterSn' id='deviceCenterSn' th:value='${obj.deviceCenterSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceRoom' class='col-sm-2 control-label'>deviceRoom</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceRoom' id='deviceRoom' th:value='${obj.deviceRoom}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceRoomSn' class='col-sm-2 control-label'>deviceRoomSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceRoomSn' id='deviceRoomSn' th:value='${obj.deviceRoomSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='cabinetName' class='col-sm-2 control-label'>cabinetName</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='cabinetName' id='cabinetName' th:value='${obj.cabinetName}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='rowcell' class='col-sm-2 control-label'>rowcell</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='rowcell' id='rowcell' th:value='${obj.rowcell}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='cabinetSn' class='col-sm-2 control-label'>cabinetSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='cabinetSn' id='cabinetSn' th:value='${obj.cabinetSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='rack' class='col-sm-2 control-label'>rack</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='rack' id='rack' th:value='${obj.rack}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='high' class='col-sm-2 control-label'>high</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='high' id='high' th:value='${obj.high}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceSn' class='col-sm-2 control-label'>deviceSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceSn' id='deviceSn' th:value='${obj.deviceSn}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='env' class='col-sm-2 control-label'>env</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='env' id='env' th:value='${obj.env}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='status' class='col-sm-2 control-label'>status</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}'/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-10 col-sm-2">
+
+							<input type="submit" class="btn btn-success" value="保存"/>
+						</div>
+					</div>
+				</form>
+
+
+
+
+			</div>
+			<!-- /.blog-main -->
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+</body>
+<script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+
+</html>

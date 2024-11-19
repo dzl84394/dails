@@ -11,21 +11,35 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
 
 	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-3 col-md-2  sidebar"
-				 th:include="layout::device_sidebar"></div>
 
+		<div class="row">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::deviceCenter_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-				<h3>机房 列表</h3>
+				<h3>deviceCenter 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
 						<thead>
+
+
 							<tr>
 								<td>id</td>
-								<td>类别</td>
-								<td>机房城市</td>
-								<td>编号</td>
+								<td>deviceType</td>
+								<td>deviceCenter</td>
+								<td>deviceCenterSn</td>
+								<td>deviceRoom</td>
+								<td>deviceRoomSn</td>
+								<td>cabinetName</td>
+								<td>rowcell</td>
+								<td>cabinetSn</td>
+								<td>rack</td>
+								<td>high</td>
+								<td>deviceSn</td>
+								<td>env</td>
+								<td>status</td>
+
+
 							</tr>
 						</thead>
 						<tbody id="tbodylist">
@@ -40,7 +54,7 @@
 				<nav>
 					<ul class="pager">
 						<li>
-							<a th:href="@{/device/addView}">新增</a>
+							<a th:href="@{/deviceCenter/addView}">新增</a>
 						</li>
 					</ul>
 				</nav>
@@ -55,7 +69,7 @@
 
 </body>
 <script type="text/javascript" src="/static/pms/bootstrap-paginator.js"></script>
-<script type="text/javascript" src="/static/pms/js/device.js"></script>
+<script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>
 <script th:inline="javascript">
 	$(document).ready(function() {
 
@@ -63,12 +77,6 @@
 	var currentPage = 1;
     var pageSize = 5;
 
-	var deviceType = getParameterValue('deviceType');
-	findPage(deviceType);
-
-
-
-
-
+	findPage();
 </script>
 </html>

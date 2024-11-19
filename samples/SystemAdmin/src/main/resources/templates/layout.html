@@ -100,16 +100,16 @@
 <div class="sidebar-offcanvas"  th:fragment="deviceCenter_sidebar">
     <span>机房管理</span>
     <div class="list-group">
-        <a  href="/deviceCenter/indexView" class="list-group-item">数据中心</a>
-        <a  href="/deviceCenter/indexView" class="list-group-item">机房</a>
-        <a  href="/deviceCenter/indexView" class="list-group-item">机柜</a>
+        <a  href="/deviceCenter/indexView?deviceType=center" class="list-group-item">数据中心</a>
+        <a  href="/deviceCenter/indexView?deviceType=room" class="list-group-item">机房</a>
+        <a  href="/deviceCenter/indexView?deviceType=rack" class="list-group-item">机柜</a>
 
     </div>
     <span>设备管理</span>
     <div class="list-group">
-        <a  href="/device/indexView" class="list-group-item">物理机</a>
-        <a  href="/device/indexView" class="list-group-item">虚机</a>
-        <a  href="/device/indexView" class="list-group-item">容器</a>
+        <a  href="/device/indexView?deviceType=physical" class="list-group-item">物理机</a>
+        <a  href="/device/indexView?deviceType=virtual" class="list-group-item">虚机</a>
+        <a  href="/device/indexView?deviceType=pks" class="list-group-item">容器</a>
     </div>
 </div>
 

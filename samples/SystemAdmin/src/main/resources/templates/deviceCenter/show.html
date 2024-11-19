@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${id}" />
+
+
+
+	<div class="container">
+
+
+		<div class="row">
+
+			<div class="col-sm-9 blog-main">
+
+				<div class="blog-post">
+					<h2 class="blog-post-title">deviceCenter show</h2>
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+					<hr />
+
+                     <div>  
+                         <span class='label label-default'>deviceType</span> 
+                          <p id='deviceType'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>deviceCenter</span> 
+                          <p id='deviceCenter'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>deviceCenterSn</span> 
+                          <p id='deviceCenterSn'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>deviceRoom</span> 
+                          <p id='deviceRoom'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>deviceRoomSn</span> 
+                          <p id='deviceRoomSn'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>cabinetName</span> 
+                          <p id='cabinetName'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>rowcell</span> 
+                          <p id='rowcell'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>cabinetSn</span> 
+                          <p id='cabinetSn'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>rack</span> 
+                          <p id='rack'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>high</span> 
+                          <p id='high'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>deviceSn</span> 
+                          <p id='deviceSn'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>env</span> 
+                          <p id='env'></p>	
+                     </div> 
+                     <div>  
+                         <span class='label label-default'>status</span> 
+                          <p id='status'></p>	
+                     </div> 
+
+
+				</div>
+				<!-- blog-post -->
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+						<a type="button" class="btn btn-success" th:href="@{'/deviceCenter/indexView'}">返回列表</a>
+						<a type="button" class="btn btn-info" th:href="@{'/deviceCenter/editView?id='+${id}}">编辑</a>
+
+					</div>
+				</div>
+			</div>
+			<!-- blog-main -->
+		</div>
+		<!-- row -->
+
+
+	</div>
+	<!-- /.container -->
+</body>
+<script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>
+<script th:inline="javascript">
+	show();
+</script>
+
+</html>

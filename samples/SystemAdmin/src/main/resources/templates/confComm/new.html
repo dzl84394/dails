@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+
+	<div class="container">
+		<div class="blog-header">
+			<h3 class="blog-title">confComm 添加</h3>
+		</div>
+
+		<div class="row">
+
+			<div th:fragment="confCommForm">
+
+				<form id="confCommForm"  class="form-horizontal"  th:action="@{/confComm/save}" th:method="post"
+					  th:object="${obj}">
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+               <div class='form-group col-lg-12'> 
+						<label for='clsType' class='col-sm-2 control-label'>clsType</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='clsType' id='clsType' th:value='${obj.clsType}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='subType' class='col-sm-2 control-label'>subType</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='subType' id='subType' th:value='${obj.subType}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='code' class='col-sm-2 control-label'>code</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='code' id='code' th:value='${obj.code}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='name' class='col-sm-2 control-label'>name</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='name' id='name' th:value='${obj.name}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='parentId' class='col-sm-2 control-label'>parentId</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='parentId' id='parentId' th:value='${obj.parentId}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='parentCode' class='col-sm-2 control-label'>parentCode</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='parentCode' id='parentCode' th:value='${obj.parentCode}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='parentName' class='col-sm-2 control-label'>parentName</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='parentName' id='parentName' th:value='${obj.parentName}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='status' class='col-sm-2 control-label'>status</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}'/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-10 col-sm-2">
+
+							<input type="submit" class="btn btn-success" value="保存"/>
+						</div>
+					</div>
+				</form>
+
+
+
+
+			</div>
+			<!-- /.blog-main -->
+
+
+		</div>
+		<!-- /.row -->
+
+	</div>
+	<!-- /.container -->
+
+</body>
+<script type="text/javascript" src="/static/pms/js/confComm.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+
+</html>
