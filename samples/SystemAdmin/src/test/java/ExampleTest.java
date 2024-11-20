@@ -1,6 +1,7 @@
 import cn.dails.dao.entity.ConfCommEntity;
 import cn.dails.dao.entity.DeviceCenterEntity;
 import cn.dails.dao.entity.SubApiEntity;
+import cn.dails.dao.entity.SubProjectEntity;
 import cn.dails.example.Branch4;
 import cn.dails.example.FactoryBranch4;
 
@@ -16,7 +17,7 @@ public class ExampleTest {
         branch1.setUrl("cn/dails");
         branch1.initFiles();
 
-        branch1.setEntityClass(DeviceCenterEntity.class);
+        branch1.setEntityClass(SubProjectEntity.class);
         branch1.initJava();
 //        branch1.addDao();
 //        branch1.addService();

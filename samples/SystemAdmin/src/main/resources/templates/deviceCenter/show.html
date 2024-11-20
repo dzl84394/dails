@@ -14,15 +14,15 @@
 
 
 
-	<div class="container">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-3 col-md-2 col-md-2 sidebar"
+                 th:include="layout::deviceCenter_sidebar"></div>
 
-
-		<div class="row">
-
-			<div class="col-sm-9 blog-main">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 
 				<div class="blog-post">
-					<h2 class="blog-post-title">deviceCenter show</h2>
+                    <h3 class="blog-title">deviceCenter 添加</h3>
 					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 					<hr />
 
@@ -95,7 +95,7 @@
 		<!-- row -->
 
 
-	</div>
+	</div>>
 	<!-- /.container -->
 </body>
 <script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>

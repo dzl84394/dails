@@ -18,6 +18,9 @@ public class SubProjectEntity extends BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
+    private String clsType;//一级分类
+    private String subType;//二级分类
+
     //fls-usp-auth
     private String sn;
     //英文全称
@@ -36,8 +39,9 @@ public class SubProjectEntity extends BaseEntity implements Serializable {
     private String level;//等级
 
     //代码库
+    private String gitUrl;//代码库
 
-    //数据库
+    //数据库，中间件其他依赖
     //开发，测试，生产，其他
 
 

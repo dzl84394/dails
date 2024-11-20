@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "dails_sub_devicecenter")
-@TableName(value = "dails_sub_device",autoResultMap = true)
+@TableName(value = "dails_sub_devicecenter",autoResultMap = true)
 @Data
 public class DeviceCenterEntity extends BaseEntity implements Serializable {
 
@@ -34,9 +34,9 @@ public class DeviceCenterEntity extends BaseEntity implements Serializable {
     private String cabinetSn;
 
     //物理机
-    private String rack;//机位，45U
-    private int high = 1;//3U
-    private String deviceSn;//SZF-1121A-1205-3U
+    private String rackSeat;//机位，45U
+    private int rackHigh = 1;//3U
+    private String rackSn;//SZF-1121A-1205-3U
 
 
 
