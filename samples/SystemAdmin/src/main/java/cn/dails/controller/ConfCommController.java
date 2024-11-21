@@ -84,9 +84,9 @@ public class ConfCommController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<ConfCommResponseVo>> findList(HttpServletRequest request) {
-		ConfCommRequestVo vo = new ConfCommRequestVo();
+	@RequestMapping(value = { "findList" }, method = { RequestMethod.POST })
+	public BaseResponse<List<ConfCommResponseVo>> findList(@RequestBody BaseRequest<JSONObject> obj) {
+		ConfCommRequestVo vo = JSONObject.toJavaObject(obj.getData(), ConfCommRequestVo.class);
 		List<ConfCommEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

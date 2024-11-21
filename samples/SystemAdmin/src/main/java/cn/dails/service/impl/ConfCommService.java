@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 
+import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,12 @@ public class ConfCommService extends ServiceImpl<ConfCommDao,ConfCommEntity> imp
       @Override
       public List<ConfCommEntity> findList(ConfCommRequestVo vo) {
           LambdaQueryWrapper<ConfCommEntity> wrapper = new LambdaQueryWrapper<>();
-
+          if (!Strings.isNullOrEmpty(vo.getClsType())){
+              wrapper.eq(ConfCommEntity::getClsType,vo.getClsType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubType())){
+              wrapper.eq(ConfCommEntity::getSubType,vo.getSubType());
+          }
           List<ConfCommEntity> list = dao.selectList(wrapper);
           return list;
       }
