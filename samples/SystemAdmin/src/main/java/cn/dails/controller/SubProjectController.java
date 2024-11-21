@@ -3,6 +3,9 @@ package cn.dails.controller;
 
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
 import com.alibaba.fastjson.JSONObject;
@@ -45,18 +48,24 @@ public class SubProjectController {
     public ModelAndView showViewById(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("subProject/show");
         mav.addObject("id", id);
+        SubProjectEntity obj =  service.getById(id);
+        mav.addObject("obj", obj);
         return mav;
     }
 																								
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
 	public ModelAndView newObj() {																
 		ModelAndView mav = new ModelAndView("subProject/new");
+		SubProjectEntity obj =  new SubProjectEntity();
+        mav.addObject("obj", obj);
 		return mav;
 	}
 	@RequestMapping(value = { "editView" }, method = { RequestMethod.GET })
     public ModelAndView editView(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("subProject/edit");
         mav.addObject("id", id);
+        SubProjectEntity obj =  service.getById(id);
+        mav.addObject("obj", obj);
         return mav;
     }
 
@@ -69,9 +78,9 @@ public class SubProjectController {
 	public BaseResponse<IPage<SubProjectResponseVo>> findPage(@RequestBody BaseRequest<JSONObject> obj) {
 		SubProjectRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubProjectRequestVo.class);
 		BaseResponse response = new BaseResponse();
-
-		IPage<SubProjectEntity> page = service.findPage(vo);
 		response.buildSuccess();
+		IPage<SubProjectEntity> page = service.findPage(vo);
+
 		response.setData(page);
 		return response;
 	}
@@ -111,6 +120,7 @@ public class SubProjectController {
 		response.buildSuccess();
 		return response;
 	}
+	/**
 	@RequestMapping(value = { "save" }, method = { RequestMethod.POST })
 	public BaseResponse saveObj(@RequestBody BaseRequest<JSONObject> obj)  {
 	    SubProjectEntity entity = JSONObject.toJavaObject(obj.getData(), SubProjectEntity.class);
@@ -124,8 +134,19 @@ public class SubProjectController {
 		response.buildSuccess();
 		return response;
 	}
+	*/
 
-	
+    @RequestMapping(value = { "save" }, method = { RequestMethod.POST })
+    public void saveObj(@ModelAttribute("obj") SubProjectEntity obj, HttpServletResponse response) throws IOException {
+        Long id = obj.getId();
+        if (id == null ){
+            service.save(obj);
+        }else {
+            service.saveOrUpdate(obj);
+        }
+
+        response.sendRedirect("indexView");
+    }
 	
 	
 }
