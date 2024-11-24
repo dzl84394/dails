@@ -1,8 +1,10 @@
 
-function findPage(){
+function findPage(clsType,subType){
 	var data = new Object();
 	data.size  = 10;
 	data.currentPage  = currentPage;
+	data.subType=subType;
+	data.clsType=clsType;
 	$.ajax({
         type : "post",
         url : "/confComm/findPage",

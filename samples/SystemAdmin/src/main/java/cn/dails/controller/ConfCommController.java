@@ -33,7 +33,8 @@ public class ConfCommController {
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
-	public ModelAndView indexView(HttpServletRequest request) {
+	public ModelAndView indexView(@RequestParam(value = "clsType", required = false) String clsType,
+								  HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("confComm/index");
 		return mav;																				
 	}																							

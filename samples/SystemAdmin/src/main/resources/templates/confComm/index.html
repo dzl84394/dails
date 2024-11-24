@@ -70,7 +70,8 @@
 	})
 	var currentPage = 1;
     var pageSize = 5;
-
-	findPage();
+    var subType = getParameterValue('subType')
+    var clsType = getParameterValue('clsType')
+	findPage(clsType,subType);
 </script>
 </html>

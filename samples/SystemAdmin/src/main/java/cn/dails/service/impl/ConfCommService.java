@@ -36,6 +36,12 @@ public class ConfCommService extends ServiceImpl<ConfCommDao,ConfCommEntity> imp
           page.setSize(vo.getSize());
 
           LambdaQueryWrapper<ConfCommEntity> wrapper = new LambdaQueryWrapper<>();
+          if (!Strings.isNullOrEmpty(vo.getClsType())){
+              wrapper.eq(ConfCommEntity::getClsType,vo.getClsType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubType())){
+              wrapper.eq(ConfCommEntity::getSubType,vo.getSubType());
+          }
            wrapper.orderByDesc(ConfCommEntity::getCreateDate);
           page = dao.selectPage(page,wrapper);
 
