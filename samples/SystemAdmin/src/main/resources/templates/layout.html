@@ -62,7 +62,7 @@
 
                 <li id="nav_deviceCenter"  ><a th:href="@{/deviceCenter/indexView}">硬件管理</a></li>
                 <li id="nav_subProject"  ><a th:href="@{/subProject/indexView}">服务管理</a></li>
-                <li id="nav_user"  ><a th:href="@{/user/indexView}">服务治理</a></li>
+                <li id="nav_subApi"  ><a th:href="@{/subApi/indexView}">服务治理</a></li>
                 <li id="nav_confComm"  ><a th:href="@{/confComm/indexView}">配置管理</a></li>
 <!--                <li id="nav_sysBu"><a th:href="@{/sysBu/indexView}">BU管理</a></li>-->
 <!--                <li id="nav_sysUser"><a th:href="@{/sysUser/indexView}">人员配置</a></li>-->
@@ -116,7 +116,7 @@
 
 
 <div class="sidebar-offcanvas"  th:fragment="device_sidebar">
-    <div class="list-group" id ="confComm_sidebar">
+    <div class="list-group" >
         <a  href="/device/indexView?deviceType=dc" class="list-group-item">机房城市管理</a>
         <a  href="/device/indexView?deviceType=room" class="list-group-item">机房区域管理</a>
         <a  href="/device/indexView?deviceType=rack" class="list-group-item">机柜管理</a>
@@ -125,6 +125,7 @@
         <a  href="/device/indexView?deviceType=容器pks" class="list-group-item">容器管理</a>
     </div>
 </div>
+
 
 
 <div class="sidebar-offcanvas"  th:fragment="project_sidebar">
@@ -136,6 +137,11 @@
         <a  href="/user/updatePasswd" class="list-group-item">mq</a>
         <a  href="/user/updatePasswd" class="list-group-item">网关</a>
         <a  href="/user/updatePasswd" class="list-group-item">其他中间件</a>
+    </div>
+</div>
+<div class="sidebar-offcanvas"  th:fragment="subApi_sidebar">
+    <div class="list-group" >
+        <a  href="/device/indexView?deviceType=dc" class="list-group-item">子系统</a>
     </div>
 </div>
 

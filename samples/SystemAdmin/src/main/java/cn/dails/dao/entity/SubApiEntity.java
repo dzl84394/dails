@@ -24,24 +24,29 @@ public class SubApiEntity extends BaseEntity implements Serializable {
     private String projectSn;
     private String serviceSn;// application serviceName
 
-
+    private String apiName;
+    private String apiStstus;//0 启用，1禁止
+    private String datail;
+    private String scope;//子系统内，企业内，公共
+    private String apiType;//技术api，客户api（客户经营，客户管理，业务流程），管理员api
 
     private String method;//GET,POST,PUT,DELETE，PATCH部分修改
-    private String path;
+    private String protocol;//http,https
+    private String level;//等级，1级是核心，2级普通，3级无所谓
 
-    private String header;
     private String url;
-    private String host;
+    private String host;//domain
     private int port;
-    private String urlRaw;
+    private String path;
+    private String headerParms;
+    private String urlParms;//url参数
+    private String pathParms;//path参数
     private String requestBody;
     private String response;
+    private String requestDemo;//curl的例子
+    private String responseDemo;
 
 
 
-    // url
-    // 入参
-    // 出参
-    // 入参demo
-    // 出参demo
+
 }
