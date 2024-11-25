@@ -10,13 +10,11 @@
 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
 
-	<div class="container">
-
-
-
+	<div class="container-fluid">
 		<div class="row">
-
-			<div class="blog-main">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::subApi_sidebar"></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>subApi 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
@@ -28,15 +26,25 @@
 								<td>id</td>
 								<td>projectSn</td>
 								<td>serviceSn</td>
+								<td>apiName</td>
+								<td>apiStstus</td>
+								<td>datail</td>
+								<td>scope</td>
+								<td>apiType</td>
 								<td>method</td>
-								<td>path</td>
-								<td>header</td>
+								<td>protocol</td>
+								<td>level</td>
 								<td>url</td>
 								<td>host</td>
 								<td>port</td>
-								<td>urlRaw</td>
+								<td>path</td>
+								<td>headerParms</td>
+								<td>urlParms</td>
+								<td>pathParms</td>
 								<td>requestBody</td>
 								<td>response</td>
+								<td>requestDemo</td>
+								<td>responseDemo</td>
 
 
 							</tr>

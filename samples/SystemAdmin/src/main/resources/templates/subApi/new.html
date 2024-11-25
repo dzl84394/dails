@@ -11,19 +11,19 @@
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
 
 
-	<div class="container">
-		<div class="blog-header">
-			<h3 class="blog-title">subApi 添加</h3>
-		</div>
-
+	<div class="container-fluid">
 		<div class="row">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::subApi_sidebar"></div>
 
-			<div th:fragment="subApiForm">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+				<h3 class="blog-title">subApi 添加</h3>
+				<div th:fragment="subApiForm">
 
-				<form id="subApiForm"  class="form-horizontal"  th:action="@{/subApi/save}" th:method="post"
-					  th:object="${obj}">
-					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
-               <div class='form-group col-lg-12'> 
+					<form id="subApiForm"  class="form-horizontal"  th:action="@{/subApi/save}" th:method="post"
+						  th:object="${obj}">
+						<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+							               <div class='form-group col-lg-12'> 
 						<label for='projectSn' class='col-sm-2 control-label'>projectSn</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='projectSn' id='projectSn' th:value='${obj.projectSn}'/>
@@ -36,21 +36,51 @@
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
+						<label for='apiName' class='col-sm-2 control-label'>apiName</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='apiName' id='apiName' th:value='${obj.apiName}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='apiStstus' class='col-sm-2 control-label'>apiStstus</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='apiStstus' id='apiStstus' th:value='${obj.apiStstus}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='datail' class='col-sm-2 control-label'>datail</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='datail' id='datail' th:value='${obj.datail}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='scope' class='col-sm-2 control-label'>scope</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='scope' id='scope' th:value='${obj.scope}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='apiType' class='col-sm-2 control-label'>apiType</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='apiType' id='apiType' th:value='${obj.apiType}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
 						<label for='method' class='col-sm-2 control-label'>method</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='method' id='method' th:value='${obj.method}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='path' class='col-sm-2 control-label'>path</label>
+						<label for='protocol' class='col-sm-2 control-label'>protocol</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='path' id='path' th:value='${obj.path}'/>
+							<input type='text' class='form-control' name='protocol' id='protocol' th:value='${obj.protocol}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='header' class='col-sm-2 control-label'>header</label>
+						<label for='level' class='col-sm-2 control-label'>level</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='header' id='header' th:value='${obj.header}'/>
+							<input type='text' class='form-control' name='level' id='level' th:value='${obj.level}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -72,9 +102,27 @@
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='urlRaw' class='col-sm-2 control-label'>urlRaw</label>
+						<label for='path' class='col-sm-2 control-label'>path</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='urlRaw' id='urlRaw' th:value='${obj.urlRaw}'/>
+							<input type='text' class='form-control' name='path' id='path' th:value='${obj.path}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='headerParms' class='col-sm-2 control-label'>headerParms</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='headerParms' id='headerParms' th:value='${obj.headerParms}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='urlParms' class='col-sm-2 control-label'>urlParms</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='urlParms' id='urlParms' th:value='${obj.urlParms}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='pathParms' class='col-sm-2 control-label'>pathParms</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='pathParms' id='pathParms' th:value='${obj.pathParms}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -89,25 +137,31 @@
 							<input type='text' class='form-control' name='response' id='response' th:value='${obj.response}'/>
 						</div>
 					</div>
-
-					<div class="form-group">
-						<div class="col-sm-offset-10 col-sm-2">
-
-							<input type="submit" class="btn btn-success" value="保存"/>
+               <div class='form-group col-lg-12'> 
+						<label for='requestDemo' class='col-sm-2 control-label'>requestDemo</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='requestDemo' id='requestDemo' th:value='${obj.requestDemo}'/>
 						</div>
 					</div>
-				</form>
+               <div class='form-group col-lg-12'> 
+						<label for='responseDemo' class='col-sm-2 control-label'>responseDemo</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='responseDemo' id='responseDemo' th:value='${obj.responseDemo}'/>
+						</div>
+					</div>
 
+						<div class="form-group">
+							<div class="col-sm-offset-10 col-sm-2">
 
-
-
+								<input type="submit" class="btn btn-success" value="保存"/>
+							</div>
+						</div>
+					</form>
+				</div>
 			</div>
 			<!-- /.blog-main -->
-
-
 		</div>
 		<!-- /.row -->
-
 	</div>
 	<!-- /.container -->
 

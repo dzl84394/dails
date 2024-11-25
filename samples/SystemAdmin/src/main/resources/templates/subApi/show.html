@@ -14,85 +14,158 @@
 
 
 
-	<div class="container">
-
-
+	<div class="container-fluid">
 		<div class="row">
-
-			<div class="col-sm-9 blog-main">
-
-				<div class="blog-post">
-					<h2 class="blog-post-title">subApi show</h2>
-					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::subApi_sidebar"></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
+				<h2 class="blog-post-title">subApi show</h2>
+				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 					<hr />
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">projectSn</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='projectSn' th:text='${obj.projectSn}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceSn</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceSn' th:text='${obj.serviceSn}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">apiName</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='apiName' th:text='${obj.apiName}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">apiStstus</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='apiStstus' th:text='${obj.apiStstus}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">datail</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='datail' th:text='${obj.datail}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">scope</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='scope' th:text='${obj.scope}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">apiType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='apiType' th:text='${obj.apiType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">method</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='method' th:text='${obj.method}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">protocol</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='protocol' th:text='${obj.protocol}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">level</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='level' th:text='${obj.level}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">url</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='url' th:text='${obj.url}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">host</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='host' th:text='${obj.host}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">port</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='port' th:text='${obj.port}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">path</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='path' th:text='${obj.path}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">headerParms</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='headerParms' th:text='${obj.headerParms}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">urlParms</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='urlParms' th:text='${obj.urlParms}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">pathParms</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='pathParms' th:text='${obj.pathParms}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">requestBody</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='requestBody' th:text='${obj.requestBody}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">response</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='response' th:text='${obj.response}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">requestDemo</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='requestDemo' th:text='${obj.requestDemo}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">responseDemo</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='responseDemo' th:text='${obj.responseDemo}'></p>
+                    </div>
+                </div>
 
-                     <div>  
-                         <span class='label label-default'>projectSn</span> 
-                          <p id='projectSn'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>serviceSn</span> 
-                          <p id='serviceSn'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>method</span> 
-                          <p id='method'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>path</span> 
-                          <p id='path'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>header</span> 
-                          <p id='header'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>url</span> 
-                          <p id='url'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>host</span> 
-                          <p id='host'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>port</span> 
-                          <p id='port'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>urlRaw</span> 
-                          <p id='urlRaw'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>requestBody</span> 
-                          <p id='requestBody'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>response</span> 
-                          <p id='response'></p>	
-                     </div> 
-
-
-				</div>
+			</div>
 				<!-- blog-post -->
-				<div class="form-group">
-					<div class="col-sm-offset-8 col-sm-4">
+			<div class="form-group">
+				<div class="col-sm-offset-8 col-sm-4">
 						<a type="button" class="btn btn-success" th:href="@{'/subApi/indexView'}">返回列表</a>
 						<a type="button" class="btn btn-info" th:href="@{'/subApi/editView?id='+${id}}">编辑</a>
 
-					</div>
 				</div>
 			</div>
-			<!-- blog-main -->
 		</div>
-		<!-- row -->
-
-
+			<!-- row -->
 	</div>
-	<!-- /.container -->
+		<!-- container-fluid -->
+
 </body>
 <script type="text/javascript" src="/static/pms/js/subApi.js"></script>
 <script th:inline="javascript">
-	show();
 </script>
 
 </html>
