@@ -21,6 +21,9 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
     private Long subProjectId;
     private Long subProjectSn;
 
+    private String clsType;//一级分类
+    private String subType;//二级分类
+
     private String serviceSn;
 
     private String serviceName;

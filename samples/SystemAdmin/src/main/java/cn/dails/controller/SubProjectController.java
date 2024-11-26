@@ -84,9 +84,9 @@ public class SubProjectController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<SubProjectResponseVo>> findList(HttpServletRequest request) {
-		SubProjectRequestVo vo = new SubProjectRequestVo();
+	@RequestMapping(value = { "findList" }, method = { RequestMethod.POST })
+	public BaseResponse<List<SubProjectResponseVo>> findList(@RequestBody BaseRequest<JSONObject> obj) {
+		SubProjectRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubProjectRequestVo.class);
 		List<SubProjectEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

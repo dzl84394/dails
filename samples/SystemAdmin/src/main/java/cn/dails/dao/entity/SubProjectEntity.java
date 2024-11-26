@@ -44,5 +44,4 @@ public class SubProjectEntity extends BaseEntity implements Serializable {
     //数据库，中间件其他依赖
     //开发，测试，生产，其他
 
-
 }

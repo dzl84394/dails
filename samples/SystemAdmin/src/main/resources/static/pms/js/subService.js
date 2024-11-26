@@ -13,7 +13,7 @@ function findPage(){
         }),
         async : false,
         success : function(result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -22,6 +22,9 @@ function findPage(){
 			if(currentPage<1)currentPage=1;
 			var total = result.data.total;//总条数
 			var pages =result.data.pages;
+			if(pages<1)pages=1;
+
+
  			var listDiv = $("#tbodylist")
 
             listDiv.empty();
@@ -32,13 +35,17 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.subProjectId+"</td>"
                  + "<td>"+index.subProjectSn+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
                  + "<td>"+index.serviceName+"</td>"
                  + "<td>"+index.serviceType+"</td>"
                  + "<td>"+index.language+"</td>"
                  + "<td>"+index.serviceSubType+"</td>"
+                 + "<td>"+index.gitUrl+"</td>"
+                 + "<td>"+index.defaultZone+"</td>"
+                 + "<td>"+index.domainDev+"</td>"
+                 + "<td>"+index.domainStg+"</td>"
+                 + "<td>"+index.domainProd+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"
@@ -88,6 +95,11 @@ function save(){
   data.serviceType = $('#serviceType').val();
   data.language = $('#language').val();
   data.serviceSubType = $('#serviceSubType').val();
+  data.gitUrl = $('#gitUrl').val();
+  data.defaultZone = $('#defaultZone').val();
+  data.domainDev = $('#domainDev').val();
+  data.domainStg = $('#domainStg').val();
+  data.domainProd = $('#domainProd').val();
 
     $.ajax({
         type: "post",
@@ -98,7 +110,7 @@ function save(){
             data
         }),
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -117,7 +129,7 @@ function show(){
             id:$("#id").val()
         },
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -131,6 +143,11 @@ function show(){
   $("#serviceType").text( index.serviceType);
   $("#language").text( index.language);
   $("#serviceSubType").text( index.serviceSubType);
+  $("#gitUrl").text( index.gitUrl);
+  $("#defaultZone").text( index.defaultZone);
+  $("#domainDev").text( index.domainDev);
+  $("#domainStg").text( index.domainStg);
+  $("#domainProd").text( index.domainProd);
 
 
 
@@ -148,7 +165,7 @@ function editshow(){
             id:$("#id").val()
         },
         success: function (result) {
-            if(result.resultCode != 'SUCCESS'){
+            if(result.resultCode != '200'){
                 alert("接口异常")
                 return;
             }
@@ -161,6 +178,11 @@ function editshow(){
   $("#serviceType").val( index.serviceType);
   $("#language").val( index.language);
   $("#serviceSubType").val( index.serviceSubType);
+  $("#gitUrl").val( index.gitUrl);
+  $("#defaultZone").val( index.defaultZone);
+  $("#domainDev").val( index.domainDev);
+  $("#domainStg").val( index.domainStg);
+  $("#domainProd").val( index.domainProd);
 
 
         }
@@ -182,7 +204,7 @@ function deleteObj(id){
                 data
             }),
             success: function (result) {
-                if(result.resultCode != 'SUCCESS'){
+                if(result.resultCode != '200'){
                     alert("接口异常")
                     return;
                 }

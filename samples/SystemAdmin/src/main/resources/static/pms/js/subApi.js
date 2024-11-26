@@ -37,15 +37,9 @@ function findPage(){
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
-                 + "<td>"+index.method+"</td>"
+                 + "<td>"+index.apiName+"</td>"
                  + "<td>"+index.path+"</td>"
-                 + "<td>"+index.header+"</td>"
-                 + "<td>"+index.url+"</td>"
-                 + "<td>"+index.host+"</td>"
-                 + "<td>"+index.port+"</td>"
-                 + "<td>"+index.urlRaw+"</td>"
-                 + "<td>"+index.requestBody+"</td>"
-                 + "<td>"+index.response+"</td>"
+
 
 				+"<td><a class='btn btn-info btn-sm' href='/subApi/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/subApi/editView?id="+index.id+"'>编辑</a>"
@@ -90,15 +84,25 @@ function save(){
       data.id = $('#id').val();
   data.projectSn = $('#projectSn').val();
   data.serviceSn = $('#serviceSn').val();
+  data.apiName = $('#apiName').val();
+  data.apiStstus = $('#apiStstus').val();
+  data.datail = $('#datail').val();
+  data.scope = $('#scope').val();
+  data.apiType = $('#apiType').val();
   data.method = $('#method').val();
-  data.path = $('#path').val();
-  data.header = $('#header').val();
+  data.protocol = $('#protocol').val();
+  data.level = $('#level').val();
   data.url = $('#url').val();
   data.host = $('#host').val();
   data.port = $('#port').val();
-  data.urlRaw = $('#urlRaw').val();
+  data.path = $('#path').val();
+  data.headerParms = $('#headerParms').val();
+  data.urlParms = $('#urlParms').val();
+  data.pathParms = $('#pathParms').val();
   data.requestBody = $('#requestBody').val();
   data.response = $('#response').val();
+  data.requestDemo = $('#requestDemo').val();
+  data.responseDemo = $('#responseDemo').val();
 
     $.ajax({
         type: "post",
@@ -137,15 +141,25 @@ function show(){
                $("#id").text( index.id);
   $("#projectSn").text( index.projectSn);
   $("#serviceSn").text( index.serviceSn);
+  $("#apiName").text( index.apiName);
+  $("#apiStstus").text( index.apiStstus);
+  $("#datail").text( index.datail);
+  $("#scope").text( index.scope);
+  $("#apiType").text( index.apiType);
   $("#method").text( index.method);
-  $("#path").text( index.path);
-  $("#header").text( index.header);
+  $("#protocol").text( index.protocol);
+  $("#level").text( index.level);
   $("#url").text( index.url);
   $("#host").text( index.host);
   $("#port").text( index.port);
-  $("#urlRaw").text( index.urlRaw);
+  $("#path").text( index.path);
+  $("#headerParms").text( index.headerParms);
+  $("#urlParms").text( index.urlParms);
+  $("#pathParms").text( index.pathParms);
   $("#requestBody").text( index.requestBody);
   $("#response").text( index.response);
+  $("#requestDemo").text( index.requestDemo);
+  $("#responseDemo").text( index.responseDemo);
 
 
 
@@ -171,15 +185,25 @@ function editshow(){
               $("#id").val( index.id);
   $("#projectSn").val( index.projectSn);
   $("#serviceSn").val( index.serviceSn);
+  $("#apiName").val( index.apiName);
+  $("#apiStstus").val( index.apiStstus);
+  $("#datail").val( index.datail);
+  $("#scope").val( index.scope);
+  $("#apiType").val( index.apiType);
   $("#method").val( index.method);
-  $("#path").val( index.path);
-  $("#header").val( index.header);
+  $("#protocol").val( index.protocol);
+  $("#level").val( index.level);
   $("#url").val( index.url);
   $("#host").val( index.host);
   $("#port").val( index.port);
-  $("#urlRaw").val( index.urlRaw);
+  $("#path").val( index.path);
+  $("#headerParms").val( index.headerParms);
+  $("#urlParms").val( index.urlParms);
+  $("#pathParms").val( index.pathParms);
   $("#requestBody").val( index.requestBody);
   $("#response").val( index.response);
+  $("#requestDemo").val( index.requestDemo);
+  $("#responseDemo").val( index.responseDemo);
 
 
         }
@@ -209,6 +233,36 @@ function deleteObj(id){
             }
         })
    }
+}
+
+function findSubProjectList(projectSn){
+    var data = new Object();
+
+    $.ajax({
+        type : "post",
+        url : "/subProject/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(projectSn);
+            // 清空datalist元素
+            data1List.empty();
+
+
+            // 使用each方法动态加载数据到datalist中
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.name).attr("value", value.nameEn	);
+                data1List.append(option);
+                alert(value.name)
+            });
+        }
+    })
 }
 
 setActive("nav_subApi");
