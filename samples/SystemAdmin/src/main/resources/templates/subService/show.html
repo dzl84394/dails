@@ -14,69 +14,109 @@
 
 
 
-	<div class="container">
-
-
+	<div class="container-fluid">
 		<div class="row">
 
-			<div class="col-sm-9 blog-main">
-
-				<div class="blog-post">
-					<h2 class="blog-post-title">subService show</h2>
-					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
+				<h2 class="blog-post-title">subService show</h2>
+				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 					<hr />
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subProjectSn</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subProjectSn' th:text='${obj.subProjectSn}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">clsType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='clsType' th:text='${obj.clsType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subType' th:text='${obj.subType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceSn</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceSn' th:text='${obj.serviceSn}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceName</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceName' th:text='${obj.serviceName}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceType' th:text='${obj.serviceType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">language</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='language' th:text='${obj.language}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceSubType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceSubType' th:text='${obj.serviceSubType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">gitUrl</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='gitUrl' th:text='${obj.gitUrl}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">defaultZone</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='defaultZone' th:text='${obj.defaultZone}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">domainDev</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='domainDev' th:text='${obj.domainDev}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">domainStg</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='domainStg' th:text='${obj.domainStg}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">domainProd</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='domainProd' th:text='${obj.domainProd}'></p>
+                    </div>
+                </div>
 
-                     <div>  
-                         <span class='label label-default'>subProjectId</span> 
-                          <p id='subProjectId'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>subProjectSn</span> 
-                          <p id='subProjectSn'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>serviceSn</span> 
-                          <p id='serviceSn'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>serviceName</span> 
-                          <p id='serviceName'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>serviceType</span> 
-                          <p id='serviceType'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>language</span> 
-                          <p id='language'></p>	
-                     </div> 
-                     <div>  
-                         <span class='label label-default'>serviceSubType</span> 
-                          <p id='serviceSubType'></p>	
-                     </div> 
-
-
-				</div>
+			</div>
 				<!-- blog-post -->
-				<div class="form-group">
-					<div class="col-sm-offset-8 col-sm-4">
+			<div class="form-group">
+				<div class="col-sm-offset-8 col-sm-4">
 						<a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
 						<a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
 
-					</div>
 				</div>
 			</div>
-			<!-- blog-main -->
 		</div>
-		<!-- row -->
-
-
+			<!-- row -->
 	</div>
-	<!-- /.container -->
+		<!-- container-fluid -->
+
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
-	show();
 </script>
 
 </html>
