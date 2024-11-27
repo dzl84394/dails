@@ -18,8 +18,7 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private Long subProjectId;
-    private Long subProjectSn;
+    private String subProjectSn;
 
     private String clsType;//一级分类
     private String subType;//二级分类

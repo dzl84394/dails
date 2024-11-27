@@ -64,6 +64,7 @@
                 <li id="nav_subProject"  ><a th:href="@{/subProject/indexView}">子系统管理</a></li>
                 <li id="nav_subService"  ><a th:href="@{/subService/indexView}">微服务管理</a></li>
                 <li id="nav_subApi"  ><a th:href="@{/subApi/indexView}">服务治理</a></li>
+                <li id="nav_serviceAdmin"  ><a th:href="@{/serviceAdmin/indexView}">服务管理</a></li>
                 <li id="nav_confComm"  ><a th:href="@{/confComm/indexView}">配置管理</a></li>
 <!--                <li id="nav_sysBu"><a th:href="@{/sysBu/indexView}">BU管理</a></li>-->
 <!--                <li id="nav_sysUser"><a th:href="@{/sysUser/indexView}">人员配置</a></li>-->
@@ -159,9 +160,16 @@
         <a  href="/confComm/indexView?subType=middleware" class="list-group-item">其他中间件</a>
     </div>
 </div>
+<div class="sidebar-offcanvas"  th:fragment="serviceAdmin_sidebar">
+    <div class="list-group">
+        <a  href="/confComm/indexView?clsType=ptype&subType=ptype" class="list-group-item">注册中心</a>
+        <a  href="/confComm/indexView?subType=biz" class="list-group-item">mq</a>
+        <a  href="/confComm/indexView?subType=db" class="list-group-item">数据库</a>
 
-<div class="sidebar-offcanvas"  th:fragment="comm_sidebar">
+    </div>
 </div>
+
+
 
 </body>
 

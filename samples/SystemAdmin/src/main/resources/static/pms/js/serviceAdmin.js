@@ -5,7 +5,7 @@ function findPage(){
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
-        url : "/subService/findPage",
+        url : "/serviceAdmin/findPage",
         contentType: 'application/json',
         dataType: "json",
         data : JSON.stringify({
@@ -35,20 +35,14 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.subProjectSn+"</td>"
-                 + "<td>"+index.serviceSn+"</td>"
-                 + "<td>"+index.serviceName+"</td>"
+                 + "<td>"+index.iocUrl+"</td>"
                  + "<td>"+index.serviceType+"</td>"
-                 + "<td>"+index.language+"</td>"
-                 + "<td>"+index.serviceSubType+"</td>"
-                 + "<td>"+index.gitUrl+"</td>"
-                 + "<td>"+index.defaultZone+"</td>"
-                 + "<td>"+index.domainDev+"</td>"
-                 + "<td>"+index.domainStg+"</td>"
-                 + "<td>"+index.domainProd+"</td>"
+                 + "<td>"+index.name+"</td>"
+                 + "<td>"+index.detail+"</td>"
+                 + "<td>"+index.serviceAdminUrl+"</td>"
 
-				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
-				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"
+				+"<td><a class='btn btn-info btn-sm' href='/serviceAdmin/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/serviceAdmin/editView?id="+index.id+"'>编辑</a>"
 				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
 				+"</td></tr>"
 			}
@@ -88,22 +82,15 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
-  data.subProjectId = $('#subProjectId').val();
-  data.subProjectSn = $('#subProjectSn').val();
-  data.serviceSn = $('#serviceSn').val();
-  data.serviceName = $('#serviceName').val();
+  data.iocUrl = $('#iocUrl').val();
   data.serviceType = $('#serviceType').val();
-  data.language = $('#language').val();
-  data.serviceSubType = $('#serviceSubType').val();
-  data.gitUrl = $('#gitUrl').val();
-  data.defaultZone = $('#defaultZone').val();
-  data.domainDev = $('#domainDev').val();
-  data.domainStg = $('#domainStg').val();
-  data.domainProd = $('#domainProd').val();
+  data.name = $('#name').val();
+  data.detail = $('#detail').val();
+  data.serviceAdminUrl = $('#serviceAdminUrl').val();
 
     $.ajax({
         type: "post",
-        url: "/subService/save",
+        url: "/serviceAdmin/save",
         contentType: 'application/json',
         dataType: "json",
         data: JSON.stringify({
@@ -114,7 +101,7 @@ function save(){
                 alert("接口异常")
                 return;
             }
-            go("/subService/indexView");
+            go("/serviceAdmin/indexView");
         }
    })
 }
@@ -122,7 +109,7 @@ function save(){
 function show(){
     $.ajax({
         type: "get",
-        url: "/subService/findById",
+        url: "/serviceAdmin/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -136,18 +123,11 @@ function show(){
             var index = result.data;
 
                $("#id").text( index.id);
-  $("#subProjectId").text( index.subProjectId);
-  $("#subProjectSn").text( index.subProjectSn);
-  $("#serviceSn").text( index.serviceSn);
-  $("#serviceName").text( index.serviceName);
+  $("#iocUrl").text( index.iocUrl);
   $("#serviceType").text( index.serviceType);
-  $("#language").text( index.language);
-  $("#serviceSubType").text( index.serviceSubType);
-  $("#gitUrl").text( index.gitUrl);
-  $("#defaultZone").text( index.defaultZone);
-  $("#domainDev").text( index.domainDev);
-  $("#domainStg").text( index.domainStg);
-  $("#domainProd").text( index.domainProd);
+  $("#name").text( index.name);
+  $("#detail").text( index.detail);
+  $("#serviceAdminUrl").text( index.serviceAdminUrl);
 
 
 
@@ -158,7 +138,7 @@ function show(){
 function editshow(){
     $.ajax({
         type: "get",
-        url: "/subService/findById",
+        url: "/serviceAdmin/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -171,18 +151,11 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
-  $("#subProjectId").val( index.subProjectId);
-  $("#subProjectSn").val( index.subProjectSn);
-  $("#serviceSn").val( index.serviceSn);
-  $("#serviceName").val( index.serviceName);
+  $("#iocUrl").val( index.iocUrl);
   $("#serviceType").val( index.serviceType);
-  $("#language").val( index.language);
-  $("#serviceSubType").val( index.serviceSubType);
-  $("#gitUrl").val( index.gitUrl);
-  $("#defaultZone").val( index.defaultZone);
-  $("#domainDev").val( index.domainDev);
-  $("#domainStg").val( index.domainStg);
-  $("#domainProd").val( index.domainProd);
+  $("#name").val( index.name);
+  $("#detail").val( index.detail);
+  $("#serviceAdminUrl").val( index.serviceAdminUrl);
 
 
         }
@@ -197,7 +170,7 @@ function deleteObj(id){
     if (isOK) {
         $.ajax({
             type: "post",
-            url: "/subService/deleteById",
+            url: "/serviceAdmin/deleteById",
             contentType: 'application/json',
             dataType: "json",
             data: JSON.stringify({
@@ -208,40 +181,10 @@ function deleteObj(id){
                     alert("接口异常")
                     return;
                 }
-                go("/subService/indexView");
+                go("/serviceAdmin/indexView");
             }
         })
    }
 }
 
-
-function findSubProjectList(projectSn){
-    var data = new Object();
-
-    $.ajax({
-        type : "post",
-        url : "/subProject/findList",
-        contentType: 'application/json',
-        dataType: "json",
-        data : JSON.stringify({
-            data
-        }),
-        async : false,
-        success : function(result) {
-            let confs = result.data;
-            // 找到datalist元素
-            let data1List = $(projectSn);
-            // 清空datalist元素
-            data1List.empty();
-
-
-            // 使用each方法动态加载数据到datalist中
-            $.each(confs, function(index, value) {
-                var option = $("<option>").text(value.name).attr("value", value.nameEn	);
-                data1List.append(option);
-            });
-        }
-    })
-}
-
-setActive("nav_subService");
+setActive("nav_serviceAdmin");
