@@ -46,7 +46,7 @@ public class SubApiEntity extends BaseEntity implements Serializable {
     private String requestDemo;//curl的例子
     private String responseDemo;
 
-
-
+    private Integer  connections;//连接数
+    private Integer  costtime;//平均耗时
 
 }
