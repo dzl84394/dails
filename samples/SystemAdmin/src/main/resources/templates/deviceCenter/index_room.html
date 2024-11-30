@@ -17,7 +17,7 @@
 				 th:include="layout::deviceCenter_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 
-				<h3>deviceCenter 列表</h3>
+				<h3>机房 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
@@ -27,17 +27,11 @@
 							<tr>
 								<td>id</td>
 								<td>deviceType</td>
-								<td>deviceCenter</td>
-								<td>deviceCenterSn</td>
-								<td>deviceRoom</td>
-								<td>deviceRoomSn</td>
-								<td>rowcell</td>
-								<td>cabinetSn</td>
-								<td>rack</td>
-								<td>high</td>
-								<td>deviceSn</td>
-								<td>env</td>
-								<td>status</td>
+								<td>数据中心</td>
+								<td>编号</td>
+								<td>机房名称</td>
+								<td>编号</td>
+
 
 
 							</tr>
@@ -54,7 +48,7 @@
 				<nav>
 					<ul class="pager">
 						<li>
-							<a th:href="@{/deviceCenter/addView}">新增</a>
+							<a th:href="@{/deviceCenter/addRoomView}">新增</a>
 						</li>
 					</ul>
 				</nav>
@@ -78,5 +72,6 @@
     var pageSize = 5;
  	var deviceType = getParameterValue('deviceType')
 	findPage(deviceType);
+
 </script>
 </html>

@@ -29,7 +29,6 @@ public class DeviceCenterEntity extends BaseEntity implements Serializable {
     private String deviceRoomSn;
 
     //机柜
-    private String cabinetName;
     private String rowcell;//位置，搂层房间号-X排Y行-第几个
     private String cabinetSn;
 

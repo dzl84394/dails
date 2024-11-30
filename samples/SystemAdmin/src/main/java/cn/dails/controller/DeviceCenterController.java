@@ -33,8 +33,13 @@ public class DeviceCenterController {
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
-	public ModelAndView indexView(HttpServletRequest request) {
+	public ModelAndView indexView(@RequestParam(value = "deviceType", required = false) String deviceType,HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("deviceCenter/index");
+		if("dc".equals(deviceType)){
+			mav = new ModelAndView("deviceCenter/index_dc");
+		}else if("room".equals(deviceType)){
+			mav = new ModelAndView("deviceCenter/index_room");
+		}
 		return mav;																				
 	}																							
 																								
@@ -56,10 +61,31 @@ public class DeviceCenterController {
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
 	public ModelAndView newObj() {																
 		ModelAndView mav = new ModelAndView("deviceCenter/new");
+
 		DeviceCenterEntity obj =  new DeviceCenterEntity();
         mav.addObject("obj", obj);
 		return mav;
 	}
+	@RequestMapping(value = { "addDcView" }, method = { RequestMethod.GET })
+	public ModelAndView addDcView() {
+		ModelAndView mav = new ModelAndView("deviceCenter/new_dc");
+
+		DeviceCenterEntity obj =  new DeviceCenterEntity();
+		obj.setDeviceType("dc");
+		mav.addObject("obj", obj);
+		return mav;
+	}
+	@RequestMapping(value = { "addRoomView" }, method = { RequestMethod.GET })
+	public ModelAndView addRoomView() {
+		ModelAndView mav = new ModelAndView("deviceCenter/new_room");
+
+		DeviceCenterEntity obj =  new DeviceCenterEntity();
+		obj.setDeviceType("room");
+		mav.addObject("obj", obj);
+		return mav;
+	}
+
+
 	@RequestMapping(value = { "editView" }, method = { RequestMethod.GET })
     public ModelAndView editView(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("deviceCenter/edit");
@@ -84,9 +110,9 @@ public class DeviceCenterController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<DeviceCenterResponseVo>> findList(HttpServletRequest request) {
-		DeviceCenterRequestVo vo = new DeviceCenterRequestVo();
+	@RequestMapping(value = { "findList" }, method = { RequestMethod.POST })
+	public BaseResponse<List<DeviceCenterResponseVo>> findList(@RequestBody BaseRequest<JSONObject> obj) {
+		DeviceCenterRequestVo vo = JSONObject.toJavaObject(obj.getData(), DeviceCenterRequestVo.class);
 		List<DeviceCenterEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

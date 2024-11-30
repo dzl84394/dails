@@ -1,7 +1,9 @@
 
-function findPage(){
+function findPage(deviceType){
 	var data = new Object();
+	data.deviceType=deviceType;
 	data.size  = 10;
+
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
@@ -33,23 +35,31 @@ function findPage(){
 			/*<![CDATA[*/
 		    for (var i = 0; i <  result.data.records.length; i++) {
 			    var index = result.data.records[i];
-				temp += "<tr>"
-                 + "<td>"+index.id+"</td>"
+				temp += "<tr>";
+
+                temp +=  "<td>"+index.id+"</td>"
                  + "<td>"+index.deviceType+"</td>"
                  + "<td>"+index.deviceCenter+"</td>"
-                 + "<td>"+index.deviceCenterSn+"</td>"
-                 + "<td>"+index.deviceRoom+"</td>"
-                 + "<td>"+index.deviceRoomSn+"</td>"
-                 + "<td>"+index.cabinetName+"</td>"
-                 + "<td>"+index.rowcell+"</td>"
-                 + "<td>"+index.cabinetSn+"</td>"
-                 + "<td>"+index.rack+"</td>"
-                 + "<td>"+index.high+"</td>"
-                 + "<td>"+index.deviceSn+"</td>"
-                 + "<td>"+index.env+"</td>"
-                 + "<td>"+index.status+"</td>"
+                 + "<td>"+index.deviceCenterSn+"</td>";
 
-				+"<td><a class='btn btn-info btn-sm' href='/deviceCenter/showView?id="+index.id+"'>展示</a>"
+                 if(index.deviceType==='room'||index.deviceType==='rack'){
+                    temp +=  "<td>"+index.deviceRoom+"</td>"
+                          + "<td>"+index.deviceRoomSn+"</td>";
+
+                 }
+                 if(index.deviceType==='rack'){
+                    temp +=
+                          "<td>"+index.rowcell+"</td>"
+                         + "<td>"+index.cabinetSn+"</td>"
+                         + "<td>"+index.rack+"</td>"
+                         + "<td>"+index.high+"</td>"
+                         + "<td>"+index.deviceSn+"</td>"
+                         + "<td>"+index.env+"</td>"
+                         + "<td>"+index.status+"</td>";
+                 }
+
+
+				temp +=  "<td><a class='btn btn-info btn-sm' href='/deviceCenter/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/deviceCenter/editView?id="+index.id+"'>编辑</a>"
 				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
 				+"</td></tr>"
@@ -219,4 +229,36 @@ function deleteObj(id){
    }
 }
 
+
+
+
+function findDcList(dcDiv){
+    var data = new Object();
+    data.deviceType='dc';
+    $.ajax({
+        type : "post",
+        url : "/deviceCenter/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(dcDiv);
+            // 清空datalist元素
+            data1List.empty();
+
+
+            // 使用each方法动态加载数据到datalist中
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.deviceCenter).attr("value", value.deviceCenterSn	);
+                data1List.append(option);
+
+            });
+        }
+    })
+}
 setActive("nav_deviceCenter");

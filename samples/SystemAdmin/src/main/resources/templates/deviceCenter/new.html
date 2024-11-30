@@ -26,7 +26,11 @@
                <div class='form-group col-lg-12'> 
 						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='deviceType' id='deviceType' th:value='${obj.deviceType}'/>
+							<select class="form-control" name='deviceType' id='deviceType' th:value='${obj.deviceType}'>
+								<option value="dc">数据中心</option>
+								<option value="room">机房</option>
+								<option value="rack">机柜</option>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -53,12 +57,7 @@
 							<input type='text' class='form-control' name='deviceRoomSn' id='deviceRoomSn' th:value='${obj.deviceRoomSn}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='cabinetName' class='col-sm-2 control-label'>cabinetName</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='cabinetName' id='cabinetName' th:value='${obj.cabinetName}'/>
-						</div>
-					</div>
+
                <div class='form-group col-lg-12'> 
 						<label for='rowcell' class='col-sm-2 control-label'>rowcell</label>
 						<div class='col-sm-10'>

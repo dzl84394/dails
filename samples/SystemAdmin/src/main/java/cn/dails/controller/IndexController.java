@@ -14,7 +14,7 @@ public class IndexController {
 
 
 
-    @RequestMapping(value = "index", method = RequestMethod.GET)
+    @RequestMapping(value =  {"index", "", "home"}, method = RequestMethod.GET)
     public String indexView() {
         return "index";
     }

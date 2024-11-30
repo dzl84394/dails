@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+>
+<head th:replace="layout::head"></head>
+<body>
+<!-- Fixed navbar -->
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+
+<div class="container">
+
+    <!-- Jumbotron -->
+    <div class="jumbotron">
+        <h1>迈优医疗</h1>
+        <p class="lead">迈越健康、优画未来。</p>
+        <!--  <p><a class="btn btn-lg btn-success" href="#" role="button">Get started today</a></p> -->
+    </div>
+
+    <!-- Example row of columns -->
+
+
+</div>
+
+</body>
+
+<script th:inline="javascript">
+    setActive("nav_home", null)
+
+
+
+
+//     function onclickNext() {
+// //      setTimeout(onclickNext, 60*1000);
+//         setTimeout(onclickNext, Math.floor(Math.random()*(15000-9000+1)+9000));
+//         document.getElementsByClassName('ant-pagination-next')[0].click();
+//
+//         var xmlHttp = new XMLHttpRequest();
+//         //生产
+//         xmlHttp.open("post", "https://www.exbill.cn//price/logUpload");
+//         //测试
+// //      xmlHttp.open("post", "https://test2.xishiwork.com/price/logUpload");
+//         xmlHttp.setRequestHeader("Content-Type", "application/json");
+//         xmlHttp.setRequestHeader("Access-Control-Allow-Origin", "*");
+//
+//         xmlHttp.send(JSON.stringify({
+//             'log': document.getElementsByClassName('ant-table-tbody')[1].outerHTML
+//         })); // 请求体数据
+//         xmlHttp.onreadystatechange = function () {
+//             if (this.readyState == 4 && this.status == 200) {
+//                 console.log(this.responseText)
+//             }
+//         };
+//     }
+//     onclickNext();
+//
+//
+//     console.log(document.getElementsByClassName('ant-table-tbody')[1].outerHTML);
+//
+//     function onclickNext2() {
+//         $.ajax({
+//             url: "/haha/log/upload",
+//             type: "post",
+//             contentType: 'application/json',
+//             data: JSON.stringify({
+//                 log: "123123123123"
+//             }),
+//             dataType: "json",
+//             success: function (result) {
+//                 console.log(result);
+//             }
+//         });
+//     }
+//
+//     onclickNext2();
+</script>
+</html>

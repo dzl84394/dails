@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::deviceCenter_sidebar"></div>
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+				<h3 class="blog-title">deviceCenter 添加</h3>
+
+				<div th:fragment="deviceCenterForm">
+
+				<form id="deviceCenterForm"  class="form-horizontal"  th:action="@{/deviceCenter/save}" th:method="post"
+					  th:object="${obj}">
+					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+               <div class='form-group col-lg-12'> 
+						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
+						<div class='col-sm-10'>
+							<select class="form-control" name='deviceType' id='deviceType' th:value='${obj.deviceType}'>
+								<option value="dc">数据中心</option>
+								<option value="room">机房</option>
+								<option value="rack">机柜</option>
+							</select>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deviceCenter' class='col-sm-2 control-label'>deviceCenter</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenter' id='deviceCenter' th:value='${obj.deviceCenter}'/>
+						</div>
+					</div>
+               		<div class='form-group col-lg-12'>
+						<label for='deviceCenterSn' class='col-sm-2 control-label'>deviceCenterSn</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deviceCenterSn' id='deviceCenterSn' th:value='${obj.deviceCenterSn}'/>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-sm-offset-10 col-sm-2">
+
+							<input type="submit" class="btn btn-success" value="保存"/>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	</div>
+
+</body>
+<script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+
+</html>
