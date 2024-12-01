@@ -119,12 +119,9 @@
 
 <div class="sidebar-offcanvas"  th:fragment="device_sidebar">
     <div class="list-group" >
-        <a  href="/device/indexView?deviceType=dc" class="list-group-item">机房城市管理</a>
-        <a  href="/device/indexView?deviceType=room" class="list-group-item">机房区域管理</a>
-        <a  href="/device/indexView?deviceType=rack" class="list-group-item">机柜管理</a>
-        <a  href="/device/indexView?deviceType=物理机" class="list-group-item">服务器管理</a>
-        <a  href="/device/indexView?deviceType=虚机" class="list-group-item">虚机管理</a>
-        <a  href="/device/indexView?deviceType=容器pks" class="list-group-item">容器管理</a>
+        <a  href="/device/indexView?deviceType=dc" class="list-group-item">物理机</a>
+        <a  href="/device/indexView?deviceType=room" class="list-group-item">云主机</a>
+        <a  href="/device/indexView?deviceType=rack" class="list-group-item">pks</a>
     </div>
 </div>
 
@@ -132,13 +129,9 @@
 
 <div class="sidebar-offcanvas"  th:fragment="project_sidebar">
     <div class="list-group" id ="device_project">
-        <a  href="/user/updateProfile" class="list-group-item">子系统</a>
-        <a  href="/consignee/indexView" class="list-group-item">数据库</a>
-        <a  href="/user/updatePasswd" class="list-group-item">nosql&缓存</a>
-        <a  href="/user/updatePasswd" class="list-group-item">大数据</a>
-        <a  href="/user/updatePasswd" class="list-group-item">mq</a>
-        <a  href="/user/updatePasswd" class="list-group-item">网关</a>
-        <a  href="/user/updatePasswd" class="list-group-item">其他中间件</a>
+        <a  href="/subProject/indexView" class="list-group-item">子系统</a>
+        <a  href="/subService/indexView" class="list-group-item">服务</a>
+
     </div>
 </div>
 <div class="sidebar-offcanvas"  th:fragment="subApi_sidebar">

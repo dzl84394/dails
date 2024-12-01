@@ -23,13 +23,13 @@
 				<form id="deviceCenterForm"  class="form-horizontal"  th:action="@{/deviceCenter/save}" th:method="post"
 					  th:object="${obj}">
 					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-12'>
 						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
 						<div class='col-sm-10'>
 							<select class="form-control" name='deviceType' id='deviceType' th:value='${obj.deviceType}'>
-								<option value="dc">数据中心</option>
-								<option value="room">机房</option>
-								<option value="rack">机柜</option>
+								<option value="dc" th:selected="${obj.deviceType == 'dc'}">数据中心</option>
+								<option value="room" th:selected="${obj.deviceType == 'room'}">机房</option>
+								<option value="rack" th:selected="${obj.deviceType == 'rack'}">机柜</option>
 							</select>
 						</div>
 					</div>

@@ -50,12 +50,8 @@ function findPage(deviceType){
                  if(index.deviceType==='rack'){
                     temp +=
                           "<td>"+index.rowcell+"</td>"
-                         + "<td>"+index.cabinetSn+"</td>"
-                         + "<td>"+index.rack+"</td>"
-                         + "<td>"+index.high+"</td>"
-                         + "<td>"+index.deviceSn+"</td>"
-                         + "<td>"+index.env+"</td>"
-                         + "<td>"+index.status+"</td>";
+                         + "<td>"+index.rackSn+"</td>";
+
                  }
 
 
@@ -261,4 +257,37 @@ function findDcList(dcDiv){
         }
     })
 }
+
+
+function findRoomList(dc,roomDiv){
+    var data = new Object();
+    data.deviceType='room';
+    data.deviceCenterSn =dc;
+    $.ajax({
+        type : "post",
+        url : "/deviceCenter/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(roomDiv);
+            // 清空datalist元素
+            data1List.empty();
+
+
+            // 使用each方法动态加载数据到datalist中
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.deviceRoom).attr("value", value.deviceRoomSn	);
+                data1List.append(option);
+
+            });
+        }
+    })
+}
+
 setActive("nav_deviceCenter");

@@ -52,6 +52,12 @@ public class DeviceCenterService extends ServiceImpl<DeviceCenterDao,DeviceCente
           if (!Strings.isNullOrEmpty(vo.getDeviceType())){
               wrapper.eq(DeviceCenterEntity::getDeviceType,vo.getDeviceType());
           }
+          if (!Strings.isNullOrEmpty(vo.getDeviceCenterSn())){
+              wrapper.eq(DeviceCenterEntity::getDeviceCenterSn,vo.getDeviceCenterSn());
+          }
+          if (!Strings.isNullOrEmpty(vo.getDeviceRoomSn())){
+              wrapper.eq(DeviceCenterEntity::getDeviceRoomSn,vo.getDeviceRoomSn());
+          }
           List<DeviceCenterEntity> list = dao.selectList(wrapper);
           return list;
       }

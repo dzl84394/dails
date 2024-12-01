@@ -26,10 +26,10 @@ public class DeviceEntity extends BaseEntity implements Serializable {
     private String deviceRoomSn;
 
     //机柜
-    private String cabinetSn;
+    private String rackSn;
 
     //物理机
-    private String rackSn;//SZF-1121A-1205-3U
+    private String deviceSn;//SZF-1121A-1205-3U
 
 
 

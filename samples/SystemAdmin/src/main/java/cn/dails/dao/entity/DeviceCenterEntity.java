@@ -30,12 +30,11 @@ public class DeviceCenterEntity extends BaseEntity implements Serializable {
 
     //机柜
     private String rowcell;//位置，搂层房间号-X排Y行-第几个
-    private String cabinetSn;
+    private String rackSn;
 
     //物理机
     private String rackSeat;//机位，45U
     private int rackHigh = 1;//3U
-    private String rackSn;//SZF-1121A-1205-3U
 
 
 

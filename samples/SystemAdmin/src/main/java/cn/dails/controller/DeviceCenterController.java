@@ -10,6 +10,7 @@ import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -63,6 +64,7 @@ public class DeviceCenterController {
 		ModelAndView mav = new ModelAndView("deviceCenter/new");
 
 		DeviceCenterEntity obj =  new DeviceCenterEntity();
+		obj.setDeviceType("rack");
         mav.addObject("obj", obj);
 		return mav;
 	}
@@ -88,9 +90,15 @@ public class DeviceCenterController {
 
 	@RequestMapping(value = { "editView" }, method = { RequestMethod.GET })
     public ModelAndView editView(@RequestParam("id") Long id) {
-        ModelAndView mav = new ModelAndView("deviceCenter/edit");
-        mav.addObject("id", id);
-        DeviceCenterEntity obj =  service.getById(id);
+		DeviceCenterEntity obj =  service.getById(id);
+		ModelAndView mav = new ModelAndView("deviceCenter/edit");
+		if ("dc".equals(obj.getDeviceType())){
+			mav = new ModelAndView("deviceCenter/edit_dc");
+		} else if ("room".equals(obj.getDeviceType())) {
+			mav = new ModelAndView("deviceCenter/edit_room");
+		}
+		mav.addObject("id", id);
+
         mav.addObject("obj", obj);
         return mav;
     }
@@ -103,6 +111,9 @@ public class DeviceCenterController {
 	@RequestMapping(value = { "findPage" }, method = { RequestMethod.POST })
 	public BaseResponse<IPage<DeviceCenterResponseVo>> findPage(@RequestBody BaseRequest<JSONObject> obj) {
 		DeviceCenterRequestVo vo = JSONObject.toJavaObject(obj.getData(), DeviceCenterRequestVo.class);
+		if (Strings.isNullOrEmpty(vo.getDeviceType())){
+			 vo.setDeviceType("rack");
+		}
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
 		IPage<DeviceCenterEntity> page = service.findPage(vo);
@@ -113,6 +124,9 @@ public class DeviceCenterController {
 	@RequestMapping(value = { "findList" }, method = { RequestMethod.POST })
 	public BaseResponse<List<DeviceCenterResponseVo>> findList(@RequestBody BaseRequest<JSONObject> obj) {
 		DeviceCenterRequestVo vo = JSONObject.toJavaObject(obj.getData(), DeviceCenterRequestVo.class);
+		if (Strings.isNullOrEmpty(vo.getDeviceType())){
+			vo.setDeviceType("rack");
+		}
 		List<DeviceCenterEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

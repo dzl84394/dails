@@ -23,83 +23,52 @@
 				<form id="deviceCenterForm"  class="form-horizontal"  th:action="@{/deviceCenter/save}" th:method="post"
 					  th:object="${obj}">
 					<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
-               <div class='form-group col-lg-12'> 
+					<input type='hidden' class='form-control' name='deviceCenter' id='deviceCenter' th:value='${obj.deviceCenter}'/>
+					<input type='hidden' class='form-control' name='deviceRoom' id='deviceRoom' th:value='${obj.deviceRoom}'/>
+
+
+					<div class='form-group col-lg-12'>
 						<label for='deviceType' class='col-sm-2 control-label'>deviceType</label>
 						<div class='col-sm-10'>
 							<select class="form-control" name='deviceType' id='deviceType' th:value='${obj.deviceType}'>
-								<option value="dc">数据中心</option>
-								<option value="room">机房</option>
-								<option value="rack">机柜</option>
+								<option value="dc" th:selected="${obj.deviceType == 'dc'}">数据中心</option>
+								<option value="room" th:selected="${obj.deviceType == 'room'}">机房</option>
+								<option value="rack" th:selected="${obj.deviceType == 'rack'}">机柜</option>
 							</select>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='deviceCenter' class='col-sm-2 control-label'>deviceCenter</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='deviceCenter' id='deviceCenter' th:value='${obj.deviceCenter}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='deviceCenterSn' class='col-sm-2 control-label'>deviceCenterSn</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='deviceCenterSn' id='deviceCenterSn' th:value='${obj.deviceCenterSn}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='deviceRoom' class='col-sm-2 control-label'>deviceRoom</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='deviceRoom' id='deviceRoom' th:value='${obj.deviceRoom}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='deviceRoomSn' class='col-sm-2 control-label'>deviceRoomSn</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='deviceRoomSn' id='deviceRoomSn' th:value='${obj.deviceRoomSn}'/>
 						</div>
 					</div>
 
                <div class='form-group col-lg-12'> 
-						<label for='rowcell' class='col-sm-2 control-label'>rowcell</label>
+						<label for='deviceCenterSn' class='col-sm-2 control-label'>数据中心</label>
+						<div class='col-sm-10'>
+							<select class="form-control" name='deviceCenterSn' id='deviceCenterSn' th:value='${obj.deviceCenterSn}'>
+							</select>
+						</div>
+					</div>
+
+               <div class='form-group col-lg-12'> 
+						<label for='deviceRoomSn' class='col-sm-2 control-label'>机房</label>
+						<div class='col-sm-10'>
+							<select class="form-control" name='deviceRoomSn' id='deviceRoomSn' th:value='${obj.deviceRoomSn}'>
+							</select>
+						</div>
+					</div>
+
+               <div class='form-group col-lg-12'> 
+						<label for='rowcell' class='col-sm-2 control-label'>位置</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='rowcell' id='rowcell' th:value='${obj.rowcell}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='cabinetSn' class='col-sm-2 control-label'>cabinetSn</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='cabinetSn' id='cabinetSn' th:value='${obj.cabinetSn}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='rackSeat' class='col-sm-2 control-label'>rackSeat</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='rackSeat' id='rackSeat' th:value='${obj.rackSeat}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='rackHigh' class='col-sm-2 control-label'>rackHigh</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='rackHigh' id='rackHigh' th:value='${obj.rackHigh}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='rackSn' class='col-sm-2 control-label'>rackSn</label>
+               <div class='form-group col-lg-12'>
+						<label for='rackSn' class='col-sm-2 control-label'>编号</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='rackSn' id='rackSn' th:value='${obj.rackSn}'/>
 						</div>
 					</div>
-					<div class='form-group col-lg-12'>
-						<label for='env' class='col-sm-2 control-label'>env</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='env' id='env' th:value='${obj.env}'/>
-						</div>
-					</div>
-				   <div class='form-group col-lg-12'>
-							<label for='status' class='col-sm-2 control-label'>status</label>
-							<div class='col-sm-10'>
-								<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}'/>
-							</div>
-				   </div>
+
+
+
 					<div class="form-group">
 						<div class="col-sm-offset-10 col-sm-2">
 
@@ -115,7 +84,22 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/deviceCenter.js"></script>
 <script th:inline="javascript">
+	findDcList("#deviceCenterSn");
+	findRoomList("#deviceCenterSn","#deviceRoomSn");
+            // 添加事件监听器
+	$('#deviceCenterSn').change(function() {
+		var selectedName = $(this).find('option:selected').text();
+		var selectedValue = $(this).val();
 
+		// 将选中的名称赋值给具有id为'deviceCenter'的输入框
+		$('#deviceCenter').val(selectedName);
+		findRoomList(selectedValue,"#deviceRoomSn");
+ 		$('#deviceRoomSn').trigger('change');
+	});
+	$('#deviceRoomSn').change(function() {
+		var selectedValue = $(this).val();
+		$('#rackSn').val(selectedValue);
+	});
 </script>
 
 

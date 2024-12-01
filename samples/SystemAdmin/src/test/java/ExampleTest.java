@@ -14,7 +14,7 @@ public class ExampleTest {
         branch1.setUrl("cn/dails");
         branch1.initFiles();
 
-        branch1.setEntityClass(SubServiceEntity.class);
+        branch1.setEntityClass(DeviceEntity.class);
         branch1.initJava();
 //        branch1.addDao();
 //        branch1.addService();
