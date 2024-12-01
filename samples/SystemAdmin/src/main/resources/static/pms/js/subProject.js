@@ -35,16 +35,10 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.clsType+"</td>"
-                 + "<td>"+index.subType+"</td>"
-                 + "<td>"+index.sn+"</td>"
-                 + "<td>"+index.nameEn+"</td>"
+                 + "<td>"+index.no+"</td>"
+                 + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.name+"</td>"
-                 + "<td>"+index.detail+"</td>"
-                 + "<td>"+index.businessOwner+"</td>"
-                 + "<td>"+index.technologyOwner+"</td>"
-                 + "<td>"+index.level+"</td>"
-                 + "<td>"+index.gitUrl+"</td>"
+
 
 				+"<td><a class='btn btn-info btn-sm' href='/subProject/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/subProject/editView?id="+index.id+"'>编辑</a>"
@@ -208,40 +202,5 @@ function deleteObj(id){
 }
 
 
-function findConfList(clsType,subType,listDiv){
-    var data = new Object();
-    data.clsType = clsType;
-    data.subType=subType;
-    $.ajax({
-        type : "post",
-        url : "/confComm/findList",
-        contentType: 'application/json',
-        dataType: "json",
-        data : JSON.stringify({
-            data
-        }),
-        async : false,
-        success : function(result) {
-            let confs = result.data;
-            // 找到datalist元素
-            let data1List = $(listDiv);
-            // 清空datalist元素
-            data1List.empty();
-
-
-            // 使用each方法动态加载数据到datalist中
-            $.each(confs, function(index, value) {
-                var option = $("<option>").text(value.name).attr("value", value.code);
-                data1List.append(option);
-            });
-        }
-    })
-}
-
-$("#clsType").change(function() {
-    var selectedValue = $(this).val();
-    console.log("当前选中的值是：" + selectedValue);
-    findConfList('ptype',selectedValue,'#subType');
-});
 
 setActive("nav_subProject");

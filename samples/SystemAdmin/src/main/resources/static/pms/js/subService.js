@@ -215,5 +215,39 @@ function deleteObj(id){
 }
 
 
+function findConfList(clsType,subType,listDiv){
+    var data = new Object();
+    data.clsType = clsType;
+    data.subType=subType;
+    $.ajax({
+        type : "post",
+        url : "/confComm/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(listDiv);
+            // 清空datalist元素
+            data1List.empty();
+
+
+            // 使用each方法动态加载数据到datalist中
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.name).attr("value", value.code);
+                data1List.append(option);
+            });
+        }
+    })
+}
+
+$("#clsType").change(function() {
+    var selectedValue = $(this).val();
+    findConfList('ptype',selectedValue,'#subType');
+});
 
 setActive("nav_subService");
