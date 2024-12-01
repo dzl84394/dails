@@ -157,6 +157,7 @@ public class DeviceController {
 	@RequestMapping(value = { "save" }, method = { RequestMethod.POST })
 	public void saveObj(@ModelAttribute("obj") DeviceEntity obj, HttpServletResponse response) throws IOException {
 		Long id = obj.getId();
+		obj.setDeviceSn(obj.getDeviceSn().toUpperCase());
 		if (id == null ){
 			service.save(obj);
 		}else {

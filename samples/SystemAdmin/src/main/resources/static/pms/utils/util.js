@@ -521,7 +521,7 @@ function findSubProjectList(projectSn){
 
             // 使用each方法动态加载数据到datalist中
             $.each(confs, function(index, value) {
-                var option = $("<option>").text(value.name).attr("value", value.nameEn	);
+                var option = $("<option>").text(value.name).attr("value", value.projectSn	);
                 data1List.append(option);
             });
         }
