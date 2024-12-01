@@ -13,9 +13,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::project_sidebar"></div>
+				 th:include="layout::serviceAdmin_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-				<h3>subService 列表</h3>
+				<h3>mq 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
@@ -24,19 +24,11 @@
 
 							<tr>
 								<td>id</td>
+								<td>mqType</td>
 								<td>subProjectSn</td>
-								<td>clsType</td>
-								<td>subType</td>
-								<td>serviceSn</td>
-								<td>serviceName</td>
-								<td>serviceType</td>
-								<td>language</td>
-								<td>serviceSubType</td>
-								<td>gitUrl</td>
-								<td>defaultZone</td>
-								<td>domainDev</td>
-								<td>domainStg</td>
-								<td>domainProd</td>
+								<td>subServiceSn</td>
+								<td>topic</td>
+								<td>detail</td>
 
 
 							</tr>
@@ -53,7 +45,7 @@
 				<nav>
 					<ul class="pager">
 						<li>
-							<a th:href="@{/subService/addView}">新增</a>
+							<a th:href="@{/mq/addView}">新增</a>
 						</li>
 					</ul>
 				</nav>
@@ -68,7 +60,7 @@
 
 </body>
 <script type="text/javascript" src="/static/pms/bootstrap-paginator.js"></script>
-<script type="text/javascript" src="/static/pms/js/subService.js"></script>
+<script type="text/javascript" src="/static/pms/js/mq.js"></script>
 <script th:inline="javascript">
 	$(document).ready(function() {
 

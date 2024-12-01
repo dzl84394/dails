@@ -10,13 +10,11 @@
 
 	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
 
-	<div class="container">
-
-
-
+	<div class="container-fluid">
 		<div class="row">
-
-			<div class="blog-main">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::deviceCenter_sidebar"></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>device 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
@@ -27,20 +25,21 @@
 							<tr>
 								<td>id</td>
 								<td>deviceType</td>
-								<td>deviceCenter</td>
 								<td>deviceCenterSn</td>
-								<td>deviceRoom</td>
 								<td>deviceRoomSn</td>
-								<td>rowcell</td>
-								<td>rowcellSn</td>
-								<td>seat</td>
-								<td>seatNum</td>
-								<td>seatSn</td>
-								<td>lscpu</td>
-								<td>freem</td>
-								<td>disk</td>
+								<td>rackSn</td>
+								<td>deviceSn</td>
+								<td>manufacturern</td>
+								<td>modeln</td>
+								<td>cpuModeln</td>
+								<td>cpuCores</td>
+								<td>memorySize</td>
+								<td>storageSize</td>
+								<td>networkInterfaces</td>
+								<td>powerSupply</td>
 								<td>os</td>
-								<td>ip</td>
+								<td>env</td>
+								<td>status</td>
 
 
 							</tr>

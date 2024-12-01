@@ -496,3 +496,34 @@ function setParameterValue(key,value){
       // 重定向到新的URL
       window.location.href = newUrl;
 }
+
+
+
+function findSubProjectList(projectSn){
+    var data = new Object();
+
+    $.ajax({
+        type : "post",
+        url : "/subProject/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(projectSn);
+            // 清空datalist元素
+            data1List.empty();
+
+
+            // 使用each方法动态加载数据到datalist中
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.name).attr("value", value.nameEn	);
+                data1List.append(option);
+            });
+        }
+    })
+}

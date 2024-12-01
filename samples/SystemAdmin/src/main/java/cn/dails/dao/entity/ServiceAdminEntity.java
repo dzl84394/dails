@@ -20,7 +20,9 @@ public class ServiceAdminEntity extends BaseEntity implements Serializable {
 
     private String iocUrl;
 
-    private String serviceType;//
+    private String serviceType;//mq，注册中心，定时任务
+    private String subProjectSn;
+    private String subServiceSn;//逻辑实体
     private String name;//
     private String detail;//
     private String serviceAdminUrl;//

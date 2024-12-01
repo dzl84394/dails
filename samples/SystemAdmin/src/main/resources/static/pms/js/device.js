@@ -1,9 +1,8 @@
 
-function findPage(deviceType){
+function findPage(){
 	var data = new Object();
 	data.size  = 10;
 	data.currentPage  = currentPage;
-	data.deviceType = deviceType;
 	$.ajax({
         type : "post",
         url : "/device/findPage",
@@ -37,19 +36,21 @@ function findPage(deviceType){
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.deviceType+"</td>"
-
-
-                 + "<td>"+index.deviceCenter+"</td>"
                  + "<td>"+index.deviceCenterSn+"</td>"
-                 + "<td>"+index.deviceRoom+"</td>"
                  + "<td>"+index.deviceRoomSn+"</td>"
-                 + "<td>"+index.row+"</td>"
-                 + "<td>"+index.rowSn+"</td>"
-                 + "<td>"+index.seat+"</td>"
-                 + "<td>"+index.seatSn+"</td>"
-                 + "<td>"+index.seatNum+"</td>"
-
-                 + "<td>"+index.ip+"</td>"
+                 + "<td>"+index.rackSn+"</td>"
+                 + "<td>"+index.deviceSn+"</td>"
+                 + "<td>"+index.manufacturern+"</td>"
+                 + "<td>"+index.modeln+"</td>"
+                 + "<td>"+index.cpuModeln+"</td>"
+                 + "<td>"+index.cpuCores+"</td>"
+                 + "<td>"+index.memorySize+"</td>"
+                 + "<td>"+index.storageSize+"</td>"
+                 + "<td>"+index.networkInterfaces+"</td>"
+                 + "<td>"+index.powerSupply+"</td>"
+                 + "<td>"+index.os+"</td>"
+                 + "<td>"+index.env+"</td>"
+                 + "<td>"+index.status+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/device/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/device/editView?id="+index.id+"'>编辑</a>"
@@ -93,13 +94,21 @@ function save(){
     var data = new Object();
       data.id = $('#id').val();
   data.deviceType = $('#deviceType').val();
-  data.deviceRoom = $('#deviceRoom').val();
+  data.deviceCenterSn = $('#deviceCenterSn').val();
   data.deviceRoomSn = $('#deviceRoomSn').val();
-  data.location = $('#location').val();
-  data.locationSn = $('#locationSn').val();
-  data.seat = $('#seat').val();
-  data.seatSn = $('#seatSn').val();
-  data.ip = $('#ip').val();
+  data.rackSn = $('#rackSn').val();
+  data.deviceSn = $('#deviceSn').val();
+  data.manufacturern = $('#manufacturern').val();
+  data.modeln = $('#modeln').val();
+  data.cpuModeln = $('#cpuModeln').val();
+  data.cpuCores = $('#cpuCores').val();
+  data.memorySize = $('#memorySize').val();
+  data.storageSize = $('#storageSize').val();
+  data.networkInterfaces = $('#networkInterfaces').val();
+  data.powerSupply = $('#powerSupply').val();
+  data.os = $('#os').val();
+  data.env = $('#env').val();
+  data.status = $('#status').val();
 
     $.ajax({
         type: "post",
@@ -137,13 +146,21 @@ function show(){
 
                $("#id").text( index.id);
   $("#deviceType").text( index.deviceType);
-  $("#deviceRoom").text( index.deviceRoom);
+  $("#deviceCenterSn").text( index.deviceCenterSn);
   $("#deviceRoomSn").text( index.deviceRoomSn);
-  $("#location").text( index.location);
-  $("#locationSn").text( index.locationSn);
-  $("#seat").text( index.seat);
-  $("#seatSn").text( index.seatSn);
-  $("#ip").text( index.ip);
+  $("#rackSn").text( index.rackSn);
+  $("#deviceSn").text( index.deviceSn);
+  $("#manufacturern").text( index.manufacturern);
+  $("#modeln").text( index.modeln);
+  $("#cpuModeln").text( index.cpuModeln);
+  $("#cpuCores").text( index.cpuCores);
+  $("#memorySize").text( index.memorySize);
+  $("#storageSize").text( index.storageSize);
+  $("#networkInterfaces").text( index.networkInterfaces);
+  $("#powerSupply").text( index.powerSupply);
+  $("#os").text( index.os);
+  $("#env").text( index.env);
+  $("#status").text( index.status);
 
 
 
@@ -168,13 +185,21 @@ function editshow(){
             var index = result.data;
               $("#id").val( index.id);
   $("#deviceType").val( index.deviceType);
-  $("#deviceRoom").val( index.deviceRoom);
+  $("#deviceCenterSn").val( index.deviceCenterSn);
   $("#deviceRoomSn").val( index.deviceRoomSn);
-  $("#location").val( index.location);
-  $("#locationSn").val( index.locationSn);
-  $("#seat").val( index.seat);
-  $("#seatSn").val( index.seatSn);
-  $("#ip").val( index.ip);
+  $("#rackSn").val( index.rackSn);
+  $("#deviceSn").val( index.deviceSn);
+  $("#manufacturern").val( index.manufacturern);
+  $("#modeln").val( index.modeln);
+  $("#cpuModeln").val( index.cpuModeln);
+  $("#cpuCores").val( index.cpuCores);
+  $("#memorySize").val( index.memorySize);
+  $("#storageSize").val( index.storageSize);
+  $("#networkInterfaces").val( index.networkInterfaces);
+  $("#powerSupply").val( index.powerSupply);
+  $("#os").val( index.os);
+  $("#env").val( index.env);
+  $("#status").val( index.status);
 
 
         }
