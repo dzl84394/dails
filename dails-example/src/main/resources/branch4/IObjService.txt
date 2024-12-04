@@ -1,0 +1,18 @@
+package ${url}.service;
+
+
+import com.baomidou.mybatisplus.extension.service.IService;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import java.util.List;
+
+import ${domainUrl}.${Objname}Entity;
+import ${url}.bean.vo.${Objname}RequestVo;
+
+
+public interface I${Objname}Service extends IService<${Objname}Entity> {
+
+    IPage<${Objname}Entity> findPage(${Objname}RequestVo vo);
+
+    List<${Objname}Entity> findList(${Objname}RequestVo vo) ;
+
+}
