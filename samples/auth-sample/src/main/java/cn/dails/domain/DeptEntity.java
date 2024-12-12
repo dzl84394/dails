@@ -1,8 +1,10 @@
-package cn.dails.domain;
+package cn.dails.dao.entity;
 
+import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -10,7 +12,8 @@ import java.util.Date;
 @Table(name = "dails_sys_dept")
 @TableName(value = "dails_sys_dept",autoResultMap = true)
 @Data
-public class DeptEntity  implements Serializable {
+public class DeptEntity implements Serializable {
+
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +21,10 @@ public class DeptEntity  implements Serializable {
     private Long id;
     private Long parentId = 0L;
     private int  deptType=0;// '0，未知，1 集团，2 公司 3 部门',4项目组
+    private String  code;//集团3位，公司2位，部门3位，项目组3位
+    private String parentCode ;
     private String  name;
-    private String  code;
+
 
     private Long  owerId;//部门负责人
 //    `dept_id` bigint NOT NULL,
