@@ -31,6 +31,14 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
+
+	findConfList('ptype','ptype','#clsType');
+	findSubProjectList('#subProjectSn');
+
+	$("#subProjectSn").change(function() {
+		var selectedValue = $(this).val();
+		$('#serviceSn').val(selectedValue);
+	});
 </script>
 
 </html>

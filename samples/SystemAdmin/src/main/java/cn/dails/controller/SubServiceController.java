@@ -1,8 +1,11 @@
 package cn.dails.controller;
 
 
+import java.io.IOException;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
 import cn.dails.dao.entity.SubProjectEntity;
@@ -117,17 +120,16 @@ public class SubServiceController {
 		return response;
 	}
 	@RequestMapping(value = { "save" }, method = { RequestMethod.POST })
-	public BaseResponse saveObj(@RequestBody BaseRequest<JSONObject> obj)  {
-	    SubServiceEntity entity = JSONObject.toJavaObject(obj.getData(), SubServiceEntity.class);
+	public void saveObj(@ModelAttribute("obj") SubServiceEntity obj, HttpServletResponse response) throws IOException {
+	    SubServiceEntity entity = obj;
+		entity.setServiceSn(entity.getServiceSn().toUpperCase());
     	Long id = entity.getId();
         if (id == null ){
             service.save(entity);
         }else {
             service.saveOrUpdate(entity);
         }
-		BaseResponse response = new BaseResponse();
-		response.buildSuccess();
-		return response;
+		response.sendRedirect("indexView");
 	}
 
 	

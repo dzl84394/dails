@@ -36,6 +36,8 @@ function findPage(){
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.subProjectSn+"</td>"
+                  + "<td>"+index.clsType+"</td>"
+                  + "<td>"+index.subType+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
                  + "<td>"+index.serviceName+"</td>"
                  + "<td>"+index.serviceType+"</td>"
