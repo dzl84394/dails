@@ -12,19 +12,26 @@ import java.io.Serializable;
 @Table(name = "dails_sub_mq_dependency")
 @TableName(value = "dails_sub_mq_dependency",autoResultMap = true)
 @Data
-public class MqDependencyEntity  extends BaseEntity implements Serializable {
+public class DependencyMqEntity extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private String subServiceSn;//逻辑实体
+    private Long mqId;//逻辑实体
+    private String mqSn;
     private String mqType;//kafka,mq,还是啥
     private String topic;//
 
+    private String role;//生产者还是消费者,生产&消费
 
-    private String client;//描述
 
-    private String clientType;//生产还是消费者
-    private String clientUser;//groupId
+    private Long followId;
+    private String subProjectSnFollow;
+    private String subServiceSnFollow;//逻辑实
+    private String clienttName;
+    private String groupName;
+    private String status;
+    private String env;//环境
+
 }

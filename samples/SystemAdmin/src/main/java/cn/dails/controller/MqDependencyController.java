@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -14,11 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
 import cn.dails.base.bean.BaseResponse;
 import cn.dails.bean.vo.MqDependencyRequestVo;
 import cn.dails.bean.vo.MqDependencyResponseVo;
-import cn.dails.dao.entity.MqDependencyEntity;
+import cn.dails.dao.entity.DependencyMqEntity;
 import cn.dails.service.IMqDependencyService;
 
 @RestController
@@ -48,7 +46,7 @@ public class MqDependencyController {
     public ModelAndView showViewById(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("mqDependency/show");
         mav.addObject("id", id);
-        MqDependencyEntity obj =  service.getById(id);
+        DependencyMqEntity obj =  service.getById(id);
         mav.addObject("obj", obj);
         return mav;
     }
@@ -56,7 +54,7 @@ public class MqDependencyController {
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
 	public ModelAndView newObj() {																
 		ModelAndView mav = new ModelAndView("mqDependency/new");
-		MqDependencyEntity obj =  new MqDependencyEntity();
+		DependencyMqEntity obj =  new DependencyMqEntity();
         mav.addObject("obj", obj);
 		return mav;
 	}
@@ -64,7 +62,7 @@ public class MqDependencyController {
     public ModelAndView editView(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("mqDependency/edit");
         mav.addObject("id", id);
-        MqDependencyEntity obj =  service.getById(id);
+        DependencyMqEntity obj =  service.getById(id);
         mav.addObject("obj", obj);
         return mav;
     }
@@ -79,7 +77,7 @@ public class MqDependencyController {
 		MqDependencyRequestVo vo = JSONObject.toJavaObject(obj.getData(), MqDependencyRequestVo.class);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
-		IPage<MqDependencyEntity> page = service.findPage(vo);
+		IPage<DependencyMqEntity> page = service.findPage(vo);
 
 		response.setData(page);
 		return response;
@@ -87,7 +85,7 @@ public class MqDependencyController {
 	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
 	public BaseResponse<List<MqDependencyResponseVo>> findList(HttpServletRequest request) {
 		MqDependencyRequestVo vo = new MqDependencyRequestVo();
-		List<MqDependencyEntity> objs = service.findList(vo);
+		List<DependencyMqEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
 		response.setData(objs);
@@ -101,7 +99,7 @@ public class MqDependencyController {
             response.buildFaild(5001,"miss parameter： id");
             return response;
         }
-        MqDependencyEntity obj =  service.getById(id);
+        DependencyMqEntity obj =  service.getById(id);
         if (obj==null){
             response.buildFaild(5002,"not found entity byid:"+id);
             return response;
@@ -112,7 +110,7 @@ public class MqDependencyController {
 
 	@RequestMapping(value = { "deleteById" }, method = { RequestMethod.POST })
 	public BaseResponse deleteObj(@RequestBody BaseRequest<JSONObject> obj) {
-	    MqDependencyEntity entity = JSONObject.toJavaObject(obj.getData(), MqDependencyEntity.class);
+	    DependencyMqEntity entity = JSONObject.toJavaObject(obj.getData(), DependencyMqEntity.class);
         Long id = entity.getId();
 
 		service.removeById(id);
@@ -137,7 +135,7 @@ public class MqDependencyController {
 	*/
 
     @RequestMapping(value = { "save" }, method = { RequestMethod.POST })
-    public void saveObj(@ModelAttribute("obj") MqDependencyEntity obj, HttpServletResponse response) throws IOException {
+    public void saveObj(@ModelAttribute("obj") DependencyMqEntity obj, HttpServletResponse response) throws IOException {
         Long id = obj.getId();
         if (id == null ){
             service.save(obj);

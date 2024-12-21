@@ -5,14 +5,14 @@ import com.baomidou.mybatisplus.extension.service.IService;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import java.util.List;
 
-import cn.dails.dao.entity.MqDependencyEntity;
+import cn.dails.dao.entity.DependencyMqEntity;
 import cn.dails.bean.vo.MqDependencyRequestVo;
 
 
-public interface IMqDependencyService extends IService<MqDependencyEntity> {
+public interface IMqDependencyService extends IService<DependencyMqEntity> {
 
-    IPage<MqDependencyEntity> findPage(MqDependencyRequestVo vo);
+    IPage<DependencyMqEntity> findPage(MqDependencyRequestVo vo);
 
-    List<MqDependencyEntity> findList(MqDependencyRequestVo vo) ;
+    List<DependencyMqEntity> findList(MqDependencyRequestVo vo) ;
 
 }

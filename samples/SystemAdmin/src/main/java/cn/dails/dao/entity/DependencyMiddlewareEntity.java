@@ -12,17 +12,16 @@ import java.io.Serializable;
 @Table(name = "dails_middleware_dependency")
 @TableName(value = "dails_middleware_dependency",autoResultMap = true)
 @Data
-public class MiddlewareDependencyEntity extends BaseEntity implements Serializable {
+public class DependencyMiddlewareEntity extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
  //middleware
-    private Long aid;
-    private String serviceType;//mq，注册中心，定时任务
+    private Long middlewareId;
+    private String middlewareType;//mq，注册中心，定时任务
     private String subProjectSn;
-    private String subServiceSn;//逻辑实体
-    private String name;//
+    private String middlewareSn;//逻辑实体
 
     private Long bid;
     private String serviceTypeB;//mq，注册中心，定时任务
