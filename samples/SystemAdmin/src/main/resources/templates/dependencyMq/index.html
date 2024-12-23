@@ -13,9 +13,9 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::serviceAdmin_sidebar"></div>
+				 th:include="layout::project_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
-				<h3>mq 列表</h3>
+				<h3>dependencyMq 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
@@ -24,11 +24,18 @@
 
 							<tr>
 								<td>id</td>
+								<td>mqId</td>
+								<td>mqSn</td>
 								<td>mqType</td>
-								<td>subProjectSn</td>
-								<td>subServiceSn</td>
 								<td>topic</td>
-								<td>detail</td>
+								<td>role</td>
+								<td>followId</td>
+								<td>subProjectSnFollow</td>
+								<td>subServiceSnFollow</td>
+								<td>clienttName</td>
+								<td>groupName</td>
+								<td>status</td>
+								<td>env</td>
 
 
 							</tr>
@@ -45,7 +52,7 @@
 				<nav>
 					<ul class="pager">
 						<li>
-							<a th:href="@{/mq/addView}">新增</a>
+							<a th:href="@{/dependencyMq/addView}">新增</a>
 						</li>
 					</ul>
 				</nav>
@@ -60,7 +67,7 @@
 
 </body>
 <script type="text/javascript" src="/static/pms/bootstrap-paginator.js"></script>
-<script type="text/javascript" src="/static/pms/js/mq.js"></script>
+<script type="text/javascript" src="/static/pms/js/dependencyMq.js"></script>
 <script th:inline="javascript">
 	$(document).ready(function() {
 

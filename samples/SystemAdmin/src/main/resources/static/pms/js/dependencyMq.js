@@ -5,7 +5,7 @@ function findPage(){
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
-        url : "/mq/findPage",
+        url : "/dependencyMq/findPage",
         contentType: 'application/json',
         dataType: "json",
         data : JSON.stringify({
@@ -35,14 +35,21 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
+                 + "<td>"+index.mqId+"</td>"
+                 + "<td>"+index.mqSn+"</td>"
                  + "<td>"+index.mqType+"</td>"
-                 + "<td>"+index.subProjectSn+"</td>"
-                 + "<td>"+index.subServiceSn+"</td>"
                  + "<td>"+index.topic+"</td>"
-                 + "<td>"+index.detail+"</td>"
+                 + "<td>"+index.role+"</td>"
+                 + "<td>"+index.followId+"</td>"
+                 + "<td>"+index.subProjectSnFollow+"</td>"
+                 + "<td>"+index.subServiceSnFollow+"</td>"
+                 + "<td>"+index.clienttName+"</td>"
+                 + "<td>"+index.groupName+"</td>"
+                 + "<td>"+index.status+"</td>"
+                 + "<td>"+index.env+"</td>"
 
-				+"<td><a class='btn btn-info btn-sm' href='/mq/showView?id="+index.id+"'>展示</a>"
-				+"<a class='btn btn-primary btn-sm' href='/mq/editView?id="+index.id+"'>编辑</a>"
+				+"<td><a class='btn btn-info btn-sm' href='/dependencyMq/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/dependencyMq/editView?id="+index.id+"'>编辑</a>"
 				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
 				+"</td></tr>"
 			}
@@ -82,15 +89,22 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
+  data.mqId = $('#mqId').val();
+  data.mqSn = $('#mqSn').val();
   data.mqType = $('#mqType').val();
-  data.subProjectSn = $('#subProjectSn').val();
-  data.subServiceSn = $('#subServiceSn').val();
   data.topic = $('#topic').val();
-  data.detail = $('#detail').val();
+  data.role = $('#role').val();
+  data.followId = $('#followId').val();
+  data.subProjectSnFollow = $('#subProjectSnFollow').val();
+  data.subServiceSnFollow = $('#subServiceSnFollow').val();
+  data.clienttName = $('#clienttName').val();
+  data.groupName = $('#groupName').val();
+  data.status = $('#status').val();
+  data.env = $('#env').val();
 
     $.ajax({
         type: "post",
-        url: "/mq/save",
+        url: "/dependencyMq/save",
         contentType: 'application/json',
         dataType: "json",
         data: JSON.stringify({
@@ -101,7 +115,7 @@ function save(){
                 alert("接口异常")
                 return;
             }
-            go("/mq/indexView");
+            go("/dependencyMq/indexView");
         }
    })
 }
@@ -109,7 +123,7 @@ function save(){
 function show(){
     $.ajax({
         type: "get",
-        url: "/mq/findById",
+        url: "/dependencyMq/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -123,11 +137,18 @@ function show(){
             var index = result.data;
 
                $("#id").text( index.id);
+  $("#mqId").text( index.mqId);
+  $("#mqSn").text( index.mqSn);
   $("#mqType").text( index.mqType);
-  $("#subProjectSn").text( index.subProjectSn);
-  $("#subServiceSn").text( index.subServiceSn);
   $("#topic").text( index.topic);
-  $("#detail").text( index.detail);
+  $("#role").text( index.role);
+  $("#followId").text( index.followId);
+  $("#subProjectSnFollow").text( index.subProjectSnFollow);
+  $("#subServiceSnFollow").text( index.subServiceSnFollow);
+  $("#clienttName").text( index.clienttName);
+  $("#groupName").text( index.groupName);
+  $("#status").text( index.status);
+  $("#env").text( index.env);
 
 
 
@@ -138,7 +159,7 @@ function show(){
 function editshow(){
     $.ajax({
         type: "get",
-        url: "/mq/findById",
+        url: "/dependencyMq/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -151,11 +172,18 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
+  $("#mqId").val( index.mqId);
+  $("#mqSn").val( index.mqSn);
   $("#mqType").val( index.mqType);
-  $("#subProjectSn").val( index.subProjectSn);
-  $("#subServiceSn").val( index.subServiceSn);
   $("#topic").val( index.topic);
-  $("#detail").val( index.detail);
+  $("#role").val( index.role);
+  $("#followId").val( index.followId);
+  $("#subProjectSnFollow").val( index.subProjectSnFollow);
+  $("#subServiceSnFollow").val( index.subServiceSnFollow);
+  $("#clienttName").val( index.clienttName);
+  $("#groupName").val( index.groupName);
+  $("#status").val( index.status);
+  $("#env").val( index.env);
 
 
         }
@@ -170,7 +198,7 @@ function deleteObj(id){
     if (isOK) {
         $.ajax({
             type: "post",
-            url: "/mq/deleteById",
+            url: "/dependencyMq/deleteById",
             contentType: 'application/json',
             dataType: "json",
             data: JSON.stringify({
@@ -181,10 +209,10 @@ function deleteObj(id){
                     alert("接口异常")
                     return;
                 }
-                go("/mq/indexView");
+                go("/dependencyMq/indexView");
             }
         })
    }
 }
 
-setActive("nav_mq");
+setActive("nav_dependencyMq");
