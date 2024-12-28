@@ -259,7 +259,6 @@ function findSubProjectList(projectSn){
             $.each(confs, function(index, value) {
                 var option = $("<option>").text(value.name).attr("value", value.nameEn	);
                 data1List.append(option);
-                alert(value.name)
             });
         }
     })

@@ -42,7 +42,6 @@ function findPage(){
                  + "<td>"+index.serviceName+"</td>"
                  + "<td>"+index.serviceType+"</td>"
                  + "<td>"+index.language+"</td>"
-                 + "<td>"+index.serviceSubType+"</td>"
                  + "<td>"+index.gitUrl+"</td>"
                  + "<td>"+index.defaultZone+"</td>"
                  + "<td>"+index.domainDev+"</td>"
@@ -96,7 +95,6 @@ function save(){
   data.serviceName = $('#serviceName').val();
   data.serviceType = $('#serviceType').val();
   data.language = $('#language').val();
-  data.serviceSubType = $('#serviceSubType').val();
   data.gitUrl = $('#gitUrl').val();
   data.defaultZone = $('#defaultZone').val();
   data.domainDev = $('#domainDev').val();
@@ -144,7 +142,6 @@ function show(){
   $("#serviceName").text( index.serviceName);
   $("#serviceType").text( index.serviceType);
   $("#language").text( index.language);
-  $("#serviceSubType").text( index.serviceSubType);
   $("#gitUrl").text( index.gitUrl);
   $("#defaultZone").text( index.defaultZone);
   $("#domainDev").text( index.domainDev);
@@ -179,7 +176,6 @@ function editshow(){
   $("#serviceName").val( index.serviceName);
   $("#serviceType").val( index.serviceType);
   $("#language").val( index.language);
-  $("#serviceSubType").val( index.serviceSubType);
   $("#gitUrl").val( index.gitUrl);
   $("#defaultZone").val( index.defaultZone);
   $("#domainDev").val( index.domainDev);
@@ -252,4 +248,4 @@ $("#clsType").change(function() {
     findConfList('ptype',selectedValue,'#subType');
 });
 
-setActive("nav_subService");
+setActive("nav_subProject");

@@ -17,7 +17,7 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
-
+    private Long subProjectId;
     private String subProjectSn;
 
     private String clsType;//一级分类
@@ -27,7 +27,7 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
 
     private String serviceName;
 
-    private String serviceType;//技术服务，运维服务，业务服务，业务管理服务，
+    private String serviceType;//技术平台，运维服务，监控平台，业务服务，业务管理服务，
     //类别，网关，公共组件 Microservices middleware （eureka，配置中心，xxljob）
     private String language;//语言
 

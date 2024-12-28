@@ -49,6 +49,8 @@ public class SubServiceController {
     public ModelAndView showViewById(@RequestParam("id") Long id) {
         ModelAndView mav = new ModelAndView("subService/show");
         mav.addObject("id", id);
+		SubServiceEntity obj =  service.getById(id);
+		mav.addObject("obj", obj);
         return mav;
     }
 																								
@@ -125,6 +127,7 @@ public class SubServiceController {
 		entity.setServiceSn(entity.getServiceSn().toUpperCase());
     	Long id = entity.getId();
         if (id == null ){
+			entity.setServiceSn(entity.getServiceSn().toUpperCase());
             service.save(entity);
         }else {
             service.saveOrUpdate(entity);
