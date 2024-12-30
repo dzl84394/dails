@@ -44,5 +44,6 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
     private String domainStg;
     private String domainProd;
 
-
+    private String detail;//简介
+    private String serviceAdminUrl;//介绍
 }

@@ -18,7 +18,6 @@ public class DependencyMqEntity extends BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
 
-    private Long mqId;//逻辑实体
     private String mqSn;
     private String mqType;//kafka,mq,还是啥
     private String topic;//
@@ -26,10 +25,9 @@ public class DependencyMqEntity extends BaseEntity implements Serializable {
     private String role;//生产者还是消费者,生产&消费
 
 
-    private Long followId;
     private String subProjectSnFollow;
     private String subServiceSnFollow;//逻辑实
-    private String clienttName;
+    private String clientName;
     private String groupName;
     private String status;
     private String env;//环境

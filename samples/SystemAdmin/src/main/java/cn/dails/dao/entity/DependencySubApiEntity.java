@@ -1,7 +1,7 @@
 package cn.dails.dao.entity;
 
 
-public class SubApiDependency {
+public class DependencySubApiEntity {
 
     private String apiType;//api,mq,
     private String topic;//如果是mq，要有topic

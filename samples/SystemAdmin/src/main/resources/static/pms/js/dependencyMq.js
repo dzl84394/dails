@@ -35,15 +35,14 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.mqId+"</td>"
                  + "<td>"+index.mqSn+"</td>"
                  + "<td>"+index.mqType+"</td>"
                  + "<td>"+index.topic+"</td>"
                  + "<td>"+index.role+"</td>"
-                 + "<td>"+index.followId+"</td>"
+
                  + "<td>"+index.subProjectSnFollow+"</td>"
                  + "<td>"+index.subServiceSnFollow+"</td>"
-                 + "<td>"+index.clienttName+"</td>"
+                 + "<td>"+index.clientName+"</td>"
                  + "<td>"+index.groupName+"</td>"
                  + "<td>"+index.status+"</td>"
                  + "<td>"+index.env+"</td>"
@@ -89,15 +88,14 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
-  data.mqId = $('#mqId').val();
   data.mqSn = $('#mqSn').val();
   data.mqType = $('#mqType').val();
   data.topic = $('#topic').val();
   data.role = $('#role').val();
-  data.followId = $('#followId').val();
+
   data.subProjectSnFollow = $('#subProjectSnFollow').val();
   data.subServiceSnFollow = $('#subServiceSnFollow').val();
-  data.clienttName = $('#clienttName').val();
+  data.clientName = $('#clientName').val();
   data.groupName = $('#groupName').val();
   data.status = $('#status').val();
   data.env = $('#env').val();
@@ -137,15 +135,14 @@ function show(){
             var index = result.data;
 
                $("#id").text( index.id);
-  $("#mqId").text( index.mqId);
   $("#mqSn").text( index.mqSn);
   $("#mqType").text( index.mqType);
   $("#topic").text( index.topic);
   $("#role").text( index.role);
-  $("#followId").text( index.followId);
+
   $("#subProjectSnFollow").text( index.subProjectSnFollow);
   $("#subServiceSnFollow").text( index.subServiceSnFollow);
-  $("#clienttName").text( index.clienttName);
+  $("#clientName").text( index.clientName);
   $("#groupName").text( index.groupName);
   $("#status").text( index.status);
   $("#env").text( index.env);
@@ -172,15 +169,14 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
-  $("#mqId").val( index.mqId);
   $("#mqSn").val( index.mqSn);
   $("#mqType").val( index.mqType);
   $("#topic").val( index.topic);
   $("#role").val( index.role);
-  $("#followId").val( index.followId);
+
   $("#subProjectSnFollow").val( index.subProjectSnFollow);
   $("#subServiceSnFollow").val( index.subServiceSnFollow);
-  $("#clienttName").val( index.clienttName);
+  $("#clientName").val( index.clientName);
   $("#groupName").val( index.groupName);
   $("#status").val( index.status);
   $("#env").val( index.env);
@@ -215,4 +211,89 @@ function deleteObj(id){
    }
 }
 
+
+ //获取种植类型清单
+function findMqServiceList(){
+    $.ajax({
+        type : "get",
+        url : "/subService/findMqList",
+        contentType: 'application/json',
+        dataType: "json",
+
+        async : false,
+        success : function(result) {
+            let plantTypes = result.data;
+            // 找到datalist元素
+            let dataList = $('#mqSn');
+            // 清空datalist元素
+            dataList.empty();
+            // 使用each方法动态加载数据到datalist中
+            $.each(plantTypes, function(index, value) {
+                let option = $('<option>',
+                { value: value.serviceSn ,text: value.serviceName}
+                ).attr('subType', value.subType);
+                dataList.append(option);
+            });
+        }
+    })
+}
+$('#mqSn').change(function() {
+    let selectedOption = $(this).find('option:selected');
+    let serviceType = selectedOption.attr('subType');
+    $('#mqType').val(serviceType); // 将 serviceType 赋值给输入框
+});
+
+
+function findProjectList(){
+    $.ajax({
+        type : "get",
+        url : "/subProject/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        async : false,
+        success : function(result) {
+            let plantTypes = result.data;
+            // 找到datalist元素
+            let dataList = $('#subProjectSnFollow');
+            // 清空datalist元素
+            dataList.empty();
+            // 使用each方法动态加载数据到datalist中
+            $.each(plantTypes, function(index, value) {
+                let option = $('<option>',
+                { value: value.projectSn,text: value.name }
+                );
+                dataList.append(option);
+            });
+        }
+    })
+}
+$('#subProjectSnFollow').change(function() {
+    let selectedOption = $(this).find('option:selected');
+    let selectedValue = selectedOption.val(); // 获取选中的值
+    findServiceList(selectedValue);
+});
+function findServiceList(subProjectSn){
+    $.ajax({
+        type : "get",
+        url : "/subService/findList",
+        contentType: 'application/json',
+        dataType: "json",
+
+        async : false,
+        success : function(result) {
+            let plantTypes = result.data;
+            // 找到datalist元素
+            let dataList = $('#subServiceSnFollow');
+            // 清空datalist元素
+            dataList.empty();
+            // 使用each方法动态加载数据到datalist中
+            $.each(plantTypes, function(index, value) {
+                let option = $('<option>',
+                { value: value.serviceSn,text: value.serviceName }
+                );
+                dataList.append(option);
+            });
+        }
+    })
+}
 setActive("nav_dependencyMq");

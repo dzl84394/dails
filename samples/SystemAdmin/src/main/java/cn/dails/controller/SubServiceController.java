@@ -87,6 +87,7 @@ public class SubServiceController {
 	}
 	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
 	public BaseResponse<List<SubServiceResponseVo>> findList(HttpServletRequest request) {
+
 		SubServiceRequestVo vo = new SubServiceRequestVo();
 		List<SubServiceEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
@@ -94,6 +95,17 @@ public class SubServiceController {
 		response.setData(objs);
 		return response;
 	}
+	@RequestMapping(value = { "findMqList" }, method = { RequestMethod.GET })
+	public BaseResponse<List<SubServiceResponseVo>> findMqList(HttpServletRequest request) {
+		SubServiceRequestVo vo = new SubServiceRequestVo();
+		vo.setClsType("mq");
+		List<SubServiceEntity> objs = service.findList(vo);
+		BaseResponse response = new BaseResponse();
+		response.buildSuccess();
+		response.setData(objs);
+		return response;
+	}
+
 	@RequestMapping(value = { "findById" }, method = { RequestMethod.GET })
 	public BaseResponse<SubServiceResponseVo> findById(@RequestParam("id") Long id,HttpServletRequest request) {
 		BaseResponse response = new BaseResponse();

@@ -60,7 +60,7 @@
             <ul class="nav navbar-nav">
 
 
-                <li id="nav_deviceCenter"  ><a th:href="@{/deviceCenter/indexView}">硬件管理</a></li>
+                <li id="nav_deviceCenter"  ><a th:href="@{/deviceCenter/indexView}">基础设施层</a></li>
                 <li id="nav_subProject"  ><a th:href="@{/subProject/indexView}">子系统管理</a></li>
                 <li id="nav_subApi"  ><a th:href="@{/subApi/indexView}">api治理</a></li>
                 <li id="nav_serviceAdmin"  ><a th:href="@{/serviceAdmin/indexView}">服务治理</a></li>
@@ -155,8 +155,17 @@
 <div class="sidebar-offcanvas"  th:fragment="serviceAdmin_sidebar">
     <div class="list-group">
         <a  href="/confComm/indexView?clsType=ptype&subType=ptype" class="list-group-item">注册中心</a>
-        <a  href="/mq/indexView?subType=biz" class="list-group-item">mq</a>
-        <a  href="/confComm/indexView?subType=db" class="list-group-item">数据库</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">mq</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">kafka</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">定时任务</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">规则引擎</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">redis平台</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">zk</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">抽数kettle</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">es</a>
+        <a  href="/confComm/indexView?subType=db" class="list-group-item">数据库db</a>
+        <a  href="/confComm/indexView?subType=db" class="list-group-item">对象存储</a>
+        <a  href="/confComm/indexView?subType=db" class="list-group-item">数据订正</a>
 
     </div>
 </div>

@@ -14,7 +14,7 @@ public class ExampleTest {
         branch1.setUrl("cn/dails");
         branch1.initFiles();
 
-        branch1.setEntityClass(DependencyMqEntity.class);
+        branch1.setEntityClass(ServiceAdminEntity.class);
         branch1.initJava();
 //        branch1.addDao();
 //        branch1.addService();

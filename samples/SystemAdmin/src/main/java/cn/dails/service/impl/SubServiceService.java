@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 
+import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -44,7 +45,12 @@ public class SubServiceService extends ServiceImpl<SubServiceDao,SubServiceEntit
       @Override
       public List<SubServiceEntity> findList(SubServiceRequestVo vo) {
           LambdaQueryWrapper<SubServiceEntity> wrapper = new LambdaQueryWrapper<>();
-
+          if (!Strings.isNullOrEmpty(vo.getClsType())){
+              wrapper.eq(SubServiceEntity::getClsType,vo.getClsType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubType())){
+              wrapper.eq(SubServiceEntity::getSubType,vo.getSubType());
+          }
           List<SubServiceEntity> list = dao.selectList(wrapper);
           return list;
       }

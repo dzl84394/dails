@@ -14,7 +14,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::project_sidebar"></div>
+				 th:include="layout::serviceAdmin_sidebar"></div>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3 class="blog-title">dependencyMq 添加</h3>
@@ -23,16 +23,12 @@
 					<form id="dependencyMqForm"  class="form-horizontal"  th:action="@{/dependencyMq/save}" th:method="post"
 						  th:object="${obj}">
 						<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
-							               <div class='form-group col-lg-12'> 
-						<label for='mqId' class='col-sm-2 control-label'>mqId</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='mqId' id='mqId' th:value='${obj.mqId}'/>
-						</div>
-					</div>
+
                <div class='form-group col-lg-12'> 
 						<label for='mqSn' class='col-sm-2 control-label'>mqSn</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='mqSn' id='mqSn' th:value='${obj.mqSn}'/>
+							<select class="form-control" name='mqSn' id='mqSn'  th:value='${obj.mqSn}'>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -50,31 +46,33 @@
                <div class='form-group col-lg-12'> 
 						<label for='role' class='col-sm-2 control-label'>role</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='role' id='role' th:value='${obj.role}'/>
+							<select class="form-control" name='role' id='role' th:value='${obj.role}'>
+								<option value="Producer" th:selected="${obj.role == 'Producer'}">Producer</option>
+								<option value="Producer" th:selected="${obj.role == 'Consumer'}">Consumer</option>
+								<option value="All" th:selected="${obj.role == 'ALL'}">All</option>
+							</select>
+
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='followId' class='col-sm-2 control-label'>followId</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='followId' id='followId' th:value='${obj.followId}'/>
-						</div>
-					</div>
+
                <div class='form-group col-lg-12'> 
 						<label for='subProjectSnFollow' class='col-sm-2 control-label'>subProjectSnFollow</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subProjectSnFollow' id='subProjectSnFollow' th:value='${obj.subProjectSnFollow}'/>
+							<select class="form-control" name='subProjectSnFollow' id='subProjectSnFollow'  th:value='${obj.subProjectSnFollow}'>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
 						<label for='subServiceSnFollow' class='col-sm-2 control-label'>subServiceSnFollow</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subServiceSnFollow' id='subServiceSnFollow' th:value='${obj.subServiceSnFollow}'/>
+							<select class="form-control" name='subProjectSnFollow' id='subServiceSnFollow'  th:value='${obj.subServiceSnFollow}'>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='clienttName' class='col-sm-2 control-label'>clienttName</label>
+						<label for='clientName' class='col-sm-2 control-label'>clientName</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='clienttName' id='clienttName' th:value='${obj.clienttName}'/>
+							<input type='text' class='form-control' name='clientName' id='clientName' th:value='${obj.clientName}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -114,6 +112,9 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/dependencyMq.js"></script>
 <script th:inline="javascript">
+	findMqServiceList();
+	findProjectList();
+	findServiceList();
 
 </script>
 

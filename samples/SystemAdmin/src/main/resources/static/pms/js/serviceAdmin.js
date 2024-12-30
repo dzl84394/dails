@@ -37,6 +37,8 @@ function findPage(){
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.iocUrl+"</td>"
                  + "<td>"+index.serviceType+"</td>"
+                 + "<td>"+index.subProjectSn+"</td>"
+                 + "<td>"+index.subServiceSn+"</td>"
                  + "<td>"+index.name+"</td>"
                  + "<td>"+index.detail+"</td>"
                  + "<td>"+index.serviceAdminUrl+"</td>"
@@ -84,6 +86,8 @@ function save(){
       data.id = $('#id').val();
   data.iocUrl = $('#iocUrl').val();
   data.serviceType = $('#serviceType').val();
+  data.subProjectSn = $('#subProjectSn').val();
+  data.subServiceSn = $('#subServiceSn').val();
   data.name = $('#name').val();
   data.detail = $('#detail').val();
   data.serviceAdminUrl = $('#serviceAdminUrl').val();
@@ -125,6 +129,8 @@ function show(){
                $("#id").text( index.id);
   $("#iocUrl").text( index.iocUrl);
   $("#serviceType").text( index.serviceType);
+  $("#subProjectSn").text( index.subProjectSn);
+  $("#subServiceSn").text( index.subServiceSn);
   $("#name").text( index.name);
   $("#detail").text( index.detail);
   $("#serviceAdminUrl").text( index.serviceAdminUrl);
@@ -153,6 +159,8 @@ function editshow(){
               $("#id").val( index.id);
   $("#iocUrl").val( index.iocUrl);
   $("#serviceType").val( index.serviceType);
+  $("#subProjectSn").val( index.subProjectSn);
+  $("#subServiceSn").val( index.subServiceSn);
   $("#name").val( index.name);
   $("#detail").val( index.detail);
   $("#serviceAdminUrl").val( index.serviceAdminUrl);

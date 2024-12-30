@@ -20,8 +20,7 @@ public class SubProjectEntity extends BaseEntity implements Serializable {
 
 
 
-    //fls-usp-auth
-    private String no;
+
     //英文全称
     private String projectSn;
     //中文名字
