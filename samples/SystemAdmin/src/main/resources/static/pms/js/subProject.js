@@ -35,10 +35,11 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.no+"</td>"
                  + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.name+"</td>"
-
+                 + "<td>"+index.businessOwner+"</td>"
+                 + "<td>"+index.technologyOwner+"</td>"
+                 + "<td>"+index.level+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/subProject/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/subProject/editView?id="+index.id+"'>编辑</a>"
@@ -81,10 +82,7 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
-  data.clsType = $('#clsType').val();
-  data.subType = $('#subType').val();
-  data.sn = $('#sn').val();
-  data.nameEn = $('#nameEn').val();
+  data.projectSn = $('#projectSn').val();
   data.name = $('#name').val();
   data.detail = $('#detail').val();
   data.businessOwner = $('#businessOwner').val();
@@ -127,10 +125,7 @@ function show(){
             var index = result.data;
 
                $("#id").text( index.id);
-  $("#clsType").text( index.clsType);
-  $("#subType").text( index.subType);
-  $("#sn").text( index.sn);
-  $("#nameEn").text( index.nameEn);
+  $("#projectSn").text( index.projectSn);
   $("#name").text( index.name);
   $("#detail").text( index.detail);
   $("#businessOwner").text( index.businessOwner);
@@ -160,10 +155,7 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
-  $("#clsType").val( index.clsType);
-  $("#subType").val( index.subType);
-  $("#sn").val( index.sn);
-  $("#nameEn").val( index.nameEn);
+  $("#projectSn").val( index.projectSn);
   $("#name").val( index.name);
   $("#detail").val( index.detail);
   $("#businessOwner").val( index.businessOwner);
@@ -200,7 +192,5 @@ function deleteObj(id){
         })
    }
 }
-
-
 
 setActive("nav_subProject");
