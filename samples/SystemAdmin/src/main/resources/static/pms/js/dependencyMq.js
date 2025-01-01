@@ -215,7 +215,7 @@ function deleteObj(id){
  //获取种植类型清单
 function findMqServiceList(){
     $.ajax({
-        type : "get",
+        type : "post",
         url : "/subService/findMqList",
         contentType: 'application/json',
         dataType: "json",
@@ -245,11 +245,15 @@ $('#mqSn').change(function() {
 
 
 function findProjectList(){
+    var data = new Object();
     $.ajax({
-        type : "get",
+        type : "post",
         url : "/subProject/findList",
         contentType: 'application/json',
         dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
         async : false,
         success : function(result) {
             let plantTypes = result.data;
@@ -273,12 +277,16 @@ $('#subProjectSnFollow').change(function() {
     findServiceList(selectedValue);
 });
 function findServiceList(subProjectSn){
+    var data = new Object();
+	data.subProjectSn  = subProjectSn
     $.ajax({
-        type : "get",
+        type : "post",
         url : "/subService/findList",
         contentType: 'application/json',
         dataType: "json",
-
+        data : JSON.stringify({
+            data
+        }),
         async : false,
         success : function(result) {
             let plantTypes = result.data;

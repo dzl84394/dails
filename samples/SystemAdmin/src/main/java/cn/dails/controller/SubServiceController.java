@@ -34,8 +34,10 @@ public class SubServiceController {
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
-	public ModelAndView indexView(HttpServletRequest request) {
+	public ModelAndView indexView(HttpServletRequest request,
+								  @RequestParam(value = "clsType", required = false) String clsType) {
 		ModelAndView mav = new ModelAndView("subService/index");
+		mav.addObject("clsType", clsType);
 		return mav;																				
 	}																							
 																								
@@ -77,6 +79,7 @@ public class SubServiceController {
 
 	@RequestMapping(value = { "findPage" }, method = { RequestMethod.POST })
 	public BaseResponse<IPage<SubServiceResponseVo>> findPage(@RequestBody BaseRequest<JSONObject> obj) {
+		log.info("入参：{}",JSONObject.toJSONString(obj));
 		SubServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubServiceRequestVo.class);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
@@ -85,17 +88,17 @@ public class SubServiceController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<SubServiceResponseVo>> findList(HttpServletRequest request) {
+	@RequestMapping(value = { "findList" })
+	public BaseResponse<List<SubServiceResponseVo>> findList(HttpServletRequest request,@RequestBody BaseRequest<JSONObject> obj) {
 
-		SubServiceRequestVo vo = new SubServiceRequestVo();
+		SubServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubServiceRequestVo.class);
 		List<SubServiceEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
 		response.setData(objs);
 		return response;
 	}
-	@RequestMapping(value = { "findMqList" }, method = { RequestMethod.GET })
+	@RequestMapping(value = { "findMqList" })
 	public BaseResponse<List<SubServiceResponseVo>> findMqList(HttpServletRequest request) {
 		SubServiceRequestVo vo = new SubServiceRequestVo();
 		vo.setClsType("mq");

@@ -16,6 +16,8 @@
 				 th:include="layout::project_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>subService 列表</h3>
+				<input type="hidden" class="form-control" name="clsType" id="clsType" th:value="${clsType}" />
+				<div class='form-group col-lg-12'>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
@@ -31,11 +33,7 @@
 								<td>serviceName</td>
 								<td>serviceType</td>
 								<td>language</td>
-								<td>gitUrl</td>
-								<td>defaultZone</td>
-								<td>domainDev</td>
-								<td>domainStg</td>
-								<td>domainProd</td>
+								<td>管理链接</td>
 
 
 							</tr>

@@ -3,6 +3,8 @@ function findPage(){
 	var data = new Object();
 	data.size  = 10;
 	data.currentPage  = currentPage;
+	data.clsType =  $('#clsType').val();
+
 	$.ajax({
         type : "post",
         url : "/subService/findPage",
@@ -42,11 +44,7 @@ function findPage(){
                  + "<td>"+index.serviceName+"</td>"
                  + "<td>"+index.serviceType+"</td>"
                  + "<td>"+index.language+"</td>"
-                 + "<td>"+index.gitUrl+"</td>"
-                 + "<td>"+index.defaultZone+"</td>"
-                 + "<td>"+index.domainDev+"</td>"
-                 + "<td>"+index.domainStg+"</td>"
-                 + "<td>"+index.domainProd+"</td>"
+                 + "<td>"+index.serviceAdminUrl+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"

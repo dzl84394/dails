@@ -1,6 +1,7 @@
 package cn.dails.service.impl;
 
 
+import cn.dails.dao.entity.SubProjectEntity;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -36,6 +37,15 @@ public class SubServiceService extends ServiceImpl<SubServiceDao,SubServiceEntit
           page.setSize(vo.getSize());
 
           LambdaQueryWrapper<SubServiceEntity> wrapper = new LambdaQueryWrapper<>();
+          if (!Strings.isNullOrEmpty(vo.getClsType())){
+              wrapper.eq(SubServiceEntity::getClsType,vo.getClsType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubType())){
+              wrapper.eq(SubServiceEntity::getSubType,vo.getSubType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubProjectSn())){
+              wrapper.eq(SubServiceEntity::getSubProjectSn,vo.getSubProjectSn());
+          }
            wrapper.orderByDesc(SubServiceEntity::getCreateDate);
           page = dao.selectPage(page,wrapper);
 
@@ -50,6 +60,9 @@ public class SubServiceService extends ServiceImpl<SubServiceDao,SubServiceEntit
           }
           if (!Strings.isNullOrEmpty(vo.getSubType())){
               wrapper.eq(SubServiceEntity::getSubType,vo.getSubType());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubProjectSn())){
+              wrapper.eq(SubServiceEntity::getSubProjectSn,vo.getSubProjectSn());
           }
           List<SubServiceEntity> list = dao.selectList(wrapper);
           return list;
