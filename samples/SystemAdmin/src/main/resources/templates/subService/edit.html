@@ -31,14 +31,19 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
+	var clsType = /*[[${obj.clsType}]]*/ ;
+	var subType = /*[[${obj.subType}]]*/ ;
+    findConfList('ptype','ptype','#clsType',clsType);
+	findConfList('ptype',clsType,'#subType',subType);
 
-	findConfList('ptype','ptype','#clsType');
-	findSubProjectList('#subProjectSn');
+    var projectSn = $('#subProjectSn').val();
+    var selectedValue = /*[[${obj.subProjectSn}]]*/ ; // 替换为实际的值
+    findSubProjectList('#subProjectSn',selectedValue);
 
-	$("#subProjectSn").change(function() {
-		var selectedValue = $(this).val();
-		$('#serviceSn').val(selectedValue);
-	});
+    $("#subProjectSn").change(function() {
+        var selectedValue = $(this).val();
+        $('#serviceSn').val(selectedValue);
+    });
 </script>
 
 </html>

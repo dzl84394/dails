@@ -114,6 +114,12 @@
 								<input type='text' class='form-control' name='serviceAdminUrl' id='serviceAdminUrl' th:value='${obj.serviceAdminUrl}'/>
 							</div>
 						</div>
+						<div class='form-group col-lg-12'>
+							<label for='serviceAdminUrl' class='col-sm-2 control-label'>mapping地址</label>
+							<div class='col-sm-10'>
+								<input type='text' class='form-control' name='actuatorMappingUrl' id='actuatorMappingUrl' th:value='${obj.actuatorMappingUrl}'/>
+							</div>
+						</div>
 
 
 						<div class="form-group">
@@ -134,7 +140,9 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
-	findConfList('ptype','ptype','#clsType');
+	var clsType = /*[[${obj.clsType}]]*/ ;
+	findConfList('ptype','ptype','#clsType',clsType);
+	findConfList('ptype','','#subType');
 	findSubProjectList('#subProjectSn');
 
 	$("#subProjectSn").change(function() {

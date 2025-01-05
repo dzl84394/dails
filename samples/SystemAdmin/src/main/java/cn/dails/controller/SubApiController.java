@@ -8,11 +8,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
+import cn.dails.bean.vo.ActuatorMapping;
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.stereotype.Controller;
 import cn.dails.base.bean.BaseResponse;
@@ -29,7 +33,8 @@ public class SubApiController {
 
 	@Autowired																					
 	private ISubApiService service;
-	
+
+
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
@@ -147,6 +152,7 @@ public class SubApiController {
 
         response.sendRedirect("indexView");
     }
-	
+
+
 	
 }

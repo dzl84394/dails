@@ -211,7 +211,7 @@ function deleteObj(id){
 }
 
 
-function findConfList(clsType,subType,listDiv){
+function findConfList(clsType,subType,listDiv,clsTypeSelect){
     var data = new Object();
     data.clsType = clsType;
     data.subType=subType;
@@ -235,6 +235,11 @@ function findConfList(clsType,subType,listDiv){
             // 使用each方法动态加载数据到datalist中
             $.each(confs, function(index, value) {
                 var option = $("<option>").text(value.name).attr("value", value.code);
+                if (clsTypeSelect) {
+                    if (value.code === clsTypeSelect) {
+                        option.attr("selected", "selected"); // 选中该选项
+                    }
+                }
                 data1List.append(option);
             });
         }
@@ -247,3 +252,22 @@ $("#clsType").change(function() {
 });
 
 setActive("nav_subProject");
+
+
+function saveActuatorMapping(id) {
+    var data = new Object();
+    data.id = id;
+    $.ajax({
+        type : "post",
+        url : "/subService/saveMappings",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            alert(result.message)
+        }
+    })
+}

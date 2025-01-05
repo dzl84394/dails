@@ -109,34 +109,7 @@ function save(){
 }
 
 function show(){
-    $.ajax({
-        type: "get",
-        url: "/subProject/findById",
-        contentType: 'application/json',
-        dataType: "json",
-        data: {
-            id:$("#id").val()
-        },
-        success: function (result) {
-            if(result.resultCode != '200'){
-                alert("接口异常")
-                return;
-            }
-            var index = result.data;
 
-               $("#id").text( index.id);
-  $("#projectSn").text( index.projectSn);
-  $("#name").text( index.name);
-  $("#detail").text( index.detail);
-  $("#businessOwner").text( index.businessOwner);
-  $("#technologyOwner").text( index.technologyOwner);
-  $("#level").text( index.level);
-  $("#gitUrl").text( index.gitUrl);
-
-
-
-        }
-    })
 }
 
 function editshow(){
@@ -194,3 +167,54 @@ function deleteObj(id){
 }
 
 setActive("nav_subProject");
+
+
+function findSubService(subProjectSn){
+	var data = new Object();
+	data.subProjectSn  = subProjectSn;
+
+	$.ajax({
+        type : "post",
+        url : "/subService/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            if(result.resultCode != '200'){
+                alert("接口异常")
+                return;
+            }
+
+
+ 			var listDiv = $("#subServicelist")
+
+            listDiv.empty();
+            var temp = "";
+
+			/*<![CDATA[*/
+		    for (var i = 0; i <  result.data.length; i++) {
+			    var index = result.data[i];
+				temp += "<tr>"
+                 + "<td>"+index.id+"</td>"
+                 + "<td>"+index.subProjectSn+"</td>"
+                  + "<td>"+index.clsType+"</td>"
+                  + "<td>"+index.subType+"</td>"
+                 + "<td>"+index.serviceSn+"</td>"
+                 + "<td>"+index.serviceName+"</td>"
+                 + "<td>"+index.serviceType+"</td>"
+                 + "<td>"+index.language+"</td>"
+                 + "<td>"+index.serviceAdminUrl+"</td>"
+
+				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"
+				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
+				+"</td></tr>"
+			}
+			listDiv.append(temp)
+				/*]]>*/
+		}
+	})
+}

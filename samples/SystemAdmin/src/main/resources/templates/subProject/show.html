@@ -75,6 +75,30 @@
 
 				</div>
 			</div>
+
+
+            <table class="table table-striped">
+                <thead>
+
+
+                <tr>
+                    <td>id</td>
+                    <td>subProjectSn</td>
+                    <td>clsType</td>
+                    <td>subType</td>
+                    <td>serviceSn</td>
+                    <td>serviceName</td>
+                    <td>serviceType</td>
+                    <td>language</td>
+                    <td>管理链接</td>
+
+
+                </tr>
+                </thead>
+                <tbody id="subServicelist">
+
+                </tbody>
+            </table>
 		</div>
 			<!-- row -->
 	</div>
@@ -83,6 +107,10 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subProject.js"></script>
 <script th:inline="javascript">
+    $(document).ready(function() {
+        var projectSn = $('#projectSn').text().trim(); // 使用 text() 方法并去除空格
+        findSubService(projectSn);
+    })
 </script>
 
 </html>

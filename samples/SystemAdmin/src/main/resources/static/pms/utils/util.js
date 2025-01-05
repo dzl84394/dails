@@ -499,7 +499,7 @@ function setParameterValue(key,value){
 
 
 
-function findSubProjectList(projectSn){
+function findSubProjectList(projectSn,selectedValue){
     var data = new Object();
 
     $.ajax({
@@ -518,12 +518,17 @@ function findSubProjectList(projectSn){
             // 清空datalist元素
             data1List.empty();
 
-
-            // 使用each方法动态加载数据到datalist中
             $.each(confs, function(index, value) {
                 var option = $("<option>").text(value.name).attr("value", value.projectSn	);
+                if (selectedValue) {
+                    if (value.projectSn === selectedValue) {
+                        option.attr("selected", "selected"); // 选中该选项
+                    }
+                }
                 data1List.append(option);
             });
+
+
         }
     })
 }

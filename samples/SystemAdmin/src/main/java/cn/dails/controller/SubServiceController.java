@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
+import cn.dails.dao.entity.SubApiEntity;
 import cn.dails.dao.entity.SubProjectEntity;
+import cn.dails.service.ISubApiService;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
@@ -30,8 +32,9 @@ public class SubServiceController {
 
 	@Autowired																					
 	private ISubServiceService service;
-	
 
+	@Autowired
+	private ISubApiService apiService;
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
 	public ModelAndView indexView(HttpServletRequest request,
@@ -57,9 +60,10 @@ public class SubServiceController {
     }
 																								
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
-	public ModelAndView newObj() {																
+	public ModelAndView newObj( @RequestParam(value = "clsType", required = false) String clsType) {
 		ModelAndView mav = new ModelAndView("subService/new");
 		SubServiceEntity obj =  new SubServiceEntity();
+		obj.setClsType(clsType);
 		mav.addObject("obj", obj);
 		return mav;
 	}
@@ -92,6 +96,7 @@ public class SubServiceController {
 	public BaseResponse<List<SubServiceResponseVo>> findList(HttpServletRequest request,@RequestBody BaseRequest<JSONObject> obj) {
 
 		SubServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubServiceRequestVo.class);
+		log.info(JSONObject.toJSONString(vo));
 		List<SubServiceEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
@@ -149,8 +154,20 @@ public class SubServiceController {
         }
 		response.sendRedirect("indexView");
 	}
+	@RequestMapping(value = { "saveMappings" })
+	public BaseResponse saveMappings(@RequestBody BaseRequest<JSONObject> obj){
+		JSONObject object = obj.getData();
+		Long id = object.getLong("id");
+		SubServiceEntity entity = service.getById(id);
+		apiService.saveMappings(entity);
+		BaseResponse response = new BaseResponse();
+		response.buildSuccess();
+		response.setMessage("获取mapping成功");
+		return  response;
+	}
 
-	
-	
-	
+
+
+
+
 }

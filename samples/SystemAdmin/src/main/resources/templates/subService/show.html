@@ -95,13 +95,20 @@
                         <p class="form-control-static" id='domainProd' th:text='${obj.domainProd}'></p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">actuatorMappingUrl</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='actuatorMappingUrl' th:text='${obj.actuatorMappingUrl}'></p>
+                    </div>
+                </div>
 
 			</div>
 				<!-- blog-post -->
 			<div class="form-group">
 				<div class="col-sm-offset-8 col-sm-4">
-						<a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
-						<a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
+                    <a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
+                    <a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
+                    <a type="button" class="btn btn-info" th:attr="onclick='saveActuatorMapping(' + ${id} + ')'">获取mapping</a>
 
 				</div>
 			</div>
@@ -113,6 +120,7 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
+
 </script>
 
 </html>

@@ -20,7 +20,7 @@
 				<div class='form-group col-lg-12'>
 
 				<div class="col-sm-12 col-lg-12" id="list">
-					<table class="span12 table table-striped">
+					<table class="table table-striped">
 						<thead>
 
 
@@ -50,14 +50,16 @@
 				<nav>
 					<ul class="pager">
 						<li>
-							<a th:href="@{/subService/addView}">新增</a>
+							<a th:href="@{/subService/addView(clsType=${clsType})}">新增</a>
+							<a th:href="@{/subService/addView(clsType=${clsType})}">获取eureka</a>
+							<a th:href="@{/subService/addView(clsType=${clsType})}">获取Console</a>
 						</li>
 					</ul>
 				</nav>
 			</div>
 		</div>
 
-
+		</div>
 	</div>
 	<!-- /.container -->
 
