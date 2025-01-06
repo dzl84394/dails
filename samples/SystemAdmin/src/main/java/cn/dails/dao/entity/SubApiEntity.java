@@ -23,10 +23,11 @@ public class SubApiEntity extends BaseEntity implements Serializable {
 
     private String projectSn;
     private String serviceSn;// application serviceName
-
+    private String bizGroup;//业务域
     private String apiName;//findList
     private String className;//cn.dails.controller.SubServiceController
     private String methodName;//类里面的函数名findList
+
     private String path;
     private String apiStstus;//0 启用，1禁止
     private String datail;

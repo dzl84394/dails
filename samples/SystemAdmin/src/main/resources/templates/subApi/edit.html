@@ -31,7 +31,9 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subApi.js"></script>
 <script th:inline="javascript">
+	var projectSn = /*[[${obj.projectSn}]]*/ ; // 替换为实际的值
 
+	findSubProjectList('#projectSn',projectSn);
 </script>
 
 </html>
