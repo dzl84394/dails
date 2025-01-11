@@ -51,7 +51,7 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
         return list;
     }
 
-    public void saveMappings(SubServiceEntity subServiceEntity) {
+    public void checkMappings(SubServiceEntity subServiceEntity) {
         //先删除
         QueryWrapper<SubApiEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("project_sn", subServiceEntity.getSubProjectSn())
@@ -93,4 +93,6 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
         }
 
     }
+
+
 }

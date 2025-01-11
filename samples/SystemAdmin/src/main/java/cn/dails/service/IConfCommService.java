@@ -1,12 +1,12 @@
 package cn.dails.service;
 
 
-import com.baomidou.mybatisplus.extension.service.IService;
-import com.baomidou.mybatisplus.core.metadata.IPage;
-import java.util.List;
-
-import cn.dails.dao.entity.ConfCommEntity;
 import cn.dails.bean.vo.ConfCommRequestVo;
+import cn.dails.dao.entity.ConfCommEntity;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.IService;
+
+import java.util.List;
 
 
 public interface IConfCommService extends IService<ConfCommEntity> {

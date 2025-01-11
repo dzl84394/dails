@@ -1,28 +1,24 @@
 package cn.dails.controller;
 
 
-import java.io.IOException;
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
-import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
-import cn.dails.dao.entity.SubApiEntity;
-import cn.dails.dao.entity.SubProjectEntity;
+import cn.dails.base.bean.BaseResponse;
+import cn.dails.bean.vo.SubServiceRequestVo;
+import cn.dails.bean.vo.SubServiceResponseVo;
+import cn.dails.dao.entity.SubServiceEntity;
 import cn.dails.service.ISubApiService;
+import cn.dails.service.ISubServiceService;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
-import cn.dails.base.bean.BaseResponse;
-import cn.dails.bean.vo.SubServiceRequestVo;
-import cn.dails.bean.vo.SubServiceResponseVo;
-import cn.dails.dao.entity.SubServiceEntity;
-import cn.dails.service.ISubServiceService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping({ "/subService" })
@@ -154,15 +150,26 @@ public class SubServiceController {
         }
 		response.sendRedirect("indexView");
 	}
-	@RequestMapping(value = { "saveMappings" })
+	@RequestMapping(value = { "checkMappings" })
 	public BaseResponse saveMappings(@RequestBody BaseRequest<JSONObject> obj){
 		JSONObject object = obj.getData();
 		Long id = object.getLong("id");
 		SubServiceEntity entity = service.getById(id);
-		apiService.saveMappings(entity);
+		apiService.checkMappings(entity);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();
 		response.setMessage("获取mapping成功");
+		return  response;
+	}
+	@RequestMapping(value = { "checkEureka" })
+	public BaseResponse checkEureka(@RequestBody BaseRequest<JSONObject> obj){
+		JSONObject object = obj.getData();
+		Long id = object.getLong("id");
+		SubServiceEntity entity = service.getById(id);
+		service.checkEureka(entity);
+		BaseResponse response = new BaseResponse();
+		response.buildSuccess();
+		response.setMessage("获取eureka成功");
 		return  response;
 	}
 

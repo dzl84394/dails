@@ -48,4 +48,6 @@ public class SubServiceEntity extends BaseEntity implements Serializable {
     private String serviceAdminUrl;//管理平台
 
     private String actuatorMappingUrl;
+
+    private String eurekaUrl;
 }

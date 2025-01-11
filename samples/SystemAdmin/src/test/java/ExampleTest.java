@@ -1,4 +1,4 @@
-import cn.dails.dao.entity.*;
+import cn.dails.dao.entity.SoftwareAssetEntity;
 import cn.dails.example.Branch4;
 import cn.dails.example.FactoryBranch4;
 

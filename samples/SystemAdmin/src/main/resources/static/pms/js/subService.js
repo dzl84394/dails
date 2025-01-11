@@ -259,7 +259,25 @@ function saveActuatorMapping(id) {
     data.id = id;
     $.ajax({
         type : "post",
-        url : "/subService/saveMappings",
+        url : "/subService/checkMappings",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            alert(result.message)
+        }
+    })
+}
+
+function checkEureka(id) {
+    var data = new Object();
+    data.id = id;
+    $.ajax({
+        type : "post",
+        url : "/subService/checkEureka",
         contentType: 'application/json',
         dataType: "json",
         data : JSON.stringify({

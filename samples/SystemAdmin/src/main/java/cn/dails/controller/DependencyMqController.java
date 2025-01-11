@@ -1,25 +1,23 @@
 package cn.dails.controller;
 
 
-import java.util.List;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
+import cn.dails.base.bean.BaseResponse;
+import cn.dails.bean.vo.DependencyMqRequestVo;
+import cn.dails.bean.vo.DependencyMqResponseVo;
+import cn.dails.dao.entity.DependencyMqEntity;
+import cn.dails.service.IDependencyMqService;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.stereotype.Controller;
-import cn.dails.base.bean.BaseResponse;
-import cn.dails.bean.vo.DependencyMqRequestVo;
-import cn.dails.bean.vo.DependencyMqResponseVo;
-import cn.dails.dao.entity.DependencyMqEntity;
-import cn.dails.service.IDependencyMqService;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping({ "/dependencyMq" })
