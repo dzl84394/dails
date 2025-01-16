@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::project_sidebar"></div>
+
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+				<h3 class="blog-title">dependencyService 添加</h3>
+				<div th:fragment="dependencyServiceForm">
+
+					<form id="dependencyServiceForm"  class="form-horizontal"  th:action="@{/dependencyService/save}" th:method="post"
+						  th:object="${obj}">
+						<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+							               <div class='form-group col-lg-12'> 
+						<label for='aid' class='col-sm-2 control-label'>aid</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='aid' id='aid' th:value='${obj.aid}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='serviceTypeA' class='col-sm-2 control-label'>serviceTypeA</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='serviceTypeA' id='serviceTypeA' th:value='${obj.serviceTypeA}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='subProjectSnA' class='col-sm-2 control-label'>subProjectSnA</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='subProjectSnA' id='subProjectSnA' th:value='${obj.subProjectSnA}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='subServiceSnA' class='col-sm-2 control-label'>subServiceSnA</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='subServiceSnA' id='subServiceSnA' th:value='${obj.subServiceSnA}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='nameA' class='col-sm-2 control-label'>nameA</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='nameA' id='nameA' th:value='${obj.nameA}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='bid' class='col-sm-2 control-label'>bid</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='bid' id='bid' th:value='${obj.bid}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='serviceTypeB' class='col-sm-2 control-label'>serviceTypeB</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='serviceTypeB' id='serviceTypeB' th:value='${obj.serviceTypeB}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='subProjectSnB' class='col-sm-2 control-label'>subProjectSnB</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='subProjectSnB' id='subProjectSnB' th:value='${obj.subProjectSnB}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='subServiceSnB' class='col-sm-2 control-label'>subServiceSnB</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='subServiceSnB' id='subServiceSnB' th:value='${obj.subServiceSnB}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='nameB' class='col-sm-2 control-label'>nameB</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='nameB' id='nameB' th:value='${obj.nameB}'/>
+						</div>
+					</div>
+
+						<div class="form-group">
+							<div class="col-sm-offset-10 col-sm-2">
+
+								<input type="submit" class="btn btn-success" value="保存"/>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<!-- /.blog-main -->
+		</div>
+		<!-- /.row -->
+	</div>
+	<!-- /.container -->
+
+</body>
+<script type="text/javascript" src="/static/pms/js/dependencyService.js"></script>
+<script th:inline="javascript">
+
+</script>
+
+
+</html>

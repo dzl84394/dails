@@ -5,7 +5,7 @@ function findPage(){
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
-        url : "/subProject/findPage",
+        url : "/dependencyService/findPage",
         contentType: 'application/json',
         dataType: "json",
         data : JSON.stringify({
@@ -35,14 +35,19 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.projectSn+"</td>"
-                 + "<td>"+index.name+"</td>"
-                 + "<td>"+index.businessOwner+"</td>"
-                 + "<td>"+index.technologyOwner+"</td>"
-                 + "<td>"+index.level+"</td>"
+                 + "<td>"+index.aid+"</td>"
+                 + "<td>"+index.serviceTypeA+"</td>"
+                 + "<td>"+index.subProjectSnA+"</td>"
+                 + "<td>"+index.subServiceSnA+"</td>"
+                 + "<td>"+index.nameA+"</td>"
+                 + "<td>"+index.bid+"</td>"
+                 + "<td>"+index.serviceTypeB+"</td>"
+                 + "<td>"+index.subProjectSnB+"</td>"
+                 + "<td>"+index.subServiceSnB+"</td>"
+                 + "<td>"+index.nameB+"</td>"
 
-				+"<td><a class='btn btn-info btn-sm' href='/subProject/showView?id="+index.id+"'>展示</a>"
-				+"<a class='btn btn-primary btn-sm' href='/subProject/editView?id="+index.id+"'>编辑</a>"
+				+"<td><a class='btn btn-info btn-sm' href='/dependencyService/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/dependencyService/editView?id="+index.id+"'>编辑</a>"
 				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
 				+"</td></tr>"
 			}
@@ -82,17 +87,20 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
-  data.projectSn = $('#projectSn').val();
-  data.name = $('#name').val();
-  data.detail = $('#detail').val();
-  data.businessOwner = $('#businessOwner').val();
-  data.technologyOwner = $('#technologyOwner').val();
-  data.level = $('#level').val();
-  data.gitUrl = $('#gitUrl').val();
+  data.aid = $('#aid').val();
+  data.serviceTypeA = $('#serviceTypeA').val();
+  data.subProjectSnA = $('#subProjectSnA').val();
+  data.subServiceSnA = $('#subServiceSnA').val();
+  data.nameA = $('#nameA').val();
+  data.bid = $('#bid').val();
+  data.serviceTypeB = $('#serviceTypeB').val();
+  data.subProjectSnB = $('#subProjectSnB').val();
+  data.subServiceSnB = $('#subServiceSnB').val();
+  data.nameB = $('#nameB').val();
 
     $.ajax({
         type: "post",
-        url: "/subProject/save",
+        url: "/dependencyService/save",
         contentType: 'application/json',
         dataType: "json",
         data: JSON.stringify({
@@ -103,19 +111,49 @@ function save(){
                 alert("接口异常")
                 return;
             }
-            go("/subProject/indexView");
+            go("/dependencyService/indexView");
         }
    })
 }
 
 function show(){
+    $.ajax({
+        type: "get",
+        url: "/dependencyService/findById",
+        contentType: 'application/json',
+        dataType: "json",
+        data: {
+            id:$("#id").val()
+        },
+        success: function (result) {
+            if(result.resultCode != '200'){
+                alert("接口异常")
+                return;
+            }
+            var index = result.data;
 
+               $("#id").text( index.id);
+  $("#aid").text( index.aid);
+  $("#serviceTypeA").text( index.serviceTypeA);
+  $("#subProjectSnA").text( index.subProjectSnA);
+  $("#subServiceSnA").text( index.subServiceSnA);
+  $("#nameA").text( index.nameA);
+  $("#bid").text( index.bid);
+  $("#serviceTypeB").text( index.serviceTypeB);
+  $("#subProjectSnB").text( index.subProjectSnB);
+  $("#subServiceSnB").text( index.subServiceSnB);
+  $("#nameB").text( index.nameB);
+
+
+
+        }
+    })
 }
 
 function editshow(){
     $.ajax({
         type: "get",
-        url: "/subProject/findById",
+        url: "/dependencyService/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -128,13 +166,16 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
-  $("#projectSn").val( index.projectSn);
-  $("#name").val( index.name);
-  $("#detail").val( index.detail);
-  $("#businessOwner").val( index.businessOwner);
-  $("#technologyOwner").val( index.technologyOwner);
-  $("#level").val( index.level);
-  $("#gitUrl").val( index.gitUrl);
+  $("#aid").val( index.aid);
+  $("#serviceTypeA").val( index.serviceTypeA);
+  $("#subProjectSnA").val( index.subProjectSnA);
+  $("#subServiceSnA").val( index.subServiceSnA);
+  $("#nameA").val( index.nameA);
+  $("#bid").val( index.bid);
+  $("#serviceTypeB").val( index.serviceTypeB);
+  $("#subProjectSnB").val( index.subProjectSnB);
+  $("#subServiceSnB").val( index.subServiceSnB);
+  $("#nameB").val( index.nameB);
 
 
         }
@@ -149,7 +190,7 @@ function deleteObj(id){
     if (isOK) {
         $.ajax({
             type: "post",
-            url: "/subProject/deleteById",
+            url: "/dependencyService/deleteById",
             contentType: 'application/json',
             dataType: "json",
             data: JSON.stringify({
@@ -160,59 +201,10 @@ function deleteObj(id){
                     alert("接口异常")
                     return;
                 }
-                go("/subProject/indexView");
+                go("/dependencyService/indexView");
             }
         })
    }
 }
 
-setActive("nav_subProject");
-
-
-function findSubService(subProjectSn){
-	var data = new Object();
-	data.subProjectSn  = subProjectSn;
-
-	$.ajax({
-        type : "post",
-        url : "/subService/findList",
-        contentType: 'application/json',
-        dataType: "json",
-        data : JSON.stringify({
-            data
-        }),
-        async : false,
-        success : function(result) {
-            if(result.resultCode != '200'){
-                alert("接口异常")
-                return;
-            }
-
-
- 			var listDiv = $("#subServicelist")
-
-            listDiv.empty();
-            var temp = "";
-
-			/*<![CDATA[*/
-		    for (var i = 0; i <  result.data.length; i++) {
-			    var index = result.data[i];
-				temp += "<tr>"
-                 + "<td>"+index.id+"</td>"
-                 + "<td>"+index.subProjectSn+"</td>"
-                  + "<td>"+index.clsType+"</td>"
-                  + "<td>"+index.subType+"</td>"
-                 + "<td>"+index.serviceSn+"</td>"
-                 + "<td>"+index.serviceName+"</td>"
-                 + "<td>"+index.serviceType+"</td>"
-
-				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
-				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"
-				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
-				+"</td></tr>"
-			}
-			listDiv.append(temp)
-				/*]]>*/
-		}
-	})
-}
+setActive("nav_dependencyService");

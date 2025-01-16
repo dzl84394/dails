@@ -1,3 +1,4 @@
+import cn.dails.dao.entity.DependencyServiceEntity;
 import cn.dails.dao.entity.SoftwareAssetEntity;
 import cn.dails.example.Branch4;
 import cn.dails.example.FactoryBranch4;
@@ -14,7 +15,7 @@ public class ExampleTest {
         branch1.setUrl("cn/dails");
         branch1.initFiles();
 
-        branch1.setEntityClass(SoftwareAssetEntity.class);
+        branch1.setEntityClass(DependencyServiceEntity.class);
         branch1.initJava();
 //        branch1.addDao();
 //        branch1.addService();

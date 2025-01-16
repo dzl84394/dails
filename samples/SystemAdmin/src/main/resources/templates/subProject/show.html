@@ -66,40 +66,44 @@
                     </div>
                 </div>
 
-			</div>
+
 				<!-- blog-post -->
-			<div class="form-group">
-				<div class="col-sm-offset-8 col-sm-4">
-						<a type="button" class="btn btn-success" th:href="@{'/subProject/indexView'}">返回列表</a>
-						<a type="button" class="btn btn-info" th:href="@{'/subProject/editView?id='+${id}}">编辑</a>
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-4">
+                            <a type="button" class="btn btn-success" th:href="@{'/subProject/indexView'}">返回列表</a>
+                            <a type="button" class="btn btn-info" th:href="@{'/subProject/editView?id='+${id}}">编辑</a>
 
-				</div>
-			</div>
-
-
-            <table class="table table-striped">
-                <thead>
+                    </div>
+                </div>
 
 
-                <tr>
-                    <td>id</td>
-                    <td>subProjectSn</td>
-                    <td>clsType</td>
-                    <td>subType</td>
-                    <td>serviceSn</td>
-                    <td>serviceName</td>
-                    <td>serviceType</td>
-                    <td>language</td>
-                    <td>管理链接</td>
+                <table class="table table-striped">
+                    <thead>
 
 
-                </tr>
-                </thead>
-                <tbody id="subServicelist">
+                    <tr>
+                        <td>id</td>
+                        <td>subProjectSn</td>
+                        <td>clsType</td>
+                        <td>subType</td>
+                        <td>serviceSn</td>
+                        <td>serviceName</td>
+                        <td>serviceType</td>
 
-                </tbody>
-            </table>
+
+                    </tr>
+                    </thead>
+                    <tbody id="subServicelist">
+
+                    </tbody>
+
+                </table>
+                <div class="col-sm-offset-8 col-sm-4">
+                    <a class="btn btn-primary" th:href="@{/subService/addView(projectSn=${obj.projectSn})}">新增</a>
+                </div>
+            </div>
 		</div>
+
 			<!-- row -->
 	</div>
 		<!-- container-fluid -->

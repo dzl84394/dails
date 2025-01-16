@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="layout::head">
+
+</head>
+
+<body role="document">
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" th:include="layout::header"></nav>
+
+	<input type="hidden" id="currentObjId" th:value="${id}" />
+
+
+
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
+				 th:include="layout::project_sidebar"></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
+				<h2 class="blog-post-title">dependencyService show</h2>
+				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+					<hr />
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">aid</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='aid' th:text='${obj.aid}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceTypeA</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceTypeA' th:text='${obj.serviceTypeA}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subProjectSnA</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subProjectSnA' th:text='${obj.subProjectSnA}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subServiceSnA</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subServiceSnA' th:text='${obj.subServiceSnA}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">nameA</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='nameA' th:text='${obj.nameA}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">bid</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='bid' th:text='${obj.bid}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">serviceTypeB</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='serviceTypeB' th:text='${obj.serviceTypeB}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subProjectSnB</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subProjectSnB' th:text='${obj.subProjectSnB}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">subServiceSnB</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='subServiceSnB' th:text='${obj.subServiceSnB}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">nameB</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='nameB' th:text='${obj.nameB}'></p>
+                    </div>
+                </div>
+
+
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+							<a type="button" class="btn btn-success" th:href="@{'/dependencyService/indexView'}">返回列表</a>
+							<a type="button" class="btn btn-info" th:href="@{'/dependencyService/editView?id='+${id}}">编辑</a>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+			<!-- row -->
+	</div>
+		<!-- container-fluid -->
+
+</body>
+<script type="text/javascript" src="/static/pms/js/dependencyService.js"></script>
+<script th:inline="javascript">
+</script>
+
+</html>

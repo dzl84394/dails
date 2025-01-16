@@ -149,7 +149,11 @@
 	var clsType = /*[[${obj.clsType}]]*/ ;
 	findConfList('ptype','ptype','#clsType',clsType);
 	findConfList('ptype','','#subType');
-	findSubProjectList('#subProjectSn');
+
+	var projectSn = $('#subProjectSn').val();
+    var selectedValue = /*[[${obj.subProjectSn}]]*/ ; // 替换为实际的值
+    findSubProjectList('#subProjectSn',selectedValue);
+
 
 	$("#subProjectSn").change(function() {
 		var selectedValue = $(this).val();

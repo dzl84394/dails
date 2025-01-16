@@ -56,10 +56,12 @@ public class SubServiceController {
     }
 																								
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
-	public ModelAndView newObj( @RequestParam(value = "clsType", required = false) String clsType) {
+	public ModelAndView newObj( @RequestParam(value = "clsType", required = false) String clsType,
+								@RequestParam(value = "projectSn", required = false) String subProjectSn) {
 		ModelAndView mav = new ModelAndView("subService/new");
 		SubServiceEntity obj =  new SubServiceEntity();
 		obj.setClsType(clsType);
+		obj.setSubProjectSn(subProjectSn);
 		mav.addObject("obj", obj);
 		return mav;
 	}
