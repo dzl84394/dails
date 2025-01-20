@@ -36,15 +36,15 @@ function findPage(){
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.aid+"</td>"
-                 + "<td>"+index.serviceTypeA+"</td>"
-                 + "<td>"+index.subProjectSnA+"</td>"
-                 + "<td>"+index.subServiceSnA+"</td>"
-                 + "<td>"+index.nameA+"</td>"
+                 + "<td>"+index.serviceTypea+"</td>"
+                 + "<td>"+index.subProjectSna+"</td>"
+                 + "<td>"+index.subServiceSna+"</td>"
+                 + "<td>"+index.namea+"</td>"
                  + "<td>"+index.bid+"</td>"
-                 + "<td>"+index.serviceTypeB+"</td>"
-                 + "<td>"+index.subProjectSnB+"</td>"
-                 + "<td>"+index.subServiceSnB+"</td>"
-                 + "<td>"+index.nameB+"</td>"
+                 + "<td>"+index.serviceTypeb+"</td>"
+                 + "<td>"+index.subProjectSnb+"</td>"
+                 + "<td>"+index.subServiceSnb+"</td>"
+                 + "<td>"+index.nameb+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/dependencyService/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/dependencyService/editView?id="+index.id+"'>编辑</a>"
@@ -207,4 +207,40 @@ function deleteObj(id){
    }
 }
 
+
+
+function findSubService(subProjectSn,divid,selectedValue){
+	var data = new Object();
+	data.subProjectSn  = subProjectSn;
+
+	$.ajax({
+        type : "post",
+        url : "/subService/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $("#"+divid);
+            // 清空datalist元素
+            data1List.empty();
+
+             $.each(confs, function(index, value) {
+                 var option = $("<option>").text(value.serviceName).attr("value", value.serviceSn	);
+                 if (selectedValue) {
+                     if (value.projectSn === selectedValue) {
+                         option.attr("selected", "selected"); // 选中该选项
+                     }
+                 }
+                 data1List.append(option);
+             });
+
+
+		}
+	})
+}
 setActive("nav_dependencyService");

@@ -19,15 +19,15 @@ public class DependencyServiceEntity extends BaseEntity implements Serializable 
     private Long id;
  //middleware
     private Long aid;
-    private String serviceTypeA;//
-    private String subProjectSnA;
-    private String subServiceSnA;//逻辑实体
-    private String nameA;//
+    private String serviceTypea;//
+    private String subProjectSna;
+    private String subServiceSna;//逻辑实体
+    private String namea;//
 
     private Long bid;
-    private String serviceTypeB;//mq，注册中心，定时任务
-    private String subProjectSnB;
-    private String subServiceSnB;//逻辑实体
-    private String nameB;//r
+    private String serviceTypeb;//mq，注册中心，定时任务
+    private String subProjectSnb;
+    private String subServiceSnb;//逻辑实体
+    private String nameb;//r
 
 }
