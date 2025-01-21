@@ -30,27 +30,27 @@
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='serviceTypeA' class='col-sm-2 control-label'>serviceTypeA</label>
+						<label for='serviceTypea' class='col-sm-2 control-label'>serviceTypea</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='serviceTypeA' id='serviceTypeA' th:value='${obj.serviceTypeA}'/>
+							<input type='text' class='form-control' name='serviceTypea' id='serviceTypea' th:value='${obj.serviceTypea}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='subProjectSnA' class='col-sm-2 control-label'>subProjectSnA</label>
+						<label for='subProjectSna' class='col-sm-2 control-label'>subProjectSna</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subProjectSnA' id='subProjectSnA' th:value='${obj.subProjectSnA}'/>
+							<input type='text' class='form-control' name='subProjectSna' id='subProjectSna' th:value='${obj.subProjectSna}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='subServiceSnA' class='col-sm-2 control-label'>subServiceSnA</label>
+						<label for='subServiceSna' class='col-sm-2 control-label'>subServiceSna</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subServiceSnA' id='subServiceSnA' th:value='${obj.subServiceSnA}'/>
+							<input type='text' class='form-control' name='subServiceSna' id='subServiceSna' th:value='${obj.subServiceSna}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='nameA' class='col-sm-2 control-label'>nameA</label>
+						<label for='namea' class='col-sm-2 control-label'>namea</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='nameA' id='nameA' th:value='${obj.nameA}'/>
+							<input type='text' class='form-control' name='namea' id='namea' th:value='${obj.namea}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
@@ -60,27 +60,29 @@
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='serviceTypeB' class='col-sm-2 control-label'>serviceTypeB</label>
+						<label for='serviceTypeb' class='col-sm-2 control-label'>serviceTypeb</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='serviceTypeB' id='serviceTypeB' th:value='${obj.serviceTypeB}'/>
+							<input type='text' class='form-control' name='serviceTypeb' id='serviceTypeb' th:value='${obj.serviceTypeb}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='subProjectSnB' class='col-sm-2 control-label'>subProjectSnB</label>
+						<label for='subProjectSnb' class='col-sm-2 control-label'>subProjectSnb</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subProjectSnB' id='subProjectSnB' th:value='${obj.subProjectSnB}'/>
+							<select class="form-control" name='subProjectSnb' id='subProjectSnb' th:value='${obj.subProjectSnb}'>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='subServiceSnB' class='col-sm-2 control-label'>subServiceSnB</label>
+						<label for='subServiceSnb' class='col-sm-2 control-label'>subServiceSnb</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='subServiceSnB' id='subServiceSnB' th:value='${obj.subServiceSnB}'/>
+							<select class="form-control" name='subServiceSnb' id='subServiceSnb' th:value='${obj.subServiceSnb}'>
+							</select>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='nameB' class='col-sm-2 control-label'>nameB</label>
+						<label for='nameb' class='col-sm-2 control-label'>nameb</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='nameB' id='nameB' th:value='${obj.nameB}'/>
+							<input type='text' class='form-control' name='nameb' id='nameb' th:value='${obj.nameb}'/>
 						</div>
 					</div>
 
@@ -102,7 +104,11 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/dependencyService.js"></script>
 <script th:inline="javascript">
-
+	findSubProjectList('#subProjectSnb');
+	$("#subProjectSnb").change(function() {
+		var selectedValue = $(this).val();
+		findSubService(selectedValue,'subServiceSnb');
+	});
 </script>
 
 

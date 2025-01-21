@@ -34,7 +34,8 @@ public class DependencyServiceController {
 
 	@Autowired
 	private ISubServiceService serviceService;
-	
+
+
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
 	public ModelAndView indexView(HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("dependencyService/index");
@@ -55,18 +56,18 @@ public class DependencyServiceController {
         mav.addObject("obj", obj);
         return mav;
     }
-																								
+
 	@RequestMapping(value = { "addView" }, method = { RequestMethod.GET })
 	public ModelAndView newObj(@RequestParam(value = "id", required = false)  Long id) {
 		ModelAndView mav = new ModelAndView("dependencyService/new");
 		DependencyServiceEntity obj =  new DependencyServiceEntity();
 		SubServiceEntity subService = serviceService.getById(id);
 		obj.setAid(subService.getId());
-		obj.setSubProjectSnA(subService.getSubProjectSn());
-		obj.setSubServiceSnA(subService.getServiceSn());
-		obj.setServiceTypeA(subService.getSubType());
-		obj.setNameA(subService.getServiceName());
-        mav.addObject("obj", obj);
+		obj.setSubProjectSna(subService.getSubProjectSn());
+		obj.setSubServiceSna(subService.getServiceSn());
+		obj.setServiceTypea(subService.getSubType());
+		obj.setNamea(subService.getServiceName());
+		mav.addObject("obj", obj);
 		return mav;
 	}
 	@RequestMapping(value = { "editView" }, method = { RequestMethod.GET })
