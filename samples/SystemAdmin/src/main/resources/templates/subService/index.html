@@ -51,8 +51,8 @@
 					<ul class="pager">
 						<li>
 							<a th:href="@{/subService/addView(clsType=${clsType})}">新增</a>
-							<a th:href="@{/subService/addView(clsType=${clsType})}">获取eureka</a>
-							<a th:href="@{/subService/addView(clsType=${clsType})}">获取Console</a>
+							<a th:if="${clsType == 'discovery'}" th:href="@{/subService/addView(clsType=${clsType})}">获取eureka</a>
+							<a th:if="${clsType == 'discovery'}" th:href="@{/subService/addView(clsType=${clsType})}">获取Console</a>
 						</li>
 					</ul>
 				</nav>

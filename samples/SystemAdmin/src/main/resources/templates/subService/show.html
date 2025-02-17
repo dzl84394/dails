@@ -108,20 +108,39 @@
                     </div>
                 </div>
 
-			</div>
-				<!-- blog-post -->
-			<div class="form-group">
-				<div class="col-sm-offset-8 col-sm-4" id = 'opsdiv'>
-                    <a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
-                    <a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
-                    <a type="button" class="btn btn-info"   th:if="${obj.subType == 'biz'}"  th:attr="onclick='saveActuatorMapping(' + ${id} + ')'">获取mapping</a>
-                    <a type="button" class="btn btn-info"   th:href="@{'/dependencyService/addView?id='+${id}}">添加依赖</a>
 
-                    <a type="button" class="btn btn-info"   th:if="${obj.subType == 'eureka'}"  th:attr="onclick='checkEureka(' + ${id} + ')'">获取eureka</a>
+                <table class="table table-striped">
+                    <thead>
 
-				</div>
-			</div>
-		</div>
+
+                    <tr>
+                        <td>id</td>
+                        <td>子系统</td>
+                        <td>微服务</td>
+                        <td>类别</td>
+
+
+                    </tr>
+                    </thead>
+                    <tbody id="service_dependency_list_div">
+
+                    </tbody>
+
+                </table>
+                    <!-- blog-post -->
+                <div class="form-group">
+                    <div class="col-sm-offset-8 col-sm-4" id = 'opsdiv'>
+                        <a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
+                        <a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
+                        <a type="button" class="btn btn-info"   th:if="${obj.subType == 'biz'}"  th:attr="onclick='saveActuatorMapping(' + ${id} + ')'">获取mapping</a>
+                        <a type="button" class="btn btn-info"   th:href="@{'/dependencyService/addView?id='+${id}}">添加依赖</a>
+
+                        <a type="button" class="btn btn-info"   th:if="${obj.subType == 'eureka'}"  th:attr="onclick='checkEureka(' + ${id} + ')'">获取eureka</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
 			<!-- row -->
 	</div>
 		<!-- container-fluid -->
@@ -129,7 +148,7 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
-
+    findService_dependency();
 </script>
 
 </html>

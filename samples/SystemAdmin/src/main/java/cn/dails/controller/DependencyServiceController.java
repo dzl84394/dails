@@ -8,6 +8,8 @@ import java.io.IOException;
 
 import cn.dails.base.bean.ResultCode;
 import cn.dails.base.bean.BaseRequest;
+import cn.dails.bean.vo.SubProjectRequestVo;
+import cn.dails.dao.entity.SubProjectEntity;
 import cn.dails.dao.entity.SubServiceEntity;
 import cn.dails.service.ISubServiceService;
 import com.alibaba.fastjson.JSONObject;
@@ -94,9 +96,9 @@ public class DependencyServiceController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<DependencyServiceResponseVo>> findList(HttpServletRequest request) {
-		DependencyServiceRequestVo vo = new DependencyServiceRequestVo();
+	@RequestMapping(value = { "findList" })
+	public BaseResponse<List<DependencyServiceResponseVo>> findList(HttpServletRequest request,@RequestBody BaseRequest<JSONObject> obj) {
+		DependencyServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), DependencyServiceRequestVo.class);
 		List<DependencyServiceEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

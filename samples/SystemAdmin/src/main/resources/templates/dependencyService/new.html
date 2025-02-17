@@ -109,6 +109,12 @@
 		var selectedValue = $(this).val();
 		findSubService(selectedValue,'subServiceSnb');
 	});
+	$("#subServiceSnb").change(function() {
+		var selectedOption = $(this).find("option:selected");
+		var subTypeValue = selectedOption.attr("subType"); // 获取选中项的 subType 值
+		$("#serviceTypeb").val(subTypeValue); // 将 subType 值赋给 input
+	});
+
 </script>
 
 

@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 
+import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -40,11 +41,15 @@ public class DependencyServiceService extends ServiceImpl<DependencyServiceDao,D
 
           return page;
       }
-
       @Override
       public List<DependencyServiceEntity> findList(DependencyServiceRequestVo vo) {
           LambdaQueryWrapper<DependencyServiceEntity> wrapper = new LambdaQueryWrapper<>();
-
+          if (!Strings.isNullOrEmpty(vo.getSubProjectSna())){
+              wrapper.eq(DependencyServiceEntity::getSubProjectSna,vo.getSubProjectSna());
+          }
+          if (!Strings.isNullOrEmpty(vo.getSubServiceSna())){
+              wrapper.eq(DependencyServiceEntity::getServiceTypea,vo.getSubServiceSna());
+          }
           List<DependencyServiceEntity> list = dao.selectList(wrapper);
           return list;
       }

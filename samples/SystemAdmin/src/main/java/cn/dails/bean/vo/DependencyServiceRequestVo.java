@@ -5,5 +5,6 @@ import lombok.Data;
 
 @Data
 public class DependencyServiceRequestVo extends PageVo {
-
+    private String subProjectSna;
+    private String subServiceSna;
 }

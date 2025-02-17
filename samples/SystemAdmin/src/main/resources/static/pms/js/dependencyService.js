@@ -40,11 +40,11 @@ function findPage(){
                  + "<td>"+index.subProjectSna+"</td>"
                  + "<td>"+index.subServiceSna+"</td>"
                  + "<td>"+index.namea+"</td>"
-                 + "<td>"+index.bid+"</td>"
-                 + "<td>"+index.serviceTypeb+"</td>"
+
                  + "<td>"+index.subProjectSnb+"</td>"
                  + "<td>"+index.subServiceSnb+"</td>"
-                 + "<td>"+index.nameb+"</td>"
+                 + "<td>"+index.serviceTypeb+"</td>"
+
 
 				+"<td><a class='btn btn-info btn-sm' href='/dependencyService/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/dependencyService/editView?id="+index.id+"'>编辑</a>"
@@ -230,7 +230,9 @@ function findSubService(subProjectSn,divid,selectedValue){
             data1List.empty();
 
              $.each(confs, function(index, value) {
-                 var option = $("<option>").text(value.serviceName).attr("value", value.serviceSn	);
+                 var option = $("<option>").text(value.serviceName)
+                 .attr("value", value.serviceSn	)
+                 .attr("subType", value.subType);;
                  if (selectedValue) {
                      if (value.projectSn === selectedValue) {
                          option.attr("selected", "selected"); // 选中该选项

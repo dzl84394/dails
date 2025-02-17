@@ -289,3 +289,51 @@ function checkEureka(id) {
         }
     })
 }
+
+
+
+function findService_dependency(subProjectSn,subServiceSn){
+	var data = new Object();
+	data.subProjectSna  = subProjectSn;
+	data.subServiceSna  = subServiceSn;
+
+	$.ajax({
+        type : "post",
+        url : "/dependencyService/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            if(result.resultCode != '200'){
+                alert("接口异常")
+                return;
+            }
+
+
+ 			var listDiv = $("#service_dependency_list_div")
+
+            listDiv.empty();
+            var temp = "";
+
+			/*<![CDATA[*/
+		    for (var i = 0; i <  result.data.length; i++) {
+			    var index = result.data[i];
+				temp += "<tr>"
+                 + "<td>"+index.id+"</td>"
+                 + "<td>"+index.subProjectSnb+"</td>"
+                 + "<td>"+index.subServiceSnb+"</td>"
+                 + "<td>"+index.serviceTypeb+"</td>"
+
+				+"<td><a class='btn btn-info btn-sm' href='/subService/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/subService/editView?id="+index.id+"'>编辑</a>"
+				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
+				+"</td></tr>"
+			}
+			listDiv.append(temp)
+				/*]]>*/
+		}
+	})
+}
