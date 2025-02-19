@@ -24,5 +24,5 @@ public class SubApiScopeEntity extends BaseEntity implements Serializable {
     private String serviceSn;// application serviceName
     private String scope;//子系统内，企业内，公共
 
-    private String parentScope;//父节点，正常情况下是没有二级节点的
+    private Long parentId;//父节点，正常情况下是没有二级节点的
 }
