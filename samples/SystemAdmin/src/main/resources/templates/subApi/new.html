@@ -37,37 +37,22 @@
 							<input type='text' class='form-control' name='serviceSn' id='serviceSn' th:value='${obj.serviceSn}'/>
 						</div>
 					</div>
+
+
 						<div class='form-group col-lg-12'>
-							<label for='serviceSn' class='col-sm-2 control-label'>业务分类</label>
+							<label for='scope' class='col-sm-2 control-label'>业务域</label>
 							<div class='col-sm-10'>
-								<input type='text' class='form-control' name='bizGroup' id='bizGroup' th:value='${obj.bizGroup}'/>
+								<input type='text' class='form-control' name='scope' id='scope' th:value='${obj.scope}'/>
 							</div>
 						</div>
 
                <div class='form-group col-lg-12'> 
-						<label for='apiName' class='col-sm-2 control-label'>apiName</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='apiName' id='apiName' th:value='${obj.apiName}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='apiStstus' class='col-sm-2 control-label'>apiStstus</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='apiStstus' id='apiStstus' th:value='${obj.apiStstus}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='datail' class='col-sm-2 control-label'>datail</label>
+						<label for='datail' class='col-sm-2 control-label'>描述</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='datail' id='datail' th:value='${obj.datail}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='scope' class='col-sm-2 control-label'>scope</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='scope' id='scope' th:value='${obj.scope}'/>
-						</div>
-					</div>
+
                <div class='form-group col-lg-12'> 
 						<label for='apiType' class='col-sm-2 control-label'>apiType</label>
 						<div class='col-sm-10'>
@@ -81,18 +66,18 @@
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='protocol' class='col-sm-2 control-label'>protocol</label>
+						<label for='protocol' class='col-sm-2 control-label'>https还是http</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='protocol' id='protocol' th:value='${obj.protocol}'/>
 						</div>
 					</div>
                <div class='form-group col-lg-12'> 
-						<label for='level' class='col-sm-2 control-label'>level</label>
+						<label for='level' class='col-sm-2 control-label'>等级</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='level' id='level' th:value='${obj.level}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-12'>
 						<label for='url' class='col-sm-2 control-label'>url</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='url' id='url' th:value='${obj.url}'/>

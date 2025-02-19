@@ -8,6 +8,7 @@ import cn.dails.dao.entity.SubServiceEntity;
 import cn.dails.service.ISubApiService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -37,7 +38,7 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
         page.setSize(vo.getSize());
 
         LambdaQueryWrapper<SubApiEntity> wrapper = new LambdaQueryWrapper<>();
-        wrapper.orderByDesc(SubApiEntity::getCreateDate);
+        wrapper.orderByAsc(SubApiEntity::getServiceSn).orderByAsc(SubApiEntity::getPath);
         page = dao.selectPage(page, wrapper);
 
         return page;
@@ -76,20 +77,27 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
             JSONObject requestMappingConditions = details.getJSONObject("requestMappingConditions");
             String methods = requestMappingConditions.getString("methods");
             String patterns = requestMappingConditions.getString("patterns");
+
+            List<String> list = JSON.parseArray(patterns, String.class);
+
             log.info("className:{}", className);
             log.info("methodName:{}", methodName);
 
             log.info("methods:{}", methods);
             log.info("patterns:{}", patterns);
-            SubApiEntity apiEntity = new SubApiEntity();
-            apiEntity.setProjectSn(subServiceEntity.getSubProjectSn());
-            apiEntity.setServiceSn(subServiceEntity.getServiceSn());
-            apiEntity.setClassName(className);
-            apiEntity.setMethodName(methodName);
-            apiEntity.setMethod(methods);
-            apiEntity.setPath(patterns);
+            for (String path: list){
+                SubApiEntity apiEntity = new SubApiEntity();
+                apiEntity.setProjectSn(subServiceEntity.getSubProjectSn());
+                apiEntity.setServiceSn(subServiceEntity.getServiceSn());
+                apiEntity.setClassName(className);
+                apiEntity.setMethodName(methodName);
+                apiEntity.setMethod(methods);
+                apiEntity.setPath(path);
+                save(apiEntity);
+            }
 
-            save(apiEntity);
+
+
         }
 
     }

@@ -132,7 +132,7 @@
                     <div class="col-sm-offset-8 col-sm-4" id = 'opsdiv'>
                         <a type="button" class="btn btn-success" th:href="@{'/subService/indexView'}">返回列表</a>
                         <a type="button" class="btn btn-info" th:href="@{'/subService/editView?id='+${id}}">编辑</a>
-                        <a type="button" class="btn btn-info"   th:if="${obj.subType == 'biz'}"  th:attr="onclick='saveActuatorMapping(' + ${id} + ')'">获取mapping</a>
+                        <a type="button" class="btn btn-info"   th:if="${obj.clsType == 'biz'}"  th:attr="onclick='saveActuatorMapping(' + ${id} + ')'">获取mapping</a>
                         <a type="button" class="btn btn-info"   th:href="@{'/dependencyService/addView?id='+${id}}">添加依赖</a>
 
                         <a type="button" class="btn btn-info"   th:if="${obj.subType == 'eureka'}"  th:attr="onclick='checkEureka(' + ${id} + ')'">获取eureka</a>

@@ -1,7 +1,7 @@
 
 function findPage(){
 	var data = new Object();
-	data.size  = 10;
+	data.size  = 20;
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
@@ -37,7 +37,7 @@ function findPage(){
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
-                 + "<td>"+index.apiName+"</td>"
+                 + "<td>"+index.bizGroup+"</td>"
                  + "<td>"+index.path+"</td>"
 
 

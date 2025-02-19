@@ -22,22 +22,21 @@ public class SubApiEntity extends BaseEntity implements Serializable {
 
     private String projectSn;
     private String serviceSn;// application serviceName
-    private String bizGroup;//业务域
-    private String apiName;//findList
+    private String scope;//子系统内，企业内，公共
     private String className;//cn.dails.controller.SubServiceController
-    private String methodName;//类里面的函数名findList
+    private String methodName;//类里面的函数名 findList
 
     private String path;
     private String apiStstus;//0 启用，1禁止
     private String datail;
-    private String scope;//子系统内，企业内，公共
+
     private String apiType;//技术api，客户api（客户经营，客户管理，业务流程），管理员api
 
     private String method;//GET,POST,PUT,DELETE，PATCH部分修改
     private String protocol;//http,https
     private String level;//等级，1级是核心，2级普通，3级无所谓
 
-    private String url;
+    private String url;//http://baidu.com/find?namd=abc
     private String host;//domain
     private int port;
     private String headerParms;
