@@ -1,11 +1,11 @@
 
 function findPage(){
 	var data = new Object();
-	data.size  = 20;
+	data.size  = 10;
 	data.currentPage  = currentPage;
 	$.ajax({
         type : "post",
-        url : "/subApi/findPage",
+        url : "/subApiScope/findPage",
         contentType: 'application/json',
         dataType: "json",
         data : JSON.stringify({
@@ -38,11 +38,10 @@ function findPage(){
                  + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
                  + "<td>"+index.scope+"</td>"
-                 + "<td>"+index.path+"</td>"
+                 + "<td>"+index.parentId+"</td>"
 
-
-				+"<td><a class='btn btn-info btn-sm' href='/subApi/showView?id="+index.id+"'>展示</a>"
-				+"<a class='btn btn-primary btn-sm' href='/subApi/editView?id="+index.id+"'>编辑</a>"
+				+"<td><a class='btn btn-info btn-sm' href='/subApiScope/showView?id="+index.id+"'>展示</a>"
+				+"<a class='btn btn-primary btn-sm' href='/subApiScope/editView?id="+index.id+"'>编辑</a>"
 				+"<a class='btn btn-danger btn-sm' onclick=\"deleteObj("+index.id+")\">删除</a>"
 				+"</td></tr>"
 			}
@@ -84,29 +83,12 @@ function save(){
       data.id = $('#id').val();
   data.projectSn = $('#projectSn').val();
   data.serviceSn = $('#serviceSn').val();
-  data.apiName = $('#apiName').val();
-  data.apiStstus = $('#apiStstus').val();
-  data.datail = $('#datail').val();
   data.scope = $('#scope').val();
-  data.apiType = $('#apiType').val();
-  data.method = $('#method').val();
-  data.protocol = $('#protocol').val();
-  data.level = $('#level').val();
-  data.url = $('#url').val();
-  data.host = $('#host').val();
-  data.port = $('#port').val();
-  data.path = $('#path').val();
-  data.headerParms = $('#headerParms').val();
-  data.urlParms = $('#urlParms').val();
-  data.pathParms = $('#pathParms').val();
-  data.requestBody = $('#requestBody').val();
-  data.response = $('#response').val();
-  data.requestDemo = $('#requestDemo').val();
-  data.responseDemo = $('#responseDemo').val();
+  data.parentId = $('#parentId').val();
 
     $.ajax({
         type: "post",
-        url: "/subApi/save",
+        url: "/subApiScope/save",
         contentType: 'application/json',
         dataType: "json",
         data: JSON.stringify({
@@ -117,7 +99,7 @@ function save(){
                 alert("接口异常")
                 return;
             }
-            go("/subApi/indexView");
+            go("/subApiScope/indexView");
         }
    })
 }
@@ -125,7 +107,7 @@ function save(){
 function show(){
     $.ajax({
         type: "get",
-        url: "/subApi/findById",
+        url: "/subApiScope/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -141,25 +123,8 @@ function show(){
                $("#id").text( index.id);
   $("#projectSn").text( index.projectSn);
   $("#serviceSn").text( index.serviceSn);
-  $("#apiName").text( index.apiName);
-  $("#apiStstus").text( index.apiStstus);
-  $("#datail").text( index.datail);
   $("#scope").text( index.scope);
-  $("#apiType").text( index.apiType);
-  $("#method").text( index.method);
-  $("#protocol").text( index.protocol);
-  $("#level").text( index.level);
-  $("#url").text( index.url);
-  $("#host").text( index.host);
-  $("#port").text( index.port);
-  $("#path").text( index.path);
-  $("#headerParms").text( index.headerParms);
-  $("#urlParms").text( index.urlParms);
-  $("#pathParms").text( index.pathParms);
-  $("#requestBody").text( index.requestBody);
-  $("#response").text( index.response);
-  $("#requestDemo").text( index.requestDemo);
-  $("#responseDemo").text( index.responseDemo);
+  $("#parentId").text( index.parentId);
 
 
 
@@ -170,7 +135,7 @@ function show(){
 function editshow(){
     $.ajax({
         type: "get",
-        url: "/subApi/findById",
+        url: "/subApiScope/findById",
         contentType: 'application/json',
         dataType: "json",
         data: {
@@ -185,25 +150,8 @@ function editshow(){
               $("#id").val( index.id);
   $("#projectSn").val( index.projectSn);
   $("#serviceSn").val( index.serviceSn);
-  $("#apiName").val( index.apiName);
-  $("#apiStstus").val( index.apiStstus);
-  $("#datail").val( index.datail);
   $("#scope").val( index.scope);
-  $("#apiType").val( index.apiType);
-  $("#method").val( index.method);
-  $("#protocol").val( index.protocol);
-  $("#level").val( index.level);
-  $("#url").val( index.url);
-  $("#host").val( index.host);
-  $("#port").val( index.port);
-  $("#path").val( index.path);
-  $("#headerParms").val( index.headerParms);
-  $("#urlParms").val( index.urlParms);
-  $("#pathParms").val( index.pathParms);
-  $("#requestBody").val( index.requestBody);
-  $("#response").val( index.response);
-  $("#requestDemo").val( index.requestDemo);
-  $("#responseDemo").val( index.responseDemo);
+  $("#parentId").val( index.parentId);
 
 
         }
@@ -218,7 +166,7 @@ function deleteObj(id){
     if (isOK) {
         $.ajax({
             type: "post",
-            url: "/subApi/deleteById",
+            url: "/subApiScope/deleteById",
             contentType: 'application/json',
             dataType: "json",
             data: JSON.stringify({
@@ -229,11 +177,10 @@ function deleteObj(id){
                     alert("接口异常")
                     return;
                 }
-                go("/subApi/indexView");
+                go("/subApiScope/indexView");
             }
         })
    }
 }
 
-
-setActive("nav_subApi");
+setActive("nav_subApiScope");

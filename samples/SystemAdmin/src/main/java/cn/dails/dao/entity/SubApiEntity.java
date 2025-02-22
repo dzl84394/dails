@@ -30,9 +30,9 @@ public class SubApiEntity extends BaseEntity implements Serializable {
     private String apiStstus;//0 启用，1禁止
     private String datail;
 
-    private String apiType;//技术api，客户api（客户经营，客户管理，业务流程），管理员api
+//    private String apiType;//技术api，业务api（客户经营，客户管理，业务流程），管理员api
 
-    private String method;//GET,POST,PUT,DELETE，PATCH部分修改
+    private String method;// GET,POST,PUT,DELETE，PATCH部分修改
     private String protocol;//http,https
     private String level;//等级，1级是核心，2级普通，3级无所谓
 

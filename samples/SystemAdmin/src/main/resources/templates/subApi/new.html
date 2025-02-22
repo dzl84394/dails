@@ -23,121 +23,124 @@
 					<form id="subApiForm"  class="form-horizontal"  th:action="@{/subApi/save}" th:method="post"
 						  th:object="${obj}">
 						<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
-							               <div class='form-group col-lg-12'> 
-						<label for='projectSn' class='col-sm-2 control-label'>projectSn</label>
+							               <div class='form-group col-lg-6'> 
+						<label for='projectSn' class='col-sm-2 control-label'>子系统</label>
 						<div class='col-sm-10'>
 							<select class="form-control" name='projectSn' id='projectSn' th:value='${obj.projectSn}'>
 							</select>
 
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='serviceSn' class='col-sm-2 control-label'>serviceSn</label>
+               <div class='form-group col-lg-6'> 
+						<label for='serviceSn' class='col-sm-2 control-label'>服务</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='serviceSn' id='serviceSn' th:value='${obj.serviceSn}'/>
 						</div>
 					</div>
 
 
-						<div class='form-group col-lg-12'>
+						<div class='form-group col-lg-6'>
 							<label for='scope' class='col-sm-2 control-label'>业务域</label>
 							<div class='col-sm-10'>
 								<input type='text' class='form-control' name='scope' id='scope' th:value='${obj.scope}'/>
 							</div>
 						</div>
 
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='datail' class='col-sm-2 control-label'>描述</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='datail' id='datail' th:value='${obj.datail}'/>
 						</div>
 					</div>
 
-               <div class='form-group col-lg-12'> 
-						<label for='apiType' class='col-sm-2 control-label'>apiType</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='apiType' id='apiType' th:value='${obj.apiType}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
+
+               <div class='form-group col-lg-6'> 
 						<label for='method' class='col-sm-2 control-label'>method</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='method' id='method' th:value='${obj.method}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='protocol' class='col-sm-2 control-label'>https还是http</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='protocol' id='protocol' th:value='${obj.protocol}'/>
+							<select class="form-control" name='protocol' id='protocol' th:value='${obj.protocol}'>
+								<option value="http" th:selected="${obj.protocol == 'http'}">http</option>
+								<option value="https" th:selected="${obj.protocol == 'https'}">https</option>
+							</select>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='level' class='col-sm-2 control-label'>等级</label>
 						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='level' id='level' th:value='${obj.level}'/>
+							<select class="form-control" name='level' id='level' th:value='${obj.level}'>
+								<option value="关键" th:selected="${obj.level == '关键'}">关键</option>
+								<option value="普通" th:selected="${obj.level == '普通'}">普通</option>
+								<option value="无所谓" th:selected="${obj.level == '无所谓'}">无所谓</option>
+							</select>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'>
-						<label for='url' class='col-sm-2 control-label'>url</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='url' id='url' th:value='${obj.url}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='host' class='col-sm-2 control-label'>host</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='host' id='host' th:value='${obj.host}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='port' class='col-sm-2 control-label'>port</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='port' id='port' th:value='${obj.port}'/>
-						</div>
-					</div>
-               <div class='form-group col-lg-12'> 
+<!--               <div class='form-group col-lg-6'>-->
+<!--						<label for='url' class='col-sm-2 control-label'>url</label>-->
+<!--						<div class='col-sm-10'>-->
+<!--							<input type='text' class='form-control' name='url' id='url' th:value='${obj.url}'/>-->
+<!--						</div>-->
+<!--					</div>-->
+					<div class='form-group col-lg-6'>
 						<label for='path' class='col-sm-2 control-label'>path</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='path' id='path' th:value='${obj.path}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+<!--               <div class='form-group col-lg-6'> -->
+<!--						<label for='host' class='col-sm-2 control-label'>host</label>-->
+<!--						<div class='col-sm-10'>-->
+<!--							<input type='text' class='form-control' name='host' id='host' th:value='${obj.host}'/>-->
+<!--						</div>-->
+<!--					</div>-->
+<!--               <div class='form-group col-lg-6'> -->
+<!--						<label for='port' class='col-sm-2 control-label'>port</label>-->
+<!--						<div class='col-sm-10'>-->
+<!--							<input type='text' class='form-control' name='port' id='port' th:value='${obj.port}'/>-->
+<!--						</div>-->
+<!--					</div>-->
+
+               <div class='form-group col-lg-6'> 
 						<label for='headerParms' class='col-sm-2 control-label'>headerParms</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='headerParms' id='headerParms' th:value='${obj.headerParms}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='urlParms' class='col-sm-2 control-label'>urlParms</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='urlParms' id='urlParms' th:value='${obj.urlParms}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='pathParms' class='col-sm-2 control-label'>pathParms</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='pathParms' id='pathParms' th:value='${obj.pathParms}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='requestBody' class='col-sm-2 control-label'>requestBody</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='requestBody' id='requestBody' th:value='${obj.requestBody}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='response' class='col-sm-2 control-label'>response</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='response' id='response' th:value='${obj.response}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='requestDemo' class='col-sm-2 control-label'>requestDemo</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='requestDemo' id='requestDemo' th:value='${obj.requestDemo}'/>
 						</div>
 					</div>
-               <div class='form-group col-lg-12'> 
+               <div class='form-group col-lg-6'> 
 						<label for='responseDemo' class='col-sm-2 control-label'>responseDemo</label>
 						<div class='col-sm-10'>
 							<input type='text' class='form-control' name='responseDemo' id='responseDemo' th:value='${obj.responseDemo}'/>
