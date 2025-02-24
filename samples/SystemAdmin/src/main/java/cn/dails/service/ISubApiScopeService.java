@@ -17,5 +17,6 @@ public interface ISubApiScopeService extends IService<SubApiScopeEntity> {
     List<SubApiScopeEntity> findList(SubApiScopeRequestVo vo) ;
 
     SubApiScopeEntity saveByName(SubApiEntity api);
+    SubApiScopeEntity saveByName(String projectSn,String serviceSn,String scope);
 
 }

@@ -5,5 +5,6 @@ import lombok.Data;
 
 @Data
 public class SubApiScopeRequestVo extends PageVo {
-
+    private String projectSn ;
+    private String serviceSn ;
 }

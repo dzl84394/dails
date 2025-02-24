@@ -1,8 +1,11 @@
 
 function findPage(){
 	var data = new Object();
-	data.size  = 20;
+	data.size  =50;
 	data.currentPage  = currentPage;
+	data.path = $('#path').val();
+    data.projectSn = $('#projectSn').val();
+    data.serviceSn = $('#serviceSn').val();
 	$.ajax({
         type : "post",
         url : "/subApi/findPage",
@@ -34,6 +37,7 @@ function findPage(){
 		    for (var i = 0; i <  result.data.records.length; i++) {
 			    var index = result.data.records[i];
 				temp += "<tr>"
+				 + "<td><input type='checkbox' name='selectedIds' value='" + index.id + "' /></td>" // 添加 name 属性
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.projectSn+"</td>"
                  + "<td>"+index.serviceSn+"</td>"
@@ -47,6 +51,17 @@ function findPage(){
 				+"</td></tr>"
 			}
 			listDiv.append(temp)
+
+			// 为每一行添加点击事件
+            $('#tbodylist tr').click(function(event) {
+                // 检查点击的目标是否是复选框
+                var checkbox = $(this).find('input[type="checkbox"]');
+                if (checkbox.length) {
+                    // 切换复选框的选中状态
+                    checkbox.prop('checked', !checkbox.prop('checked'));
+                }
+            });
+
 			var total = result.data.total;
                     // 将数据渲染到页面
                     // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
@@ -234,6 +249,72 @@ function deleteObj(id){
         })
    }
 }
+function updateScope(){
+    var data = new Object();
+	var selectedIds = [];
+    $('input[name="selectedIds"]:checked').each(function() {
+        selectedIds.push($(this).val());
+    });
+    data.selectedIds = selectedIds;
+    data.scope = $('#scope').val();
+    data.projectSn = $('#projectSn').val();
+    data.serviceSn = $('#serviceSn').val();
 
+    $.ajax({
+        type: "post",
+        url: "/subApi/updateScope",
+        contentType: 'application/json',
+        dataType: "json",
+        data: JSON.stringify({
+            data
+        }),
+        success: function (result) {
+            if(result.resultCode != '200'){
+                alert("接口异常\n"+result.message)
+                return;
+            }
+            go("/subApi/indexView");
+        }
+    })
+}
+
+
+function initSidebar(){
+    var data = new Object();
+    data.projectSn = $('#projectSn').val();
+    data.serviceSn = $('#serviceSn').val();
+    $.ajax({
+        type : "post",
+        url : "/subApiScope/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $('#subApi_sidebar_div');
+            // 清空datalist元素
+            data1List.empty();
+
+            $.each(confs, function(index, value) {
+                 // 创建一个链接元素
+                   var link = $("<a>")
+                       .attr("href", "/subApi/indexView?scope=" + value.scope) // 设置链接地址
+                       .addClass("list-group-item") // 添加类名
+                       .text(value.scope); // 设置链接文本
+
+
+                data1List.append(link);
+            });
+
+
+        }
+    })
+
+}
+initSidebar();
 
 setActive("nav_subApi");

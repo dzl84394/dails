@@ -5,5 +5,8 @@ import lombok.Data;
 
 @Data
 public class SubApiRequestVo extends PageVo {
+    private String path;
 
+    private String projectSn ;
+    private String serviceSn ;
 }

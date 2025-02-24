@@ -84,9 +84,9 @@ public class SubApiScopeController {
 		response.setData(page);
 		return response;
 	}
-	@RequestMapping(value = { "findList" }, method = { RequestMethod.GET })
-	public BaseResponse<List<SubApiScopeResponseVo>> findList(HttpServletRequest request) {
-		SubApiScopeRequestVo vo = new SubApiScopeRequestVo();
+	@RequestMapping(value = { "findList" }, method = { RequestMethod.POST })
+	public BaseResponse<List<SubApiScopeResponseVo>> findList(@RequestBody BaseRequest<JSONObject> obj) {
+		SubApiScopeRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubApiScopeRequestVo.class);
 		List<SubApiScopeEntity> objs = service.findList(vo);
 		BaseResponse response = new BaseResponse();
 		response.buildSuccess();

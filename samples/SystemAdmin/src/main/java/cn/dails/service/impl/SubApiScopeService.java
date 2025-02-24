@@ -27,29 +27,28 @@ import cn.dails.bean.vo.SubApiScopeRequestVo;
 @Slf4j
 public class SubApiScopeService extends ServiceImpl<SubApiScopeDao,SubApiScopeEntity> implements ISubApiScopeService {
 
-   @Autowired
-      private SubApiScopeDao dao;
+    @Autowired
+    private SubApiScopeDao dao;
+    @Override
+    public IPage<SubApiScopeEntity> findPage(SubApiScopeRequestVo vo) {
+        IPage<SubApiScopeEntity> page = new Page<>();
+        page.setCurrent(vo.getCurrentPage());
+        page.setSize(vo.getSize());
 
-      @Override
-      public IPage<SubApiScopeEntity> findPage(SubApiScopeRequestVo vo) {
-          IPage<SubApiScopeEntity> page = new Page<>();
-          page.setCurrent(vo.getCurrentPage());
-          page.setSize(vo.getSize());
+        LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.orderByDesc(SubApiScopeEntity::getCreateDate);
+        page = dao.selectPage(page,wrapper);
 
-          LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
-           wrapper.orderByDesc(SubApiScopeEntity::getCreateDate);
-          page = dao.selectPage(page,wrapper);
+       return page;
+    }
 
-          return page;
-      }
+    @Override
+    public List<SubApiScopeEntity> findList(SubApiScopeRequestVo vo) {
+        LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
 
-      @Override
-      public List<SubApiScopeEntity> findList(SubApiScopeRequestVo vo) {
-          LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
-
-          List<SubApiScopeEntity> list = dao.selectList(wrapper);
-          return list;
-      }
+        List<SubApiScopeEntity> list = dao.selectList(wrapper);
+        return list;
+    }
 
     @Override
     public SubApiScopeEntity saveByName(SubApiEntity api) {
@@ -63,6 +62,22 @@ public class SubApiScopeService extends ServiceImpl<SubApiScopeDao,SubApiScopeEn
             entity.setProjectSn(api.getProjectSn());
             entity.setServiceSn(api.getServiceSn());
             entity.setScope(api.getScope());
+            dao.insert(entity);
+        }
+        return entity;
+    }
+    @Override
+    public SubApiScopeEntity saveByName(String projectSn,String serviceSn,String scope) {
+        LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(SubApiScopeEntity::getProjectSn,projectSn);
+        wrapper.eq(SubApiScopeEntity::getServiceSn,serviceSn);
+        wrapper.eq(SubApiScopeEntity::getScope,scope);
+        SubApiScopeEntity entity = dao.selectOne(wrapper);
+        if (entity==null){
+            entity = new SubApiScopeEntity();
+            entity.setProjectSn(projectSn);
+            entity.setServiceSn(serviceSn);
+            entity.setScope(scope);
             dao.insert(entity);
         }
         return entity;

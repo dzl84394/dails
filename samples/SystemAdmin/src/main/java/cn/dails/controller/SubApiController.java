@@ -3,11 +3,13 @@ package cn.dails.controller;
 
 import cn.dails.base.bean.BaseRequest;
 import cn.dails.base.bean.BaseResponse;
+import cn.dails.base.bean.ResultCode;
 import cn.dails.bean.vo.SubApiRequestVo;
 import cn.dails.bean.vo.SubApiResponseVo;
 import cn.dails.dao.entity.SubApiEntity;
 import cn.dails.service.ISubApiScopeService;
 import cn.dails.service.ISubApiService;
+import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +20,8 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -149,6 +153,25 @@ public class SubApiController {
 
         response.sendRedirect("indexView");
     }
+
+	@RequestMapping(value = { "updateScope" }, method = { RequestMethod.POST })
+	public BaseResponse updateScope(@RequestBody BaseRequest<JSONObject> obj) throws IOException {
+		String scope = obj.getData().getString("scope");
+		JSONArray selectedIds = obj.getData().getJSONArray("selectedIds");
+
+		String[] array2 = (String[]) selectedIds.toArray(new String[0]);
+		List<String> list2 = new ArrayList<>(Arrays.asList(array2));
+		if (list2.isEmpty()){
+			return new BaseResponse().buildFaild(ResultCode.FAILED5001);
+		}
+		String projectSn = obj.getData().getString("projectSn");
+		String serviceSn = obj.getData().getString("serviceSn");
+		service.updateScope(projectSn,serviceSn,list2,scope);
+		scopeService.saveByName(projectSn,serviceSn,scope);
+		return new BaseResponse().ok();
+	}
+
+
 
 
 	

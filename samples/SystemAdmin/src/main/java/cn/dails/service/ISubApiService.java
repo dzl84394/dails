@@ -16,4 +16,6 @@ public interface ISubApiService extends IService<SubApiEntity> {
 
     List<SubApiEntity> findList(SubApiRequestVo vo) ;
     void checkMappings(SubServiceEntity subServiceEntity);
+
+    void updateScope(String projectSn,String serviceSn,List<String> ids,String scope );
 }

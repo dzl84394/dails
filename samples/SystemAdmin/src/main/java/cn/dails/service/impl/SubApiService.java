@@ -11,9 +11,11 @@ import com.alibaba.fastjson.JSONObject;
 import com.alibaba.fastjson2.JSON;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.common.base.Strings;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +40,17 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
         page.setSize(vo.getSize());
 
         LambdaQueryWrapper<SubApiEntity> wrapper = new LambdaQueryWrapper<>();
+        if (!Strings.isNullOrEmpty(vo.getPath())){
+            wrapper.like(SubApiEntity::getPath,vo.getPath());
+        }
+        if (!Strings.isNullOrEmpty(vo.getProjectSn())){
+            wrapper.like(SubApiEntity::getProjectSn,vo.getProjectSn());
+        }
+
+        if (!Strings.isNullOrEmpty(vo.getServiceSn())){
+            wrapper.like(SubApiEntity::getServiceSn,vo.getServiceSn());
+        }
+
         wrapper.orderByAsc(SubApiEntity::getServiceSn).orderByAsc(SubApiEntity::getPath);
         page = dao.selectPage(page, wrapper);
 
@@ -47,7 +60,16 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
     @Override
     public List<SubApiEntity> findList(SubApiRequestVo vo) {
         LambdaQueryWrapper<SubApiEntity> wrapper = new LambdaQueryWrapper<>();
+        if (!Strings.isNullOrEmpty(vo.getPath())){
+            wrapper.like(SubApiEntity::getPath,vo.getPath());
+        }
+        if (!Strings.isNullOrEmpty(vo.getProjectSn())){
+            wrapper.like(SubApiEntity::getProjectSn,vo.getProjectSn());
+        }
 
+        if (!Strings.isNullOrEmpty(vo.getServiceSn())){
+            wrapper.like(SubApiEntity::getServiceSn,vo.getServiceSn());
+        }
         List<SubApiEntity> list = dao.selectList(wrapper);
         return list;
     }
@@ -100,6 +122,20 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
 
         }
 
+    }
+
+    @Override
+    public void updateScope(String projectSn, String serviceSn, List<String> ids, String scope) {
+//        LambdaQueryWrapper<SubApiEntity> wrapper = new LambdaQueryWrapper<>();
+        UpdateWrapper<SubApiEntity> wrapper = new UpdateWrapper<>();
+        if (!ids.isEmpty()){
+            wrapper.in("id", ids); // 根据 ID 条件更新
+        }
+        // 创建要更新的实体对象
+        SubApiEntity updateEntity = new SubApiEntity();
+        updateEntity.setScope(scope); // 设置新的 scope 值
+        // 执行更新
+        this.update(updateEntity, wrapper);
     }
 
 

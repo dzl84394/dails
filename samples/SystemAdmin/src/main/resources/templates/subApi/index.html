@@ -17,12 +17,37 @@
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>subApi 列表</h3>
 
+				<div class="col-sm-12 col-lg-12  custom-panel">
+					<div class='col-sm-2'>
+						<select class="form-control" name='projectSn' id='projectSn'  placeholder="选择子系统" >
+						</select>
+
+					</div>
+					<div class='col-sm-2'>
+						<select class="form-control" name='serviceSn' id='serviceSn'  placeholder="选择微服务" >
+						</select>
+
+					</div>
+
+
+					<div class='col-md-2'>
+						<input type="text" id="path" class="form-control"  placeholder="path" />
+					</div>
+					<div class='col-md-2'>
+						<input type="text" id="scope" class="form-control"  placeholder="scope" />
+					</div>
+
+					<div class='col-md-3 col-md-offset-1' id="searchDiv">
+						<!--						<button class="btn btn-default " type="btn btn-default" onclick="resetPage()">重置</button>-->
+						<button class="btn btn-default " type="btn btn-default" onclick="findPage()">搜索</button>
+						<button class="btn btn-default " type="btn btn-default" onclick="updateScope()">调整业务域</button>
+					</div>
+				</div>
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="span12 table table-striped">
 						<thead>
-
-
 							<tr>
+								<td>选择</td>
 								<td>id</td>
 								<td>projectSn</td>
 								<td>serviceSn</td>
@@ -68,11 +93,17 @@
 <script type="text/javascript" src="/static/pms/js/subApi.js"></script>
 <script th:inline="javascript">
 	$(document).ready(function() {
-
+		findSubProjectList('#projectSn');
+		findServiceList('#serviceSn')
 	})
 	var currentPage = 1;
     var pageSize = 5;
 
 	findPage();
+
+	 $('#projectSn').change(function() {
+        var projectSn = $(this).val();
+        findServiceList('#serviceSn',projectSn)
+	})
 </script>
 </html>

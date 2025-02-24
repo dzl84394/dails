@@ -499,7 +499,7 @@ function setParameterValue(key,value){
 
 
 
-function findSubProjectList(projectSn,selectedValue){
+function findSubProjectList(projectSndiv,selectedValue){
     var data = new Object();
 
     $.ajax({
@@ -514,15 +514,20 @@ function findSubProjectList(projectSn,selectedValue){
         success : function(result) {
             let confs = result.data;
             // 找到datalist元素
-            let data1List = $(projectSn);
+            let data1List = $(projectSndiv);
             // 清空datalist元素
             data1List.empty();
 
             $.each(confs, function(index, value) {
-                var option = $("<option>").text(value.name).attr("value", value.projectSn	);
+                var option = $("<option>").text(value.projectSn).attr("value", value.projectSn	);
                 if (selectedValue) {
                     if (value.projectSn === selectedValue) {
                         option.attr("selected", "selected"); // 选中该选项
+                    }
+                }else{
+                 // 如果没有选中的值，将第一个选项设置为选中
+                    if (index === 0) {
+                        option.attr("selected", "selected");
                     }
                 }
                 data1List.append(option);
@@ -531,4 +536,45 @@ function findSubProjectList(projectSn,selectedValue){
 
         }
     })
+}
+
+function findServiceList(serviceSnDiv,subProjectSn,serviceSn){
+    var data = new Object();
+    data.subProjectSn = subProjectSn;
+    data.clsType='biz';
+    $.ajax({
+        type : "post",
+        url : "/subService/findList",
+        contentType: 'application/json',
+        dataType: "json",
+        data : JSON.stringify({
+            data
+        }),
+        async : false,
+        success : function(result) {
+            let confs = result.data;
+            // 找到datalist元素
+            let data1List = $(serviceSnDiv);
+            // 清空datalist元素
+            data1List.empty();
+
+            $.each(confs, function(index, value) {
+                var option = $("<option>").text(value.serviceSn).attr("value", value.serviceSn	);
+                if (serviceSn) {
+                    if (value.projectSn === serviceSn) {
+                        option.attr("selected", "selected"); // 选中该选项
+                    }
+                }else{
+                     // 如果没有选中的值，将第一个选项设置为选中
+                     if (index === 0) {
+                         option.attr("selected", "selected");
+                     }
+                }
+                data1List.append(option);
+            });
+
+
+        }
+    })
+
 }

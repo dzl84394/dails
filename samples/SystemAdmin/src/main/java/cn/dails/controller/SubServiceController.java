@@ -80,7 +80,7 @@ public class SubServiceController {
 
 
 	@RequestMapping(value = { "findPage" }, method = { RequestMethod.POST })
-	public BaseResponse<IPage<SubServiceResponseVo>> findPage(@RequestBody BaseRequest<JSONObject> obj) {
+	public BaseResponse<IPage<SubServiceEntity>> findPage(@RequestBody BaseRequest<JSONObject> obj) {
 		log.info("入参：{}",JSONObject.toJSONString(obj));
 		SubServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubServiceRequestVo.class);
 		BaseResponse response = new BaseResponse();
@@ -91,7 +91,7 @@ public class SubServiceController {
 		return response;
 	}
 	@RequestMapping(value = { "findList" })
-	public BaseResponse<List<SubServiceResponseVo>> findList(HttpServletRequest request,@RequestBody BaseRequest<JSONObject> obj) {
+	public BaseResponse<List<SubServiceEntity>> findList(HttpServletRequest request,@RequestBody BaseRequest<JSONObject> obj) {
 
 		SubServiceRequestVo vo = JSONObject.toJavaObject(obj.getData(), SubServiceRequestVo.class);
 		log.info(JSONObject.toJSONString(vo));
