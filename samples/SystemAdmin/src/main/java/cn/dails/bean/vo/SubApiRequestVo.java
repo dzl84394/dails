@@ -9,4 +9,5 @@ public class SubApiRequestVo extends PageVo {
 
     private String projectSn ;
     private String serviceSn ;
+    private String scope ;
 }

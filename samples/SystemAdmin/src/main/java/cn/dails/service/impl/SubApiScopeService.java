@@ -8,6 +8,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 
 
+import com.google.common.base.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import lombok.extern.slf4j.Slf4j;
@@ -36,6 +37,12 @@ public class SubApiScopeService extends ServiceImpl<SubApiScopeDao,SubApiScopeEn
         page.setSize(vo.getSize());
 
         LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
+        if (!Strings.isNullOrEmpty(vo.getProjectSn())){
+            wrapper.eq(SubApiScopeEntity::getProjectSn,vo.getProjectSn());
+        }
+        if (!Strings.isNullOrEmpty(vo.getServiceSn())){
+            wrapper.eq(SubApiScopeEntity::getServiceSn,vo.getServiceSn());
+        }
         wrapper.orderByDesc(SubApiScopeEntity::getCreateDate);
         page = dao.selectPage(page,wrapper);
 
@@ -45,7 +52,12 @@ public class SubApiScopeService extends ServiceImpl<SubApiScopeDao,SubApiScopeEn
     @Override
     public List<SubApiScopeEntity> findList(SubApiScopeRequestVo vo) {
         LambdaQueryWrapper<SubApiScopeEntity> wrapper = new LambdaQueryWrapper<>();
-
+        if (!Strings.isNullOrEmpty(vo.getProjectSn())){
+            wrapper.eq(SubApiScopeEntity::getProjectSn,vo.getProjectSn());
+        }
+        if (!Strings.isNullOrEmpty(vo.getServiceSn())){
+            wrapper.eq(SubApiScopeEntity::getServiceSn,vo.getServiceSn());
+        }
         List<SubApiScopeEntity> list = dao.selectList(wrapper);
         return list;
     }

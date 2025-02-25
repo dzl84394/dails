@@ -6,6 +6,7 @@ function findPage(){
 	data.path = $('#path').val();
     data.projectSn = $('#projectSn').val();
     data.serviceSn = $('#serviceSn').val();
+    data.scope = $('#scope').val();
 	$.ajax({
         type : "post",
         url : "/subApi/findPage",
@@ -66,6 +67,7 @@ function findPage(){
                     // 将数据渲染到页面
                     // 调用分页函数.参数:当前所在页, 总页数(用总条数 除以 每页显示多少条,在向上取整), ajax函数
             setPage(currentPage, pages, findPage);
+            initSidebar();
 				/*]]>*/
 		}
 	})
@@ -283,6 +285,7 @@ function initSidebar(){
     var data = new Object();
     data.projectSn = $('#projectSn').val();
     data.serviceSn = $('#serviceSn').val();
+
     $.ajax({
         type : "post",
         url : "/subApiScope/findList",
@@ -298,7 +301,6 @@ function initSidebar(){
             let data1List = $('#subApi_sidebar_div');
             // 清空datalist元素
             data1List.empty();
-
             $.each(confs, function(index, value) {
                  // 创建一个链接元素
                    var link = $("<a>")

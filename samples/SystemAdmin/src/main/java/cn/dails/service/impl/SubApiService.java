@@ -44,11 +44,14 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
             wrapper.like(SubApiEntity::getPath,vo.getPath());
         }
         if (!Strings.isNullOrEmpty(vo.getProjectSn())){
-            wrapper.like(SubApiEntity::getProjectSn,vo.getProjectSn());
+            wrapper.eq(SubApiEntity::getProjectSn,vo.getProjectSn());
         }
 
         if (!Strings.isNullOrEmpty(vo.getServiceSn())){
-            wrapper.like(SubApiEntity::getServiceSn,vo.getServiceSn());
+            wrapper.eq(SubApiEntity::getServiceSn,vo.getServiceSn());
+        }
+        if (!Strings.isNullOrEmpty(vo.getScope())){
+            wrapper.eq(SubApiEntity::getScope,vo.getScope());
         }
 
         wrapper.orderByAsc(SubApiEntity::getServiceSn).orderByAsc(SubApiEntity::getPath);
@@ -64,11 +67,14 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
             wrapper.like(SubApiEntity::getPath,vo.getPath());
         }
         if (!Strings.isNullOrEmpty(vo.getProjectSn())){
-            wrapper.like(SubApiEntity::getProjectSn,vo.getProjectSn());
+            wrapper.eq(SubApiEntity::getProjectSn,vo.getProjectSn());
         }
 
         if (!Strings.isNullOrEmpty(vo.getServiceSn())){
-            wrapper.like(SubApiEntity::getServiceSn,vo.getServiceSn());
+            wrapper.eq(SubApiEntity::getServiceSn,vo.getServiceSn());
+        }
+        if (!Strings.isNullOrEmpty(vo.getScope())){
+            wrapper.eq(SubApiEntity::getScope,vo.getScope());
         }
         List<SubApiEntity> list = dao.selectList(wrapper);
         return list;
@@ -108,6 +114,8 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
             log.info("methods:{}", methods);
             log.info("patterns:{}", patterns);
             for (String path: list){
+
+                //todo 要做幂等
                 SubApiEntity apiEntity = new SubApiEntity();
                 apiEntity.setProjectSn(subServiceEntity.getSubProjectSn());
                 apiEntity.setServiceSn(subServiceEntity.getServiceSn());

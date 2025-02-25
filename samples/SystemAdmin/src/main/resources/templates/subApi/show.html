@@ -17,7 +17,7 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::subApi_sidebar"></div>
+				 th:include="layout::project_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
 				<h2 class="blog-post-title">subApi show</h2>
 				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
@@ -35,28 +35,39 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">业务域</label>
-                    <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='bizGroup' th:text='${obj.bizGroup}'></p>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">datail</label>
-                    <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='datail' th:text='${obj.datail}'></p>
-                    </div>
-                </div>
-                <div class="form-group">
                     <label class="col-xs-4 col-sm-2 control-label">scope</label>
                     <div class="col-xs-8 col-sm-10">
                         <p class="form-control-static" id='scope' th:text='${obj.scope}'></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">apiType</label>
+                    <label class="col-xs-4 col-sm-2 control-label">className</label>
                     <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='apiType' th:text='${obj.apiType}'></p>
+                        <p class="form-control-static" id='className' th:text='${obj.className}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">methodName</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='methodName' th:text='${obj.methodName}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">path</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='path' th:text='${obj.path}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">apiStstus</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='apiStstus' th:text='${obj.apiStstus}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">datail</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='datail' th:text='${obj.datail}'></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -78,16 +89,15 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">url</label>
+                    <label class="col-xs-4 col-sm-2 control-label">host</label>
                     <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='url' th:text='${obj.url}'></p>
+                        <p class="form-control-static" id='host' th:text='${obj.host}'></p>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">path</label>
+                    <label class="col-xs-4 col-sm-2 control-label">port</label>
                     <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='path' th:text='${obj.path}'></p>
+                        <p class="form-control-static" id='port' th:text='${obj.port}'></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -132,15 +142,28 @@
                         <p class="form-control-static" id='responseDemo' th:text='${obj.responseDemo}'></p>
                     </div>
                 </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">connections</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='connections' th:text='${obj.connections}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">costtime</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='costtime' th:text='${obj.costtime}'></p>
+                    </div>
+                </div>
 
-			</div>
-				<!-- blog-post -->
-			<div class="form-group">
-				<div class="col-sm-offset-8 col-sm-4">
-						<a type="button" class="btn btn-success" th:href="@{'/subApi/indexView'}">返回列表</a>
-						<a type="button" class="btn btn-info" th:href="@{'/subApi/editView?id='+${id}}">编辑</a>
 
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+							<a type="button" class="btn btn-success" th:href="@{'/subApi/indexView'}">返回列表</a>
+							<a type="button" class="btn btn-info" th:href="@{'/subApi/editView?id='+${id}}">编辑</a>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
 			<!-- row -->
