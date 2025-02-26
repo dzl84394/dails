@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "dails_sub_mq_dependency")
-@TableName(value = "dails_sub_mq_dependency",autoResultMap = true)
+@Table(name = "dails_dependency_mq")
+@TableName(value = "dails_dependency_mq",autoResultMap = true)
 @Data
 public class DependencyMqEntity extends BaseEntity implements Serializable {
     @Id
@@ -20,15 +20,21 @@ public class DependencyMqEntity extends BaseEntity implements Serializable {
 
     private String mqSn;
     private String mqType;//kafka,mq,还是啥
-    private String topic;//
+    private String exchangeName;//rabbit
+    private String exchangeType;
+    private String quene;//rabbit
+    private String routingkey;//rabbit
 
-    private String role;//生产者还是消费者,生产&消费
-
-
-    private String subProjectSnFollow;
-    private String subServiceSnFollow;//逻辑实
+    private String topic;
     private String clientName;
     private String groupName;
+
+    private String role;//生产者还是消费者,Producer生产&Consumer消费，ALL
+
+
+    private String projectSn;
+    private String serviceSn;//逻辑实
+
     private String status;
     private String env;//环境
 

@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "dails_service_dependency")
-@TableName(value = "dails_service_dependency",autoResultMap = true)
+@Table(name = "dailse_dependency_servic")
+@TableName(value = "dailse_dependency_servic",autoResultMap = true)
 @Data
 public class DependencyServiceEntity extends BaseEntity implements Serializable {
     @Id

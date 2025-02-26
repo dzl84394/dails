@@ -9,8 +9,8 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "dails_middleware_dependency")
-@TableName(value = "dails_middleware_dependency",autoResultMap = true)
+@Table(name = "dails_dependency_middleware")
+@TableName(value = "dails_dependency_middleware",autoResultMap = true)
 @Data
 public class DependencyMiddlewareEntity extends BaseEntity implements Serializable {
     @Id
