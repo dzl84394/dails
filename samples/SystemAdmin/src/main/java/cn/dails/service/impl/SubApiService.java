@@ -82,10 +82,10 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
 
     public void checkMappings(SubServiceEntity subServiceEntity) {
         //先删除
-        QueryWrapper<SubApiEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("project_sn", subServiceEntity.getSubProjectSn())
-                .eq("service_sn", subServiceEntity.getServiceSn());
-        this.remove(queryWrapper);
+//        QueryWrapper<SubApiEntity> queryWrapper = new QueryWrapper<>();
+//        queryWrapper.eq("project_sn", subServiceEntity.getSubProjectSn())
+//                .eq("service_sn", subServiceEntity.getServiceSn());
+//        this.remove(queryWrapper);
 
         String url = subServiceEntity.getActuatorMappingUrl();//"http://127.0.0.1:38081/actuator/mappings"; // 替换为你的应用地址
         String jsonResponse = restTemplate.getForObject(url, String.class);
@@ -95,6 +95,7 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
 
         for (Object json : jsonArray) {
             JSONObject jsonObject = (JSONObject) json;
+            String handler = jsonObject.getString("handler");
             JSONObject details = jsonObject.getJSONObject("details");
             if (details == null) {
                 continue;
@@ -108,22 +109,36 @@ public class SubApiService extends ServiceImpl<SubApiDao, SubApiEntity> implemen
 
             List<String> list = JSON.parseArray(patterns, String.class);
 
-            log.info("className:{}", className);
-            log.info("methodName:{}", methodName);
 
-            log.info("methods:{}", methods);
-            log.info("patterns:{}", patterns);
+
+
             for (String path: list){
+                QueryWrapper<SubApiEntity> queryWrapper2= new QueryWrapper<>();
+                queryWrapper2.eq("project_sn", subServiceEntity.getSubProjectSn())
+                        .eq("service_sn", subServiceEntity.getServiceSn())
+                        .eq("handler",handler);
+                SubApiEntity apiEntity = dao.selectOne(queryWrapper2);
+                if (apiEntity==null){
+                    apiEntity = new SubApiEntity();
+                    apiEntity.setProjectSn(subServiceEntity.getSubProjectSn());
+                    apiEntity.setServiceSn(subServiceEntity.getServiceSn());
+                    apiEntity.setHandler(handler);
 
-                //todo 要做幂等
-                SubApiEntity apiEntity = new SubApiEntity();
-                apiEntity.setProjectSn(subServiceEntity.getSubProjectSn());
-                apiEntity.setServiceSn(subServiceEntity.getServiceSn());
-                apiEntity.setClassName(className);
-                apiEntity.setMethodName(methodName);
-                apiEntity.setMethod(methods);
-                apiEntity.setPath(path);
-                save(apiEntity);
+                    apiEntity.setClassName(className);
+                    apiEntity.setMethodName(methodName);
+                    apiEntity.setMethod(methods);
+                    apiEntity.setPath(path);
+                    save(apiEntity);
+                }else {
+
+                    apiEntity.setClassName(className);
+                    apiEntity.setMethodName(methodName);
+                    apiEntity.setMethod(methods);
+                    apiEntity.setPath(path);
+                    saveOrUpdate(apiEntity);
+                }
+
+
             }
 
 

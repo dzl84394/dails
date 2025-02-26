@@ -38,7 +38,7 @@ public class SubApiController {
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
-	public ModelAndView indexView(@RequestParam("scope") String scope,HttpServletRequest request) {
+	public ModelAndView indexView(@RequestParam(value = "scope", required = false) String scope, HttpServletRequest request) {
 		ModelAndView mav = new ModelAndView("subApi/index");
 		mav.addObject("scope", scope);
 		return mav;																				
