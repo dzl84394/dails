@@ -17,12 +17,11 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::serviceAdmin_sidebar"></div>
+				 th:include="layout::project_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
 				<h2 class="blog-post-title">dependencyMq show</h2>
 				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 					<hr />
-
                 <div class="form-group">
                     <label class="col-xs-4 col-sm-2 control-label">mqSn</label>
                     <div class="col-xs-8 col-sm-10">
@@ -36,9 +35,45 @@
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">exchangeName</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='exchangeName' th:text='${obj.exchangeName}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">exchangeType</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='exchangeType' th:text='${obj.exchangeType}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">quene</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='quene' th:text='${obj.quene}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">routingkey</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='routingkey' th:text='${obj.routingkey}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
                     <label class="col-xs-4 col-sm-2 control-label">topic</label>
                     <div class="col-xs-8 col-sm-10">
                         <p class="form-control-static" id='topic' th:text='${obj.topic}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">clientId</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='clientId' th:text='${obj.clientId}'></p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-xs-4 col-sm-2 control-label">groupId</label>
+                    <div class="col-xs-8 col-sm-10">
+                        <p class="form-control-static" id='groupId' th:text='${obj.groupId}'></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -47,29 +82,16 @@
                         <p class="form-control-static" id='role' th:text='${obj.role}'></p>
                     </div>
                 </div>
-
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">subProjectSnFollow</label>
+                    <label class="col-xs-4 col-sm-2 control-label">projectSn</label>
                     <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='subProjectSnFollow' th:text='${obj.subProjectSnFollow}'></p>
+                        <p class="form-control-static" id='projectSn' th:text='${obj.projectSn}'></p>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">subServiceSnFollow</label>
+                    <label class="col-xs-4 col-sm-2 control-label">serviceSn</label>
                     <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='subServiceSnFollow' th:text='${obj.subServiceSnFollow}'></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">clientName</label>
-                    <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='clientName' th:text='${obj.clientName}'></p>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label class="col-xs-4 col-sm-2 control-label">groupName</label>
-                    <div class="col-xs-8 col-sm-10">
-                        <p class="form-control-static" id='groupName' th:text='${obj.groupName}'></p>
+                        <p class="form-control-static" id='serviceSn' th:text='${obj.serviceSn}'></p>
                     </div>
                 </div>
                 <div class="form-group">
@@ -85,14 +107,15 @@
                     </div>
                 </div>
 
-			</div>
-				<!-- blog-post -->
-			<div class="form-group">
-				<div class="col-sm-offset-8 col-sm-4">
-						<a type="button" class="btn btn-success" th:href="@{'/dependencyMq/indexView'}">返回列表</a>
-						<a type="button" class="btn btn-info" th:href="@{'/dependencyMq/editView?id='+${id}}">编辑</a>
 
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+							<a type="button" class="btn btn-success" th:href="@{'/dependencyMq/indexView'}">返回列表</a>
+							<a type="button" class="btn btn-info" th:href="@{'/dependencyMq/editView?id='+${id}}">编辑</a>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
 			<!-- row -->

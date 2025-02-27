@@ -13,12 +13,12 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-3 col-md-2 col-md-2 sidebar"
-				 th:include="layout::serviceAdmin_sidebar"></div>
+				 th:include="layout::project_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>dependencyMq 列表</h3>
 
 				<div class="col-sm-12 col-lg-12" id="list">
-					<table class="span12 table table-striped">
+					<table class="table table-striped">
 						<thead>
 
 
@@ -26,13 +26,16 @@
 								<td>id</td>
 								<td>mqSn</td>
 								<td>mqType</td>
+								<td>exchangeName</td>
+								<td>exchangeType</td>
+								<td>quene</td>
+								<td>routingkey</td>
 								<td>topic</td>
+								<td>clientId</td>
+								<td>groupId</td>
 								<td>role</td>
-
-								<td>subProjectSnFollow</td>
-								<td>subServiceSnFollow</td>
-								<td>clientName</td>
-								<td>groupName</td>
+								<td>projectSn</td>
+								<td>serviceSn</td>
 								<td>status</td>
 								<td>env</td>
 

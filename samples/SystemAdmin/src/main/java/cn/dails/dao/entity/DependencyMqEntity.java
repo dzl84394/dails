@@ -26,8 +26,8 @@ public class DependencyMqEntity extends BaseEntity implements Serializable {
     private String routingkey;//rabbit
 
     private String topic;
-    private String clientName;
-    private String groupName;
+    private String clientId;
+    private String groupId;
 
     private String role;//生产者还是消费者,Producer生产&Consumer消费，ALL
 
