@@ -561,7 +561,7 @@ function findServiceList(serviceSnDiv,subProjectSn,serviceSn){
             $.each(confs, function(index, value) {
                 var option = $("<option>").text(value.serviceSn).attr("value", value.serviceSn	);
                 if (serviceSn) {
-                    if (value.projectSn === serviceSn) {
+                    if (value.serviceSn === serviceSn) {
                         option.attr("selected", "selected"); // 选中该选项
                     }
                 }else{

@@ -36,16 +36,14 @@ function findPage(){
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.mqSn+"</td>"
-                 + "<td>"+index.mqType+"</td>"
+                 + "<td>"+index.exchangeName+"</td>"
+                 + "<td>"+index.quene+"</td>"
                  + "<td>"+index.topic+"</td>"
                  + "<td>"+index.role+"</td>"
 
-                 + "<td>"+index.subProjectSnFollow+"</td>"
-                 + "<td>"+index.subServiceSnFollow+"</td>"
-                 + "<td>"+index.clientName+"</td>"
-                 + "<td>"+index.groupName+"</td>"
-                 + "<td>"+index.status+"</td>"
-                 + "<td>"+index.env+"</td>"
+                 + "<td>"+index.projectSn+"</td>"
+                 + "<td>"+index.serviceSn+"</td>"
+
 
 				+"<td><a class='btn btn-info btn-sm' href='/dependencyMq/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/dependencyMq/editView?id="+index.id+"'>编辑</a>"
@@ -230,7 +228,7 @@ function findMqServiceList(){
             // 使用each方法动态加载数据到datalist中
             $.each(plantTypes, function(index, value) {
                 let option = $('<option>',
-                { value: value.serviceSn ,text: value.serviceName}
+                { value: value.serviceSn ,text: value.serviceSn}
                 ).attr('subType', value.subType);
                 dataList.append(option);
             });
@@ -244,64 +242,6 @@ $('#mqSn').change(function() {
 });
 
 
-function findProjectList(){
-    var data = new Object();
-    $.ajax({
-        type : "post",
-        url : "/subProject/findList",
-        contentType: 'application/json',
-        dataType: "json",
-        data : JSON.stringify({
-            data
-        }),
-        async : false,
-        success : function(result) {
-            let plantTypes = result.data;
-            // 找到datalist元素
-            let dataList = $('#subProjectSnFollow');
-            // 清空datalist元素
-            dataList.empty();
-            // 使用each方法动态加载数据到datalist中
-            $.each(plantTypes, function(index, value) {
-                let option = $('<option>',
-                { value: value.projectSn,text: value.name }
-                );
-                dataList.append(option);
-            });
-        }
-    })
-}
-$('#subProjectSnFollow').change(function() {
-    let selectedOption = $(this).find('option:selected');
-    let selectedValue = selectedOption.val(); // 获取选中的值
-    findServiceList(selectedValue);
-});
-function findServiceList(subProjectSn){
-    var data = new Object();
-	data.subProjectSn  = subProjectSn
-    $.ajax({
-        type : "post",
-        url : "/subService/findList",
-        contentType: 'application/json',
-        dataType: "json",
-        data : JSON.stringify({
-            data
-        }),
-        async : false,
-        success : function(result) {
-            let plantTypes = result.data;
-            // 找到datalist元素
-            let dataList = $('#subServiceSnFollow');
-            // 清空datalist元素
-            dataList.empty();
-            // 使用each方法动态加载数据到datalist中
-            $.each(plantTypes, function(index, value) {
-                let option = $('<option>',
-                { value: value.serviceSn,text: value.serviceName }
-                );
-                dataList.append(option);
-            });
-        }
-    })
-}
+
+
 setActive("nav_dependencyMq");

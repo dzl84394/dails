@@ -34,7 +34,7 @@ public class DependencyMqEntity extends BaseEntity implements Serializable {
 
     private String projectSn;
     private String serviceSn;//逻辑实
-
+    private String details;
     private String status;
     private String env;//环境
 

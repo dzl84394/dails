@@ -34,9 +34,11 @@ public class SubServiceController {
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
 	public ModelAndView indexView(HttpServletRequest request,
-								  @RequestParam(value = "clsType", required = false) String clsType) {
+								  @RequestParam(value = "clsType", required = false) String clsType,
+								  @RequestParam(value = "subType", required = false) String subType) {
 		ModelAndView mav = new ModelAndView("subService/index");
 		mav.addObject("clsType", clsType);
+		mav.addObject("subType", subType);
 		return mav;																				
 	}																							
 																								

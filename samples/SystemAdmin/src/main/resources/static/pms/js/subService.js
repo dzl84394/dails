@@ -4,6 +4,7 @@ function findPage(){
 	data.size  = 10;
 	data.currentPage  = currentPage;
 	data.clsType =  $('#clsType').val();
+	data.subType =  $('#subType').val();
 
 	$.ajax({
         type : "post",

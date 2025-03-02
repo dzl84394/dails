@@ -31,6 +31,17 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/dependencyMq.js"></script>
 <script th:inline="javascript">
+	findMqServiceList();
+	var projectSnValue = /*[[${obj.projectSn}]]*/ ;
+	var serviceSnValue = /*[[${obj.serviceSn}]]*/ ;
+	findSubProjectList('#projectSn');
+	findServiceList('#serviceSn',projectSnValue,serviceSnValue);
+	$('#projectSn').change(function() {
+        var projectSn = $(this).val();
+        findServiceList('#serviceSn',projectSn)
+	})
+
+
 </script>
 
 </html>

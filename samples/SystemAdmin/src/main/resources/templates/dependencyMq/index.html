@@ -16,6 +16,17 @@
 				 th:include="layout::serviceAdmin_sidebar"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
 				<h3>dependencyMq 列表</h3>
+				<div class="col-sm-12 col-lg-12  custom-panel">
+					<div class='col-sm-2'>
+						<select class="form-control" name='mqSn' id='mqSn'  placeholder="mq" >
+						</select>
+
+					</div>
+					<div class='col-md-3 col-md-offset-1' id="searchDiv">
+						<!--						<button class="btn btn-default " type="btn btn-default" onclick="resetPage()">重置</button>-->
+						<button class="btn btn-default " type="btn btn-default" onclick="findPage()">搜索</button>
+					</div>
+				</div>
 
 				<div class="col-sm-12 col-lg-12" id="list">
 					<table class="table table-striped">
@@ -31,13 +42,9 @@
 								<td>quene</td>
 								<td>routingkey</td>
 								<td>topic</td>
-								<td>clientId</td>
-								<td>groupId</td>
 								<td>role</td>
 								<td>projectSn</td>
 								<td>serviceSn</td>
-								<td>status</td>
-								<td>env</td>
 
 
 							</tr>
@@ -77,6 +84,7 @@
 	var currentPage = 1;
     var pageSize = 5;
 
+	findMqServiceList();
 	findPage();
 </script>
 </html>
