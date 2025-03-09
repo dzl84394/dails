@@ -10,8 +10,16 @@ public enum ResultCode {
     ACCEPTED(3000,Series.ACCEPTED, "Early Hints"),
 //    REJECTED(4000,Series.REJECTED, "REJECTED"),//拒绝
     FAILED(5000,Series.FAILED, "Server Error"),//失败
-    FAILED5001(5001,Series.FAILED, "missing parameter"),
-    FAILED5002(5002,Series.FAILED, "not found entity");
+    PARAM_MISSING(5001,Series.REJECTED,"参数错误：缺少必要参数"),
+    PARAM_INVALID(5002,Series.REJECTED,"参数错误：参数格式不正确"),
+    OBJECT_NOT_FOUND(5003, Series.FAILED, "对象不存在"),
+    PERMISSION_DENIED(5004, Series.FAILED, "没有权限访问该对象"),
+    BALANCE_INSUFFICIENT(5005, Series.FAILED, "余额不足"),
+    STATUS_NOT_SUPPORTED(5006, Series.FAILED, "当前状态不支持此操作"),
+    INTERNAL_ERROR(5101, Series.FAILED, "服务器内部错误，请稍后重试"),
+    OVERFLOW_ERROR(5102, Series.FAILED, "服务限流，请稍后重试");
+    ;
+
 //    CONTINUE(100,HttpStatus.Series.INFORMATIONAL, "Continue"),
     private static final ResultCode[] VALUES = values();
     private final int value;
@@ -71,7 +79,17 @@ public enum ResultCode {
         REJECTED(4),//Client Error（客户端错误状态码）以4开头的状态码表示客户端发送的请求中存在错误或无法完成请求。
         FAILED(5);//Server Error（服务器错误状态码）以5开头的状态码表示服务器在处理请求时发生了错误。
 
+        //        INFORMATIONAL(1),请求已被接收，继续处理。
+//        SUCCESSFUL(2),请求已成功处理。
+//        REDIRECTION(3),需要进一步操作以完成请求。
+//        CLIENT_ERROR(4),客户端请求有误。
+//        SERVER_ERROR(5);服务器处理请求失败。
 
+        // 入参格式错误或者缺少入参
+        // id对应对象不存在或者没有权限
+        // 操作的余额或者状态不支持下一步操作
+        // 服务器内部错误（异常，溢出）
+//
         private final int value;
 
         private Series(int value) {

@@ -54,6 +54,11 @@ public class BaseResponse<T> implements Serializable{
 		return this;
 	}
 
+	public BaseResponse buildFaild(ResultCode code) {
+		this.resultCode = code.value();
+		this.message = code.series().toString();
+		return this;
+	}
 
 
 
