@@ -4,6 +4,7 @@ package cn.dails.service.impl;
 import cn.dails.bean.vo.ServiceAdminRequestVo;
 import cn.dails.dao.ServiceAdminDao;
 import cn.dails.dao.entity.ServiceAdminEntity;
+import cn.dails.logging.annotation.Loggable;
 import cn.dails.service.IServiceAdminService;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +25,7 @@ public class ServiceAdminService extends ServiceImpl<ServiceAdminDao,ServiceAdmi
       private ServiceAdminDao dao;
 
       @Override
+      @Loggable
       public IPage<ServiceAdminEntity> findPage(ServiceAdminRequestVo vo) {
           IPage<ServiceAdminEntity> page = new Page<>();
           page.setCurrent(vo.getCurrentPage());

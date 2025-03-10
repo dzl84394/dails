@@ -17,7 +17,9 @@
     <!-- 控制台输出 :定义了一个控制台输出的Appender，它将日志消息输出到控制台-->
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
-            <pattern>{"timestamp":"%d{yyyy-MM-dd'T'HH:mm:ss.SSS+08:00}", "service_name":"${application_name}", "Level":"%level", "Trece":"%X{X-B3-TraceId:-}", "Span":"%X{X-B3-SpanId:-}", "Parent":"%X{X-B3-ParentSpanId:-}", "Thread": "%thread", "Class":"%logger{50}", "Method":"%file[%method:%line]", "Message":"%message", "Stack_trace":"%exception{10}"}%n</pattern>
+<!--            <pattern>{"timestamp":"%d{yyyy-MM-dd'T'HH:mm:ss.SSS+08:00}", "service_name":"${application_name}", "Level":"%level", "Trece":"%X{X-B3-TraceId:-}", "Thread": "%thread", "Class":"%logger{50}", "Method":"%file[%method:%line]", "Message":%message, "Stack_trace":"%exception{10}"}%n</pattern>-->
+            <pattern>{"timestamp":"%d{yyyy-MM-dd'T'HH:mm:ss.SSS+08:00}", "service_name":"${application_name}", "Level":"%level", "Trece":"%X{X-B3-TraceId:-}", "Thread": "%thread", "Class":"%logger{50}", "Method":"%file[%method:%line]", "Message":%message, "Stack_trace":"%exception{10}"}%n</pattern>
+
         </encoder>
     </appender>
 

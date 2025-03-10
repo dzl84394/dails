@@ -4,6 +4,7 @@ package cn.dails.service.impl;
 import cn.dails.bean.vo.SubServiceRequestVo;
 import cn.dails.dao.SubServiceDao;
 import cn.dails.dao.entity.SubServiceEntity;
+import cn.dails.logging.annotation.Loggable;
 import cn.dails.service.ISubServiceService;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -35,6 +36,7 @@ public class SubServiceService extends ServiceImpl<SubServiceDao,SubServiceEntit
     private RestTemplate restTemplate;
 
     @Override
+    @Loggable
     public IPage<SubServiceEntity> findPage(SubServiceRequestVo vo) {
         IPage<SubServiceEntity> page = new Page<>();
         page.setCurrent(vo.getCurrentPage());

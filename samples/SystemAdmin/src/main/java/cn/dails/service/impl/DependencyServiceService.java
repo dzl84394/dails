@@ -48,7 +48,7 @@ public class DependencyServiceService extends ServiceImpl<DependencyServiceDao,D
               wrapper.eq(DependencyServiceEntity::getSubProjectSna,vo.getSubProjectSna());
           }
           if (!Strings.isNullOrEmpty(vo.getSubServiceSna())){
-              wrapper.eq(DependencyServiceEntity::getServiceTypea,vo.getSubServiceSna());
+              wrapper.eq(DependencyServiceEntity::getAid,vo.getSubServiceSna());
           }
           List<DependencyServiceEntity> list = dao.selectList(wrapper);
           return list;

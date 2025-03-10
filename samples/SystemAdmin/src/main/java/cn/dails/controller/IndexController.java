@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
+
 
 @Controller
 public class IndexController {
@@ -16,7 +18,7 @@ public class IndexController {
 
 
     @RequestMapping(value =  {"index", "", "home"}, method = RequestMethod.GET)
-    public String indexView() {
+    public String indexView( HttpServletRequest request) {
         return "index";
     }
 

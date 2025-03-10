@@ -163,7 +163,7 @@ public class SubApiController {
 		String[] array2 = (String[]) selectedIds.toArray(new String[0]);
 		List<String> list2 = new ArrayList<>(Arrays.asList(array2));
 		if (list2.isEmpty()){
-			return new BaseResponse().buildFaild(ResultCode.FAILED5001);
+			return new BaseResponse().buildFaild(ResultCode.OBJECT_NOT_FOUND);
 		}
 		String projectSn = obj.getData().getString("projectSn");
 		String serviceSn = obj.getData().getString("serviceSn");

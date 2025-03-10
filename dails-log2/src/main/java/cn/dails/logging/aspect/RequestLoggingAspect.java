@@ -1,10 +1,12 @@
 package cn.dails.logging.aspect;
 
+import cn.dails.logging.LogConf;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -28,7 +30,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component
 @Slf4j
 public class RequestLoggingAspect {
-    private static final int MAX_LENGTH = 4096;
     private final AtomicInteger totalCounter = new AtomicInteger(0);
     private final ConcurrentHashMap<String, AtomicInteger> interfaceCounters = new ConcurrentHashMap<>();
 
@@ -111,7 +112,7 @@ public class RequestLoggingAspect {
         long startTime = System.currentTimeMillis();
         try {
             result = joinPoint.proceed();
-            logData.put("result", truncate(JSON.toJSONString(result)));
+            logData.put("output", truncate(JSON.toJSONString(result)));
             return result;
         } catch (Throwable e) {
             logData.put("error", e.getClass().getSimpleName());
@@ -135,7 +136,7 @@ public class RequestLoggingAspect {
         if (json==null){
             return json;
         }
-        return json.length() > MAX_LENGTH ? json.substring(0, MAX_LENGTH) + "..." : json;
+        return json.length() > LogConf.MAX_LENGTH ? json.substring(0, LogConf.MAX_LENGTH) + "..." : json;
     }
 
     /**
@@ -187,6 +188,14 @@ public class RequestLoggingAspect {
         return "Unknown";
     }
 
-
+    public static Method getMethod(JoinPoint point) throws Exception {
+        MethodSignature signature = (MethodSignature) point.getSignature();
+        final String methodName = point.getSignature().getName();
+        Method method = signature.getMethod();
+        if (method.getDeclaringClass().isInterface()) {
+            method = point.getTarget().getClass().getDeclaredMethod(methodName, method.getParameterTypes());
+        }
+        return method;
+    }
 
 }

@@ -148,7 +148,8 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
-    findService_dependency();
+    var id = /*[[${obj.id}]]*/ ;
+    findService_dependency('',id);
 </script>
 
 </html>
