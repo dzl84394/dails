@@ -315,10 +315,11 @@ function findService_dependency(subProjectSn,subServiceSn){
 
 
  			var listDiv = $("#service_dependency_list_div")
-
+            var listDiv2 = $("#service_dependency_list2_div")
             listDiv.empty();
+            listDiv2.empty();
             var temp = "";
-
+            var temp2 = "";
 			/*<![CDATA[*/
 		    for (var i = 0; i <  result.data.length; i++) {
 			    var index = result.data[i];

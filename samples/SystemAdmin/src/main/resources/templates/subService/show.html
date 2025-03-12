@@ -109,20 +109,32 @@
                 </div>
 
 
+                <p> 我依赖的</p>
                 <table class="table table-striped">
                     <thead>
-
-
                     <tr>
                         <td>id</td>
                         <td>子系统</td>
                         <td>微服务</td>
                         <td>类别</td>
-
-
                     </tr>
                     </thead>
                     <tbody id="service_dependency_list_div">
+
+                    </tbody>
+
+                </table>
+                <p> 依赖我的</p>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>子系统</td>
+                        <td>微服务</td>
+                        <td>类别</td>
+                    </tr>
+                    </thead>
+                    <tbody id="service_dependency_list2_div">
 
                     </tbody>
 
@@ -148,8 +160,8 @@
 </body>
 <script type="text/javascript" src="/static/pms/js/subService.js"></script>
 <script th:inline="javascript">
-    var id = /*[[${obj.id}]]*/ ;
-    findService_dependency('',id);
+    var serviceSn = /*[[${obj.serviceSn}]]*/ ;
+    findService_dependency('',serviceSn);
 </script>
 
 </html>
