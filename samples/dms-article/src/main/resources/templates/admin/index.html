@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${title}">Admin Dashboard</title>
+    <link rel="stylesheet" th:href="@{/css/element-ui-admin.css}">
+    <script th:src="@{/js/vue.js}"></script>
+    <script th:src="@{/js/element-ui-admin.js}"></script>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .header {
+            background-color: #409EFF;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .sidebar {
+            width: 200px;
+            height: 100vh;
+            background-color: #f0f2f5;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+            color: #333;
+        }
+        .sidebar a:hover {
+            background-color: #ddd;
+        }
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="header">
+        <h1 th:text="${title}">Admin Dashboard</h1>
+    </div>
+    <div class="sidebar">
+        <a href="#">首页</a>
+        <a href="#">用户管理</a>
+        <a href="#">设置</a>
+        <a href="#">日志</a>
+    </div>
+    <div class="content">
+        <h2>欢迎来到管理后台</h2>
+        <p>这里是一些内容...</p>
+        <el-button type="primary" @click="handleClick">点击我</el-button>
+    </div>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        methods: {
+            handleClick() {
+                alert('按钮被点击了！');
+            }
+        }
+    });
+</script>
+</body>
+</html>

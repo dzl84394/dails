@@ -1,4 +1,4 @@
-package cn.dails.dao.entity;
+package cn.dails.domain;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;

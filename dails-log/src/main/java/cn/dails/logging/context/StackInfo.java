@@ -12,8 +12,9 @@ public class StackInfo {
 
 	
 	protected String traceId;
-	//private BasicRestResponse restResponse; 
-	protected ServiceCentext fromClientInfo;
+	//private BasicRestResponse restResponse;
+	protected ServiceCentext rootClientInfo;//如果没有trace，head里面没有值，根据request来搞这个
+	protected ServiceCentext fromClientInfo;//如
 	protected ServiceCentext localClientInfo;
 
 	private MethodContext ctlMethodCtx;

@@ -23,14 +23,15 @@
 				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 					<hr />
 showForm
-			</div>
-				<!-- blog-post -->
-			<div class="form-group">
-				<div class="col-sm-offset-8 col-sm-4">
-						<a type="button" class="btn btn-success" th:href="@{'/{objname}/indexView'}">返回列表</a>
-						<a type="button" class="btn btn-info" th:href="@{'/{objname}/editView?id='+${id}}">编辑</a>
 
+				<div class="form-group">
+					<div class="col-sm-offset-8 col-sm-4">
+							<a type="button" class="btn btn-success" th:href="@{'/{objname}/indexView'}">返回列表</a>
+							<a type="button" class="btn btn-info" th:href="@{'/{objname}/editView?id='+${id}}">编辑</a>
+
+					</div>
 				</div>
+
 			</div>
 		</div>
 			<!-- row -->

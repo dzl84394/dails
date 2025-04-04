@@ -1,5 +1,8 @@
 package cn.dails.domain;
+import com.baomidou.mybatisplus.annotation.*;
+import lombok.Data;
 
+import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 

@@ -117,18 +117,24 @@
     </div>
     <span>存储设备</span>
     <div class="list-group">
-        <a  href="/device/indexView?deviceType=physical" class="list-group-item">nas</a>
-        <a  href="/device/indexView?deviceType=virtual" class="list-group-item">iobs</a>
-        <a  href="/device/indexView?deviceType=pks" class="list-group-item">云磁盘</a>
-        <a  href="/device/indexView?deviceType=pks" class="list-group-item">volume组</a>
+        <a  href="/device/indexView?deviceType=nas" class="list-group-item">nas</a>
+        <a  href="/device/indexView?deviceType=iobs" class="list-group-item">iobs</a>
+        <a  href="/device/indexView?deviceType=disk" class="list-group-item">云磁盘</a>
+<!--        <a  href="/device/indexView?deviceType=pks" class="list-group-item">volume组</a>-->
     </div>
 
     <span>网络设备</span>
     <div class="list-group">
-        <a  href="/device/indexView?deviceType=physical" class="list-group-item">ip</a>
-        <a  href="/device/indexView?deviceType=virtual" class="list-group-item">设备管理</a>
-        <a  href="/device/indexView?deviceType=pks" class="list-group-item">域名管理</a>
+        <a  href="/device/indexView?deviceType=ip" class="list-group-item">ip</a>
+        <a  href="/device/indexView?deviceType=router" class="list-group-item">路由器</a>
+        <a  href="/device/indexView?deviceType=switch" class="list-group-item">交换机</a>
+        <a  href="/device/indexView?deviceType=domain" class="list-group-item">域名管理</a>
 
+    </div>
+    <span>软件资产</span>
+    <div class="list-group">
+        <a  href="/device/indexView?deviceType=ssl" class="list-group-item">ssl证书</a>
+        <a  href="/softwareAsset/indexView?deviceType=room" class="list-group-item">License</a>
     </div>
 </div>
 
@@ -142,12 +148,7 @@
     </div>
 </div>
 
-<div class="sidebar-offcanvas"  th:fragment="softwareAsset_sidebar">
-    <div class="list-group" >
-        <a  href="/softwareAsset/indexView?deviceType=dc" class="list-group-item">ssl证书</a>
-        <a  href="/softwareAsset/indexView?deviceType=room" class="list-group-item">License </a>
-    </div>
-</div>
+
 
 <div class="sidebar-offcanvas"  th:fragment="project_sidebar">
     <div class="list-group" id ="device_project">
@@ -158,7 +159,7 @@
         <a  href="/subService/indexView?clsType=mq" class="list-group-item">mq</a>
         <a  href="/subService/indexView?clsType=discovery" class="list-group-item">注册中心</a>
         <a  href="/subService/indexView?subType=xxljob" class="list-group-item">定时任务</a>
-
+        <a  href="/subService/indexView?subType=etl" class="list-group-item">ETL</a>
     </div>
 </div>
 <div class="sidebar-offcanvas"  th:fragment="subApi_sidebar">
@@ -184,8 +185,9 @@
 <div class="sidebar-offcanvas"  th:fragment="serviceAdmin_sidebar">
     <div class="list-group">
         <a  href="/dependencyMq/indexView" class="list-group-item">mq或者kafka</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">定时任务</a>
         <a  href="/dependencyMq/indexView" class="list-group-item">规则引擎</a>
-        <a  href="/dependencyMq/indexView" class="list-group-item">抽数kettle</a>
+        <a  href="/dependencyMq/indexView" class="list-group-item">抽数ETL</a>
         <a  href="/confComm/indexView?subType=db" class="list-group-item">对象存储</a>
         <a  href="/confComm/indexView?subType=db" class="list-group-item">数据订正</a>
         <a  href="/dependencyService/indexView?clsType=biz" class="list-group-item">服务依赖</a>

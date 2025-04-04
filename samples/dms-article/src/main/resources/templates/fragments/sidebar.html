@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+<!-- 侧边栏菜单 -->
+<div th:fragment="sidebar(menus)" class="sidebar-menu">
+    <el-menu
+            :default-active="$route.path"
+            background-color="#304156"
+            text-color="#bfcbd9"
+            active-text-color="#409EFF"
+            :collapse="isCollapse"
+            :router="true"
+            unique-opened>
+
+        <template th:each="menu : ${menus}">
+            <el-sub-menu
+                    th:if="${menu.children != null and !menu.children.isEmpty()}"
+                    :index="menu.path">
+                <template #title>
+                    <el-icon><component :is="menu.icon"/></el-icon>
+                    <span th:text="${menu.name}"></span>
+                </template>
+                <el-menu-item
+                        th:each="child : ${menu.children}"
+                        :index="child.path"
+                        :key="child.id">
+                    <span th:text="${child.name}"></span>
+                </el-menu-item>
+            </el-sub-menu>
+
+            <el-menu-item
+                    th:unless="${menu.children != null and !menu.children.isEmpty()}"
+                    :index="menu.path">
+                <el-icon><component :is="menu.icon"/></el-icon>
+                <span th:text="${menu.name}"></span>
+            </el-menu-item>
+        </template>
+    </el-menu>
+</div>
+</body>
+</html>

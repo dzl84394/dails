@@ -17,6 +17,7 @@
         <module>spring-gateway-sample</module>
         <module>auth-sample</module>
         <module>SystemAdmin</module>
+        <module>dms-article</module>
     </modules>
 
     <properties>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Vue 3 开发版 -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <!-- Element Plus 样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-plus/dist/index.css">
+
+    <!-- Element Plus 组件库 -->
+    <script src="https://unpkg.com/element-plus"></script>
+
+    <title>Thymeleaf + Vue + Element</title>
+</head>
+<body>
+<h1 th:text="${pageTitle}">默认标题</h1>
+<!-- 3. Vue 挂载点 -->
+<div id="app">
+    <el-button @click="showMessage" type="primary">点击弹窗</el-button>
+</div>
+
+<!-- 2. 引入 Vue 和 Element UI JS -->
+<script th:src="@{/js/vue.min.js}"></script>
+<script th:src="@{/js/element-ui.js}"></script>
+
+<!-- 4. 初始化 Vue 和 Element UI -->
+<script>
+    // 注册 Element UI 组件
+    Vue.use(ELEMENT);
+    /*<![CDATA[*/
+      const serverInitData = {
+        pageTitle: /*[[${pageTitle}]]*/ '系统首页',
+        welcomeMsg: /*[[${welcomeMessage}]]*/ '欢迎使用',
+        serverMessage:  /*[[${serverMessage}]]*/ 'hello world'
+      };
+    /*]]>*/
+
+    // 初始化 Vue 实例
+    new Vue({
+<!--        delimiters: ['[[', ']]'],-->
+
+        el: '#app',
+        data: {
+            buttonText: '点击我',
+            serverMessage: serverInitData.welcomeMsg // 读取服务端数据
+        },
+        methods: {
+            showMessage() {
+                this.$message.success('来自Vue的消息: ' + serverInitData.serverMessage);
+            }
+        }
+<!--        methods: {-->
+<!--            showMessage() {-->
+<!--                this.$message.success('整合成功！');-->
+<!--            }-->
+<!--        }-->
+    });
+</script>
+</body>
+</html>
