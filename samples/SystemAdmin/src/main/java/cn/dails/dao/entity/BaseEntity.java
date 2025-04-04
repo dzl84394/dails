@@ -4,9 +4,9 @@ import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.Column;
+import jakarta.persistence.MappedSuperclass;
 
-import javax.persistence.Column;
-import javax.persistence.MappedSuperclass;
 import java.util.Date;
 @MappedSuperclass
 public class BaseEntity {

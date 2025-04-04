@@ -3,13 +3,9 @@ package cn.dails.dao.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.persistence.*;
 import lombok.Data;
 
-import java.io.Serializable;
-import java.util.Date;
-import java.io.Serializable;
-import java.util.Date;
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 

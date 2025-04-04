@@ -6,10 +6,7 @@ import lombok.Data;
 
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Date;
-
+import jakarta.persistence.*;
 @Entity
 @Table(name = "dails_news_topic")
 @TableName(value = "dails_news_topic",autoResultMap = true)
