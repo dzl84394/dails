@@ -1,16 +1,116 @@
 <!DOCTYPE html>
-<html lang="zh"  xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ant Design Pro with Spring Boot</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ant-design/pro-layout/dist/pro-layout.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/antd/dist/antd.min.js"></script>
+    <title th:text="${title}">My App</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+    <script th:src="@{/js/scripts.js}"></script>
+    <!-- 其他需要的 meta 标签或样式 -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+
 </head>
 <body>
-<div th:replace="${content}"></div>
+<div class="app-container" th:fragment="navbar">
+    <header>
+        <nav class="navbar">
+            <div class="navbar-brand">My App</div>
+            <div class="navbar-menu">
+                <a href="#" class="navbar-item">Home</a>
+                <a href="#" class="navbar-item">About</a>
+                <a href="#" class="navbar-item">Contact</a>
+            </div>
+        </nav>
+    </header>
+    <aside>
+        <div class="sidebar" th:fragment="sidebar">
+            <div class="container-fluid page-body-wrapper">
+                <!-- partial:../../partials/_sidebar.html -->
+                <nav class="sidebar sidebar-offcanvas" id="sidebar">
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../index.html">
+                                <i class="mdi mdi-home menu-icon"></i>
+                                <span class="menu-title">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                                <i class="mdi mdi-circle-outline menu-icon"></i>
+                                <span class="menu-title">UI Elements</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="ui-basic">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/buttons.html">Buttons</a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/ui-features/typography.html">Typography</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../pages/forms/basic_elements.html">
+                                <i class="mdi mdi-view-headline menu-icon"></i>
+                                <span class="menu-title">Form elements</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../pages/charts/chartjs.html">
+                                <i class="mdi mdi-chart-pie menu-icon"></i>
+                                <span class="menu-title">Charts</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../pages/tables/basic-table.html">
+                                <i class="mdi mdi-grid-large menu-icon"></i>
+                                <span class="menu-title">Tables</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../pages/icons/mdi.html">
+                                <i class="mdi mdi-emoticon menu-icon"></i>
+                                <span class="menu-title">Icons</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-toggle="collapse" href="#auth" aria-expanded="false" aria-controls="auth">
+                                <i class="mdi mdi-account menu-icon"></i>
+                                <span class="menu-title">User Pages</span>
+                                <i class="menu-arrow"></i>
+                            </a>
+                            <div class="collapse" id="auth">
+                                <ul class="nav flex-column sub-menu">
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login-2.html"> Login 2 </a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register.html"> Register </a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/samples/register-2.html"> Register 2 </a></li>
+                                    <li class="nav-item"> <a class="nav-link" href="../../pages/samples/lock-screen.html"> Lockscreen </a></li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="../../documentation/documentation.html">
+                                <i class="mdi mdi-file-document-box-outline menu-icon"></i>
+                                <span class="menu-title">Documentation</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!-- partial -->
+    </aside>
+    <main>
+        <div class="tags-view" th:fragment="tagsview">
+            <span class="tag">Home</span>
+            <span class="tag">Dashboard</span>
+            <span class="tag">Settings</span>
+        </div>
+    </main>
+    <footer>
+        <div class="settings" th:fragment="settings">
+            <button>Settings</button>
+        </div>
+    </footer>
+</div>
 </body>
 </html>

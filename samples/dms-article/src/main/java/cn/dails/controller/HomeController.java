@@ -21,6 +21,11 @@ public class HomeController {
         return "admin"; // 对应 src/main/resources/templates/index.html
     }
 
+    @GetMapping("/login")
+    public String login(Model model) {
+        return "user/login"; // 对应 src/main/resources/templates/index.html
+    }
+
     // 新增用户列表页面路由
     @GetMapping("/users")
     public String userList(Model model) {
