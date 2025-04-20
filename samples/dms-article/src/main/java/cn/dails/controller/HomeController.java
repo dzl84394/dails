@@ -1,12 +1,10 @@
 package cn.dails.controller;
 
-import cn.dails.dao.entity.Menu;
-import cn.dails.dao.entity.User;
+import cn.dails.dao.entity.SysUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,9 +27,9 @@ public class HomeController {
     // 新增用户列表页面路由
     @GetMapping("/users")
     public String userList(Model model) {
-        List<User> users = Arrays.asList(
-                new User(1, "张三", "zhangsan@example.com"),
-                new User(2, "李四", "lisi@example.com")
+        List<SysUser> users = Arrays.asList(
+                new SysUser(1, "张三", "zhangsan@example.com"),
+                new SysUser(2, "李四", "lisi@example.com")
         );
 
         // 调试输出

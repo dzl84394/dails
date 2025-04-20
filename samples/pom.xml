@@ -18,6 +18,7 @@
         <module>auth-sample</module>
         <module>SystemAdmin</module>
         <module>dms-article</module>
+        <module>jwt-sample</module>
     </modules>
 
     <properties>

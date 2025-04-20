@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>系统首页</title>
+</head>
+<body>
+<!-- 自定义侧边栏 -->
+<aside layout:fragment="sidebar">
+    <h3>主页导航</h3>
+    <ul>
+        <li><a th:href="@{/profile}">个人中心</a></li>
+        <li><a th:href="@{/settings}">系统设置</a></li>
+    </ul>
+</aside>
+
+<!-- 主内容区域 -->
+<div layout:fragment="content">
+    <h1>欢迎使用后台管理系统</h1>
+    <p>当前时间: <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm')}"></span></p>
+</div>
+
+<script th:src="@{/assets/bootstrap5/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
