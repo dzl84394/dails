@@ -58,7 +58,7 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService(PasswordEncoder passwordEncoder) {
         // 打印加密后的密码（确保一致性）
         String userPassword = passwordEncoder.encode("123");
-        String adminPassword = passwordEncoder.encode("456");
+        String adminPassword = passwordEncoder.encode("123");
         System.out.println("====User Password: " + userPassword);
         System.out.println("=====Admin Password: " + adminPassword);
 

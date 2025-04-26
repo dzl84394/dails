@@ -1,15 +1,5 @@
 
 
- html, body {
-   height: 100%;
-   margin: 0;
- }
-
- body {
-   display: flex;
-   flex-direction: column;
-   min-height: 100vh; /* 视口高度 */
- }
 
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -73,9 +63,9 @@
       }
 
       main {
-        height: 100vh;
+
         height: -webkit-fill-available;
-        max-height: 100vh;
+
         overflow-x: auto;
         overflow-y: hidden;
       }

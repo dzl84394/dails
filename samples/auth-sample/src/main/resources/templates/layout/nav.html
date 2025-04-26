@@ -4,7 +4,14 @@
 <!-- 头部导航栏 -->
 <header  th:fragment="header">
     <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-        <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb" id="breadcrumb">
+                <li class="breadcrumb-item"><a href="/home">Home</a></li>
+                <li class="breadcrumb-item"><a href="/sysUser">权限</a></li>
+                <li class="breadcrumb-item active" aria-current="page">列表页</li>
+            </ol>
+        </nav>
+        <a href="/home" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
             <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
         </a>
 
@@ -35,7 +42,7 @@
         <div class="flex-shrink-0 p-3 bg-white" style="width: 280px;">
             <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                 <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
-                <span class="fs-5 fw-semibold">Collapsible4</span>
+                <span class="fs-5 fw-semibold">dails</span>
             </a>
             <ul class="list-unstyled ps-0">
                 <li class="mb-1">
@@ -73,6 +80,19 @@
                             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Processed</a></li>
                             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
                             <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="mb-1">
+                    <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#sys-collapse" aria-expanded="false">
+                        权限
+                    </button>
+                    <div class="collapse" id="sys-collapse">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                            <li><a href="/sysUser" class="link-dark d-inline-flex text-decoration-none rounded">用户</a></li>
+                            <li><a href="/sysRole" class="link-dark d-inline-flex text-decoration-none rounded">角色</a></li>
+                            <li><a href="/sysPermission" class="link-dark d-inline-flex text-decoration-none rounded">资源</a></li>
+                            <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">部门</a></li>
                         </ul>
                     </div>
                 </li>

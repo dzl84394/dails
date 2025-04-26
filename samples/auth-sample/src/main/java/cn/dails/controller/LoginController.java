@@ -1,4 +1,4 @@
-package cn.dails.rest;
+package cn.dails.controller;
 
 
 import lombok.extern.slf4j.Slf4j;

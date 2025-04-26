@@ -1,4 +1,4 @@
-package cn.dails.rest;
+package cn.dails.controller;
 
 public class IndexController {
 }
