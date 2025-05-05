@@ -26,12 +26,10 @@ import ${url}.service.I${Objname}Service;
 @RestController
 @RequestMapping({ "/${objname}" })
 @Slf4j
+@RequiredArgsConstructor
 public class ${Objname}Controller {
 
-
-	@Autowired																					
-	private I${Objname}Service service;
-	
+	 private final I${Objname}Service service;
 
 	
 	@RequestMapping(value = { "","indexView" }, method = { RequestMethod.GET })
