@@ -17,13 +17,11 @@ public class SysUserEntity extends BaseEntity implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     private Long deptId;
-    private Long roleId;
-    private String role;
+
     private String username;
-    private String umCode;
+    private String password;// 用户密码
     private String mobile;
     private String email;
-    private String status;
 
     private Long reportId;//汇报对象
     private Long contactId;//替补，交接人
@@ -45,7 +43,7 @@ public class SysUserEntity extends BaseEntity implements Serializable {
     private boolean accountNonLocked;
     private boolean credentialsNonExpired;
 
-    private String password;// 用户密码
+
 
 
 

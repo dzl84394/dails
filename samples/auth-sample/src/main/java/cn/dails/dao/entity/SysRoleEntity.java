@@ -20,13 +20,12 @@ public class SysRoleEntity extends BaseEntity implements Serializable {
     private Long id;
 //    private String projectName;//项目编号或服务号
 //    private String serviceName;//微服务名字
-    private String  roleCode;//role_
-    private String  name;
+    private String roleCode;
+    private String roleName;
 
 
 //    private String  deptId;
     private String  roleType;// admin ，secAdmin ，bizAdmin customer，tester
-    private String  remark;
 
 
 //     `       role_id` bigint NOT NULL,

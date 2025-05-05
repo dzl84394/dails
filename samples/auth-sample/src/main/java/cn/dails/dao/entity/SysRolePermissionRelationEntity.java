@@ -12,17 +12,13 @@ import java.io.Serializable;
 @Table(name = "dails_sys_role_permission")
 @TableName(value = "dails_sys_role_permission",autoResultMap = true)
 @Data
-public class SysRolePermissionRelation extends BaseEntity implements Serializable {
-//     `id` int NOT NULL AUTO_INCREMENT,
-//  `role_id` int NOT NULL COMMENT '角色ID',
-//            `menu_id` int NOT NULL COMMENT '菜单ID',
+public class SysRolePermissionRelationEntity extends BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @TableId(type = IdType.AUTO)
     private Long id;
-
     private Long roleId;
-    private Long permissioId;
+    private Long permissionId; // 修正拼写为permissionId
 
 }

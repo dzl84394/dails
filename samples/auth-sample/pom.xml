@@ -49,6 +49,11 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>5.8.20</version> <!-- 请根据需要选择最新版本 -->
+        </dependency>
         <!-- pom.xml 添加依赖 -->
         <dependency>
             <groupId>org.thymeleaf.extras</groupId>
@@ -78,6 +83,21 @@
             <groupId>cn.dails</groupId>
             <artifactId>dails-example</artifactId>
             <version>3.4.3</version>
+        </dependency>
+
+        <!-- 核心测试依赖 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+
+        <!-- Spring Security 测试支持 -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 </project>
