@@ -6,6 +6,7 @@ import cn.dails.dao.SysRolePermissionRelationDao;
 import cn.dails.dao.entity.SysPermissionEntity;
 import cn.dails.dao.entity.SysRoleEntity;
 import cn.dails.service.ISysPermissionService;
+import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
@@ -33,6 +34,10 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
     private static Map<String, Collection<ConfigAttribute>> permissionMap = null;
     private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
+    @PostConstruct  // 增加此注解
+    public void init() {
+        loadPermissionData(); // 确保启动时加载
+    }
     /**
      * 加载所有权限数据
      */
@@ -59,7 +64,18 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) {
-        HttpServletRequest request = ((FilterInvocation) object).getRequest();
+//        HttpServletRequest request = ((FilterInvocation) object).getRequest();
+        HttpServletRequest request = null;
+        if (object instanceof FilterInvocation) {
+            request = ((FilterInvocation) object).getRequest();
+        } else if (object instanceof HttpServletRequest) {
+            request = (HttpServletRequest) object;
+        } else {
+            // 其他情况返回默认权限（或拒绝）
+            return SecurityConfig.createList("PERMIT_ALL");
+        }
+
+
         String url = request.getRequestURI();
         String method = request.getMethod();
 

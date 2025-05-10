@@ -23,6 +23,10 @@ public class DynamicAccessDecisionManager implements AccessDecisionManager {
                 .anyMatch(attr -> "PUBLIC_ACCESS".equals(attr.getAttribute()))) {
             return;
         }
+        if (configAttributes.stream()
+                .anyMatch(attr -> "PERMIT_ALL".equals(attr.getAttribute()))) {
+            return;
+        }
 
         // 检查用户是否有任一要求的权限
         for (ConfigAttribute configAttribute : configAttributes) {

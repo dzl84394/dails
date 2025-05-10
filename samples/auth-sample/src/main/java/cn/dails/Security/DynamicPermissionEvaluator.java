@@ -26,6 +26,7 @@ public class DynamicPermissionEvaluator implements PermissionEvaluator {
             return false;
         }
 
+
         // 2. 如果是管理员，直接放行
         if (authentication.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("ROLE_ADMIN"))) {
