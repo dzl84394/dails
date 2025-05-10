@@ -1,47 +1,52 @@
 package cn.dails.Security;
 
+import org.springframework.security.access.AccessDecisionManager;
 import org.springframework.security.access.AccessDecisionVoter;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.FilterInvocation;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 
 @Component
-public class DynamicAccessDecisionManager implements AccessDecisionVoter<FilterInvocation> {
+public class DynamicAccessDecisionManager implements AccessDecisionManager {
 
     @Override
-    public int vote(Authentication authentication, FilterInvocation fi,
-                    Collection<ConfigAttribute> attributes) {
+    public void decide(Authentication authentication, Object object,
+                       Collection<ConfigAttribute> configAttributes) throws AccessDeniedException {
 
-        // 处理PERMIT_ALL
-        if (attributes.stream().anyMatch(attr -> "PERMIT_ALL".equals(attr.getAttribute()))) {
-            return ACCESS_GRANTED;
+        // 如果是公共访问权限，直接放行
+        if (configAttributes.stream()
+                .anyMatch(attr -> "PUBLIC_ACCESS".equals(attr.getAttribute()))) {
+            return;
         }
 
-        // 处理认证要求
-        if (authentication == null || !authentication.isAuthenticated()) {
-            if (attributes.stream().anyMatch(attr -> "AUTH_REQUIRED".equals(attr.getAttribute()))) {
-                return ACCESS_DENIED;
+        // 检查用户是否有任一要求的权限
+        for (ConfigAttribute configAttribute : configAttributes) {
+            String needPermission = configAttribute.getAttribute();
+
+            for (GrantedAuthority authority : authentication.getAuthorities()) {
+                if (authority.getAuthority().equals(needPermission)) {
+                    return; // 有权限则放行
+                }
             }
-            return ACCESS_ABSTAIN;
         }
 
-        // 处理角色验证
-        return attributes.stream()
-                .filter(attr -> attr.getAttribute().startsWith("ROLE_"))
-                .anyMatch(attr -> authentication.getAuthorities().contains(attr))
-                ? ACCESS_GRANTED : ACCESS_DENIED;
+        throw new AccessDeniedException("权限不足");
     }
 
     @Override
     public boolean supports(ConfigAttribute attribute) {
-        return true;
+        return true; // 支持所有ConfigAttribute
     }
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return FilterInvocation.class.isAssignableFrom(clazz);
+        return FilterInvocation.class.isAssignableFrom(clazz); // 明确支持FilterInvocation
     }
+
+    // 其他必要方法实现...
 }

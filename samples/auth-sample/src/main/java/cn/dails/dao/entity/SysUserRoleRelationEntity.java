@@ -21,6 +21,11 @@ public class SysUserRoleRelationEntity extends BaseEntity implements Serializabl
     private Long roleId;
     private Long userId;
 
+    public SysUserRoleRelationEntity() {
+    }
 
-
+    public SysUserRoleRelationEntity(Long userId, Long roleId) {
+        this.userId = userId;
+        this.roleId = roleId;
+    }
 }

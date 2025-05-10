@@ -1,6 +1,7 @@
 package cn.dails.Security;
 
 import cn.dails.dao.SysPermissionDao;
+import cn.dails.dao.SysRoleDao;
 import cn.dails.dao.SysRolePermissionRelationDao;
 import cn.dails.dao.entity.SysPermissionEntity;
 import cn.dails.dao.entity.SysRoleEntity;
@@ -27,9 +28,10 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
     private final SysPermissionDao permissionMapper;
     private final SysRolePermissionRelationDao rolePermissionMapper;
-
+    private final SysRoleDao roleDao;
     // 缓存权限数据
     private static Map<String, Collection<ConfigAttribute>> permissionMap = null;
+    private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
     /**
      * 加载所有权限数据
@@ -42,8 +44,8 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
 
         // 查询每个权限对应的角色
         for (SysPermissionEntity permission : permissions) {
-            String key = permission.getPath() + ":" + permission.getHttpMethod();
-            List<SysRoleEntity> roles = permissionMapper.selectRolesByPermissionId(permission.getId());
+            String key = permission.getResource() + ":" + permission.getHttpMethod();
+            List<SysRoleEntity> roles = roleDao.selectRolesByPermissionId(permission.getId());
 
             Collection<ConfigAttribute> configAttributes = new ArrayList<>();
             for (SysRoleEntity role : roles) {
@@ -56,34 +58,43 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
     }
 
     @Override
-    public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-        if (permissionMap == null) {
-            loadPermissionData();
-        }
-
-        FilterInvocation fi = (FilterInvocation) object;
-        HttpServletRequest request = fi.getRequest();
+    public Collection<ConfigAttribute> getAttributes(Object object) {
+        HttpServletRequest request = ((FilterInvocation) object).getRequest();
         String url = request.getRequestURI();
         String method = request.getMethod();
 
-        String key = url + ":" + method;
+        // 放行公开路径
+        if (url.startsWith("/login") || url.startsWith("/public/")) {
+            return SecurityConfig.createList("PERMIT_ALL");
+        }
 
-        // 查找匹配的权限
+        // 查找匹配的权限规则
         for (Map.Entry<String, Collection<ConfigAttribute>> entry : permissionMap.entrySet()) {
-            String pattern = entry.getKey();
-            if (pathMatches(pattern, key)) {
+            if (antPathMatcher.match(entry.getKey(), url)) {
                 return entry.getValue();
             }
         }
 
-        // 如果没有配置权限，默认允许访问
-        return SecurityConfig.createList("ROLE_PUBLIC");
+        // 默认放行PERMIT_ALL，拒绝是DENY
+        return SecurityConfig.createList("PERMIT_ALL");
     }
 
-    private boolean pathMatches(String pattern, String path) {
-        // 简单的路径匹配，可以根据需要实现AntPathMatcher等更复杂的匹配
-        return pattern.equals(path);
+    private boolean isPublicPath(String url) {
+        return url.equals("/login")
+                || url.startsWith("/public/")
+                || url.startsWith("/assets/");
     }
+
+    private boolean pathMatches(String pattern, String url, String method) {
+        String[] parts = pattern.split(":");
+        String pathPattern = parts[0];
+        String methodPattern = parts.length > 1 ? parts[1] : "*";
+
+        return antPathMatcher.match(pathPattern, url)
+                && ("*".equals(methodPattern) || methodPattern.equalsIgnoreCase(method));
+    }
+
+
 
     @Override
     public Collection<ConfigAttribute> getAllConfigAttributes() {

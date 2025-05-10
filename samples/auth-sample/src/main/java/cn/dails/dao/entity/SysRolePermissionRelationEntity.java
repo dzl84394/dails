@@ -10,7 +10,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "dails_sys_role_permission")
-@TableName(value = "dails_sys_role_permission",autoResultMap = true)
+@TableName(value = "dails_",autoResultMap = true)
 @Data
 public class SysRolePermissionRelationEntity extends BaseEntity implements Serializable {
 
@@ -21,4 +21,11 @@ public class SysRolePermissionRelationEntity extends BaseEntity implements Seria
     private Long roleId;
     private Long permissionId; // 修正拼写为permissionId
 
+    public SysRolePermissionRelationEntity() {
+    }
+
+    public SysRolePermissionRelationEntity(Long roleId, Long permissionId) {
+        this.roleId = roleId;
+        this.permissionId = permissionId;
+    }
 }
