@@ -451,20 +451,38 @@ function initSelect(){
 
 }
 
-function setActive(nav, sidebar) {
+function toggleCollapseById(collapseId) {
+    const $menu = $('#sidears_nav');
 
-    $("#nav_subPorject").removeClass("active");
-    $("#nav_device").removeClass("active");
+    // 关闭所有折叠面板
+    $menu.find('.collapse').each(function() {
+        let bsCollapse = bootstrap.Collapse.getInstance(this);
+        if (!bsCollapse) {
+            bsCollapse = new bootstrap.Collapse(this, { toggle: false });
+        }
+        bsCollapse.hide();
+    });
 
+    // 展开指定折叠面板
+    const targetEl = document.getElementById(collapseId);
+    if (targetEl) {
+        let bsTarget = bootstrap.Collapse.getInstance(targetEl);
+        if (!bsTarget) {
+            bsTarget = new bootstrap.Collapse(targetEl, { toggle: false });
+        }
+        bsTarget.show();
+    }
 
-    var dnav = $("#" + nav)
-    dnav.addClass("active");
+    // 更新所有按钮 aria-expanded = false
+    $menu.find('button.btn-toggle').attr('aria-expanded', 'false');
 
-
-    if (sidebar == null) return;
-
-
-
+    // 找到对应按钮，aria-expanded = true
+    $menu.find('button.btn-toggle').each(function() {
+        const targetSelector = $(this).attr('data-bs-target');
+        if (targetSelector === '#' + collapseId) {
+            $(this).attr('aria-expanded', 'true');
+        }
+    });
 }
 
 

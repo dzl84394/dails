@@ -35,8 +35,6 @@ function findPage(){
 			    var index = result.data.records[i];
 				temp += "<tr>"
                  + "<td>"+index.id+"</td>"
-                 + "<td>"+index.projectName+"</td>"
-                 + "<td>"+index.serviceName+"</td>"
                  + "<td>"+index.parentId+"</td>"
                  + "<td>"+index.mtype+"</td>"
                  + "<td>"+index.httpMethod+"</td>"
@@ -86,8 +84,6 @@ function setPage(pageCurrent, pageSum, callback) {
 function save(){
     var data = new Object();
       data.id = $('#id').val();
-  data.projectName = $('#projectName').val();
-  data.serviceName = $('#serviceName').val();
   data.parentId = $('#parentId').val();
   data.mtype = $('#mtype').val();
   data.httpMethod = $('#httpMethod').val();
@@ -131,8 +127,6 @@ function show(){
             var index = result.data;
 
                $("#id").text( index.id);
-  $("#projectName").text( index.projectName);
-  $("#serviceName").text( index.serviceName);
   $("#parentId").text( index.parentId);
   $("#mtype").text( index.mtype);
   $("#httpMethod").text( index.httpMethod);
@@ -163,8 +157,6 @@ function editshow(){
             }
             var index = result.data;
               $("#id").val( index.id);
-  $("#projectName").val( index.projectName);
-  $("#serviceName").val( index.serviceName);
   $("#parentId").val( index.parentId);
   $("#mtype").val( index.mtype);
   $("#httpMethod").val( index.httpMethod);
