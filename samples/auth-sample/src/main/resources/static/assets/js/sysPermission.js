@@ -37,11 +37,11 @@ function findPage(){
                  + "<td>"+index.id+"</td>"
                  + "<td>"+index.parentId+"</td>"
                  + "<td>"+index.mtype+"</td>"
+
                  + "<td>"+index.httpMethod+"</td>"
-                 + "<td>"+index.sort+"</td>"
-                 + "<td>"+index.status+"</td>"
-                 + "<td>"+index.path+"</td>"
-                 + "<td>"+index.remarks+"</td>"
+                 + "<td>"+index.permissionName+"</td>"
+                 + "<td>"+index.permissionCode+"</td>"
+                 + "<td>"+index.resource+"</td>"
 
 				+"<td><a class='btn btn-info btn-sm' href='/sysPermission/showView?id="+index.id+"'>展示</a>"
 				+"<a class='btn btn-primary btn-sm' href='/sysPermission/editView?id="+index.id+"'>编辑</a>"
@@ -86,11 +86,11 @@ function save(){
       data.id = $('#id').val();
   data.parentId = $('#parentId').val();
   data.mtype = $('#mtype').val();
+
   data.httpMethod = $('#httpMethod').val();
-  data.sort = $('#sort').val();
-  data.status = $('#status').val();
-  data.path = $('#path').val();
-  data.remarks = $('#remarks').val();
+  data.permissionName = $('#permissionName').val();
+  data.permissionCode = $('#permissionCode').val();
+  data.resource = $('#resource').val();
 
     $.ajax({
         type: "post",
@@ -129,11 +129,11 @@ function show(){
                $("#id").text( index.id);
   $("#parentId").text( index.parentId);
   $("#mtype").text( index.mtype);
+
   $("#httpMethod").text( index.httpMethod);
-  $("#sort").text( index.sort);
-  $("#status").text( index.status);
-  $("#path").text( index.path);
-  $("#remarks").text( index.remarks);
+  $("#permissionName").text( index.permissionName);
+  $("#permissionCode").text( index.permissionCode);
+  $("#resource").text( index.resource);
 
 
 
@@ -159,11 +159,11 @@ function editshow(){
               $("#id").val( index.id);
   $("#parentId").val( index.parentId);
   $("#mtype").val( index.mtype);
+
   $("#httpMethod").val( index.httpMethod);
-  $("#sort").val( index.sort);
-  $("#status").val( index.status);
-  $("#path").val( index.path);
-  $("#remarks").val( index.remarks);
+  $("#permissionName").val( index.permissionName);
+  $("#permissionCode").val( index.permissionCode);
+  $("#resource").val( index.resource);
 
 
         }
@@ -195,4 +195,4 @@ function deleteObj(id){
    }
 }
 
-//setActive("nav_sysPermission");
+setActive("nav_sysPermission");

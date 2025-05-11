@@ -230,8 +230,8 @@ public class Branch4_3_17 extends Example {
                 if (name.equals("index.html")) {
                     for (int i = 0; i < filedNames.length; i++) {
                         if (!filedNames[i].equals("serialVersionUID")) {
-                            temp += "								<td>" + filedNames[i] + "</td>\n";
-                            temp2 += "										<td th:text='\\$\\{s." + filedNames[i] + "\\}'></td>\n";
+                            temp += "\t\t\t\t\t<td>" + filedNames[i] + "</td>\n";
+                            temp2 += "\t\t\t\t\t<td th:text='\\$\\{s." + filedNames[i] + "\\}'></td>\n";
                         }
                     }
 

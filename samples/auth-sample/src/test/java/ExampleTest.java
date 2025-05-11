@@ -1,6 +1,4 @@
-import cn.dails.dao.entity.SysRoleEntity;
-import cn.dails.dao.entity.SysRolePermissionRelationEntity;
-import cn.dails.dao.entity.SysUserRoleRelationEntity;
+import cn.dails.dao.entity.*;
 import cn.dails.example.Branch4_3_17;
 import cn.dails.example.FactoryBranch4_3_17;
 
@@ -16,7 +14,7 @@ public class ExampleTest {
         branch1.setUrl("cn/dails");
         branch1.initFiles();
 
-        branch1.setEntityClass(SysRoleEntity.class);
+        branch1.setEntityClass(SysUserEntity.class);
         branch1.initJava();
 //        branch1.addDao();
 //        branch1.addService();

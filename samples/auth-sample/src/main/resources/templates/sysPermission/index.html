@@ -16,14 +16,14 @@
 			<table class="table table-striped">
 				<thead>
 				<tr>
-													<td>id</td>
-								<td>parentId</td>
-								<td>mtype</td>
-								<td>httpMethod</td>
-								<td>sort</td>
-								<td>status</td>
-								<td>path</td>
-								<td>remarks</td>
+					<td>id</td>
+					<td>parentId</td>
+					<td>mtype</td>
+
+					<td>httpMethod</td>
+					<td>permissionName</td>
+					<td>permissionCode</td>
+					<td>resource</td>
 
 				</tr>
 				</thead>
@@ -55,26 +55,19 @@
 	<script type="text/javascript" src="/assets/js/util.js"></script>
 	<script type="text/javascript" src="/assets/js/sysPermission.js"></script>
 	<script th:inline="javascript">
-		refreshBreadcrumb([
-			{name: 'Home', url: '/home'},
-			{name: '权限', url: '/sysPermission'},
-			{name: '列表页'}
-		]);
-
 		$(document).ready(function() {
 
 		})
+		refreshBreadcrumb([
+			{name: 'Home', url: '/home'},
+			{name: '修改', url: '/sysPermission'},
+			{name: '列表页'}
+		]);
+		toggleCollapseById('sys-collapse');
 		var currentPage = 1;
 		var pageSize = 5;
 
 		findPage();
-	refreshBreadcrumb([
-        {name: 'Home', url: '/home'},
-        {name: '用户', url: '/sysUser'},
-        {name: '详情'}
-	]);
-    toggleCollapseById('sys-collapse');
-
 	</script>
 </section>
 </html>

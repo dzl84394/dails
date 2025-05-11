@@ -21,18 +21,16 @@ public class SysPermissionEntity extends BaseEntity implements Serializable {
 
     private Long parentId = 0L; //父节点
 
-    private String mtype = "menu";// 1目录menu  2 按钮button 3,页面page，5 url',"menu"，api    // 菜单权限（控制菜单是否可见）
+    private String mtype = "menu";// 目录menu；页面page；链接api    // 菜单权限（控制菜单是否可见）
 
-    private String name ;
-    private String httpMethod ;//GET,POST,PATCH.PUT,
+    private String httpMethod ;//GET,POST,PATCH.PUT,DELETE
 
     private Integer sort = 0;
-    private String requireAuth;//是否需要认证，
+    private String requireAuth;//是否需
 
     private String permissionName;
     private String permissionCode;
     private String resource;
-    private String action;
 
     //    `menu_id` int UNSIGNED NOT NULL AUTO_INCREMENT COMMENT '菜单ID',
 //            `parent_id` int UNSIGNED NULL DEFAULT 0 COMMENT '上级菜单ID',

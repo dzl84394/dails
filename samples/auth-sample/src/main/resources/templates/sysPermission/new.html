@@ -15,50 +15,58 @@
 		<div th:fragment="sysPermissionForm">
 			<form id="sysPermissionForm"  class="form-horizontal"  th:action="@{/sysPermission/save}" th:method="post"
 				  th:object="${obj}">
+				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
 
 
-               <div class='form-group col-lg-12'> 
-						<label for='parentId' class='col-sm-2 control-label'>parentId</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='parentId' id='parentId' th:value='${obj.parentId}'/>
-						</div>
+				<div class="mb-3 row">
+					<label for="mtype" class="col-sm-2 col-form-label">mtype</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="mtype" name="mtype">
+							<option value="menu" th:selected="${obj.mtype == 'menu'}">目录menu</option>
+							<option value="page" th:selected="${obj.mtype == 'page'}">页面page</option>
+							<option value="api" th:selected="${obj.mtype == 'api'}">链接api</option>
+						</select>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='mtype' class='col-sm-2 control-label'>mtype</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='mtype' id='mtype' th:value='${obj.mtype}'/>
-						</div>
+				</div>
+				<div class="mb-3 row">
+					<label for="parentId" class="col-sm-2 col-form-label">parentId</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="parentId" name='parentId' th:value='${obj.parentId}'>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='httpMethod' class='col-sm-2 control-label'>httpMethod</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='httpMethod' id='httpMethod' th:value='${obj.httpMethod}'/>
-						</div>
+				</div>
+
+				<div class="mb-3 row">
+					<label for="httpMethod" class="col-sm-2 col-form-label">httpMethod</label>
+					<div class="col-sm-4">
+						<select class="form-control" id="httpMethod" name="httpMethod">
+							<option value="GET" th:selected="${obj.httpMethod == 'GET'}">GET</option>
+							<option value="POST" th:selected="${obj.httpMethod == 'POST'}">POST</option>
+							<option value="PUT" th:selected="${obj.httpMethod == 'PUT'}">PUT</option>
+							<option value="PATCH" th:selected="${obj.httpMethod == 'PATCH'}">PATCH</option>
+							<option value="DELETE" th:selected="${obj.httpMethod == 'DELETE'}">DELETE</option>
+						</select>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='sort' class='col-sm-2 control-label'>sort</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='sort' id='sort' th:value='${obj.sort}'/>
-						</div>
+				</div>
+
+
+				<div class="mb-3 row">
+					<label for="permissionName" class="col-sm-2 col-form-label">permissionName</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="permissionName" name='permissionName' th:value='${obj.permissionName}'>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='status' class='col-sm-2 control-label'>status</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}'/>
-						</div>
+				</div>
+				<div class="mb-3 row">
+					<label for="permissionCode" class="col-sm-2 col-form-label">permissionCode</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="permissionCode" name='permissionCode' th:value='${obj.permissionCode}'>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='path' class='col-sm-2 control-label'>path</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='path' id='path' th:value='${obj.path}'/>
-						</div>
+				</div>
+				<div class="mb-3 row">
+					<label for="resource" class="col-sm-2 col-form-label">resource</label>
+					<div class="col-sm-4">
+						<input type="text" class="form-control" id="resource" name='resource' th:value='${obj.resource}'>
 					</div>
-               <div class='form-group col-lg-12'> 
-						<label for='remarks' class='col-sm-2 control-label'>remarks</label>
-						<div class='col-sm-10'>
-							<input type='text' class='form-control' name='remarks' id='remarks' th:value='${obj.remarks}'/>
-						</div>
-					</div>
+				</div>
 
 				<div class="form-group">
 					<div class="col-sm-offset-10 col-sm-2">
@@ -75,14 +83,15 @@
 <section layout:fragment="scripts">
 	<script th:src="@{/assets/bootstrap5/js/bootstrap.bundle.min.js}"></script>
 	<script th:src="@{/assets/bootstrap5/js/jquery-3.5.1.min.js}"></script>
+	<script type="text/javascript" src="/assets/js/util.js"></script>
 	<script type="text/javascript" src="/assets/js/sysPermission.js"></script>
 	<script th:inline="javascript">
 		refreshBreadcrumb([
-                {name: 'Home', url: '/home'},
-                {name: '用户', url: '/sysUser'},
-                {name: '详情'}
-            ]);
-            toggleCollapseById('sys-collapse');
+			{name: 'Home', url: '/home'},
+			{name: '修改', url: '/sysPermission'},
+			{name: '新增页'}
+		]);
+		toggleCollapseById('sys-collapse');
 	</script>
 </section>
 </html>
