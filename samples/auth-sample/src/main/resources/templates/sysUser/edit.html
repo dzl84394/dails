@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/base}">
+<head>
+	<title>系统首页</title>
+</head>
+<body>
+
+
+<!-- 主内容区域 -->
+<div layout:fragment="content">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+		<h1 class="blog-title"> sysUser编辑</h1>
+		<div th:include="sysUser/new::sysUserForm">
+
+		</div>
+	</div>
+</div>
+
+
+</body>
+<script th:src="@{/assets/bootstrap5/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" src="/assets/js/sysUser.js"></script>
+<script th:inline="javascript">
+</script>
+</html>
+
+
+
+
+
+

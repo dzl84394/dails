@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/base}">
+<head>
+	<title>系统首页</title>
+</head>
+<body>
+
+
+<!-- 主内容区域 -->
+<div layout:fragment="content">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 form-horizontal">
+		<h2 class="blog-post-title">sysUser show</h2>
+		<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+		<hr />
+        <dl class="row">
+            <dt class="col-sm-3">deptId</dt>
+            <dd class="col-sm-9" th:text='${obj.deptId}' ></dd>
+            <dt class="col-sm-3">roleId</dt>
+            <dd class="col-sm-9" th:text='${obj.roleId}' ></dd>
+            <dt class="col-sm-3">role</dt>
+            <dd class="col-sm-9" th:text='${obj.role}' ></dd>
+            <dt class="col-sm-3">username</dt>
+            <dd class="col-sm-9" th:text='${obj.username}' ></dd>
+            <dt class="col-sm-3">umCode</dt>
+            <dd class="col-sm-9" th:text='${obj.umCode}' ></dd>
+            <dt class="col-sm-3">mobile</dt>
+            <dd class="col-sm-9" th:text='${obj.mobile}' ></dd>
+            <dt class="col-sm-3">email</dt>
+            <dd class="col-sm-9" th:text='${obj.email}' ></dd>
+            <dt class="col-sm-3">status</dt>
+            <dd class="col-sm-9" th:text='${obj.status}' ></dd>
+            <dt class="col-sm-3">reportId</dt>
+            <dd class="col-sm-9" th:text='${obj.reportId}' ></dd>
+            <dt class="col-sm-3">contactId</dt>
+            <dd class="col-sm-9" th:text='${obj.contactId}' ></dd>
+            <dt class="col-sm-3">deleted</dt>
+            <dd class="col-sm-9" th:text='${obj.deleted}' ></dd>
+            <dt class="col-sm-3">enabled</dt>
+            <dd class="col-sm-9" th:text='${obj.enabled}' ></dd>
+            <dt class="col-sm-3">accountNonExpired</dt>
+            <dd class="col-sm-9" th:text='${obj.accountNonExpired}' ></dd>
+            <dt class="col-sm-3">accountNonLocked</dt>
+            <dd class="col-sm-9" th:text='${obj.accountNonLocked}' ></dd>
+            <dt class="col-sm-3">credentialsNonExpired</dt>
+            <dd class="col-sm-9" th:text='${obj.credentialsNonExpired}' ></dd>
+            <dt class="col-sm-3">password</dt>
+            <dd class="col-sm-9" th:text='${obj.password}' ></dd>
+</dl>
+
+		<div class="form-group">
+			<div class="col-sm-offset-8 col-sm-4">
+				<a type="button" class="btn btn-success" th:href="@{'/sysUser/indexView'}">返回列表</a>
+				<a type="button" class="btn btn-info" th:href="@{'/sysUser/editView?id='+${id}}">编辑</a>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+</body>
+<script th:src="@{/assets/bootstrap5/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" src="/static/pms/js/sysUser.js"></script>
+<script th:inline="javascript">
+
+</script>
+</html>

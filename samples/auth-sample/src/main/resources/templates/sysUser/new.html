@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorate="~{layout/base}">
+<head>
+	<title>系统首页</title>
+</head>
+<body>
+
+
+<!-- 主内容区域 -->
+<div layout:fragment="content">
+	<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2">
+		<h3 class="blog-title">sysUser 添加</h3>
+		<div th:fragment="sysUserForm">
+			<form id="sysUserForm"  class="form-horizontal"  th:action="@{/sysUser/save}" th:method="post"
+				  th:object="${obj}">
+				<input type="hidden" class="form-control" name="id" id="id" th:value="${id}" />
+				               <div class='form-group col-lg-12'> 
+						<label for='deptId' class='col-sm-2 control-label'>deptId</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deptId' id='deptId' th:value='${obj.deptId}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='roleId' class='col-sm-2 control-label'>roleId</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='roleId' id='roleId' th:value='${obj.roleId}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='role' class='col-sm-2 control-label'>role</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='role' id='role' th:value='${obj.role}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='username' class='col-sm-2 control-label'>username</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='username' id='username' th:value='${obj.username}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='umCode' class='col-sm-2 control-label'>umCode</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='umCode' id='umCode' th:value='${obj.umCode}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='mobile' class='col-sm-2 control-label'>mobile</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='mobile' id='mobile' th:value='${obj.mobile}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='email' class='col-sm-2 control-label'>email</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='email' id='email' th:value='${obj.email}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='status' class='col-sm-2 control-label'>status</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='status' id='status' th:value='${obj.status}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='reportId' class='col-sm-2 control-label'>reportId</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='reportId' id='reportId' th:value='${obj.reportId}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='contactId' class='col-sm-2 control-label'>contactId</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='contactId' id='contactId' th:value='${obj.contactId}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='deleted' class='col-sm-2 control-label'>deleted</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='deleted' id='deleted' th:value='${obj.deleted}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='enabled' class='col-sm-2 control-label'>enabled</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='enabled' id='enabled' th:value='${obj.enabled}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='accountNonExpired' class='col-sm-2 control-label'>accountNonExpired</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='accountNonExpired' id='accountNonExpired' th:value='${obj.accountNonExpired}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='accountNonLocked' class='col-sm-2 control-label'>accountNonLocked</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='accountNonLocked' id='accountNonLocked' th:value='${obj.accountNonLocked}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='credentialsNonExpired' class='col-sm-2 control-label'>credentialsNonExpired</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='credentialsNonExpired' id='credentialsNonExpired' th:value='${obj.credentialsNonExpired}'/>
+						</div>
+					</div>
+               <div class='form-group col-lg-12'> 
+						<label for='password' class='col-sm-2 control-label'>password</label>
+						<div class='col-sm-10'>
+							<input type='text' class='form-control' name='password' id='password' th:value='${obj.password}'/>
+						</div>
+					</div>
+
+				<div class="form-group">
+					<div class="col-sm-offset-10 col-sm-2">
+						<input type="submit" class="btn btn-success" value="保存"/>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+</body>
+<script th:src="@{/assets/bootstrap5/js/bootstrap.bundle.min.js}"></script>
+<script type="text/javascript" src="/static/pms/js/sysUser.js"></script>
+<script th:inline="javascript">
+
+</script>
+</html>
+
+
+
+
+
