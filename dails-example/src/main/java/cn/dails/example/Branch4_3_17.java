@@ -239,14 +239,15 @@ public class Branch4_3_17 extends Example {
                     string = string.replaceAll("\\$\\{tr2\\}", temp2);
                 }
                 if (name.equals("new.html")) {
+                    temp += "\n";
                     for (int i = 0; i < filedNames.length; i++) {
                         if (!filedNames[i].equals("serialVersionUID") && !filedNames[i].equals("id")) {
-                            temp +=   "               <div class='form-group col-lg-12'> \n"
-                                    + "						<label for='"+filedNames[i]+"' class='col-sm-2 control-label'>"+filedNames[i]+"</label>\n"
-                                    + "						<div class='col-sm-10'>\n"
-                                    + "							<input type='text' class='form-control' name='"+filedNames[i]+"' id='"+filedNames[i]+"' th:value='${obj."+filedNames[i]+"}'/>\n"
-                                    + "						</div>\n"
-                                    + "					</div>\n";
+                            temp += "\t\t\t\t<div class=\"mb-3 row\">\n" +
+                                    "\t\t\t\t\t<label for=\""+filedNames[i]+"\" class=\"col-sm-2 col-form-label\">"+filedNames[i]+"</label>\n" +
+                                    "\t\t\t\t\t<div class=\"col-sm-4\">\n" +
+                                    "\t\t\t\t\t\t<input type=\"text\" class=\"form-control\" id=\""+filedNames[i]+"\" name='"+filedNames[i]+"' th:value='${obj."+filedNames[i]+"}'>\n" +
+                                    "\t\t\t\t\t</div>\n" +
+                                    "\t\t\t\t</div>\n";
                         }
                     }
                     string = string.replace("newForm", temp);
