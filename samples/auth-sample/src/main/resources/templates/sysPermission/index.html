@@ -17,8 +17,6 @@
 				<thead>
 				<tr>
 													<td>id</td>
-								<td>projectName</td>
-								<td>serviceName</td>
 								<td>parentId</td>
 								<td>mtype</td>
 								<td>httpMethod</td>
@@ -70,7 +68,12 @@
 		var pageSize = 5;
 
 		findPage();
-
+	refreshBreadcrumb([
+        {name: 'Home', url: '/home'},
+        {name: '用户', url: '/sysUser'},
+        {name: '详情'}
+	]);
+    toggleCollapseById('sys-collapse');
 
 	</script>
 </section>
