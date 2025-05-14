@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <body>
 <!-- 头部导航栏 -->
 <header  th:fragment="header">
@@ -9,19 +9,21 @@
 
             </ol>
         </nav>
-        <a href="/home" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>
-        </a>
+<!--        <a href="/home" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">-->
+<!--            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"/></svg>-->
+<!--        </a>-->
 
 
 
-        <div class="col-md-2 text-end">
-            <button type="button" class="btn btn-outline-primary me-2">Login</button>
-            <button type="button" class="btn btn-primary">Sign-up</button>
+        <div class="col-md-2 text-end" sec:authorize="!isAuthenticated()">
+            <a href="/login" class="btn btn-outline-primary me-2" role="button">Login</a>
+            <a href="/signUp" class="btn btn-outline-primary me-2" role="button">Sign-up</a>
         </div>
-        <div class="col-md-2 dropdown text-end">
+        <div class="col-md-2 dropdown text-end" sec:authorize="isAuthenticated()">
             <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                <img th:href="@{/assets/bootstrap5/favicon.png}" alt="mdo" width="32" height="32" class="rounded-circle">
+<!--                <img th:href="@{/assets/bootstrap5/favicon.png}" alt="mdo" width="32" height="32" class="rounded-circle">-->
+                <span th:text="${#authentication.name}" class="ms-2"></span>
+
             </a>
             <ul class="dropdown-menu text-small">
                 <li><a class="dropdown-item" href="#">New project...</a></li>
