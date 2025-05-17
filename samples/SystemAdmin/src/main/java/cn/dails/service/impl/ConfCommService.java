@@ -22,7 +22,7 @@ import java.util.List;
 public class ConfCommService extends ServiceImpl<ConfCommDao,ConfCommEntity> implements IConfCommService {
 
    @Autowired
-      private ConfCommDao dao;
+   private ConfCommDao dao;
 
       @Override
       public IPage<ConfCommEntity> findPage(ConfCommRequestVo vo) {

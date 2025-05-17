@@ -16,9 +16,11 @@
         <module>spring-eureka-sample</module>
         <module>spring-gateway-sample</module>
         <module>auth-sample</module>
+        <module>auth-jwt-sample</module>
         <module>SystemAdmin</module>
         <module>dms-article</module>
-        <module>jwt-sample</module>
+
+
     </modules>
 
     <properties>
