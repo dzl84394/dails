@@ -19,6 +19,7 @@
         <module>auth-jwt-sample</module>
         <module>SystemAdmin</module>
         <module>dms-article</module>
+        <module>actuator-sample</module>
 
 
     </modules>

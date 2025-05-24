@@ -54,7 +54,9 @@ public class SecurityConfig {
                                 "/mylogin",
                                 "/assets/**",
                                 "/public/**",
-                                "/images/**"
+                                "/images/**",
+                                "/actuator/**"
+
                         ).permitAll()
                         .anyRequest().authenticated()
                 )

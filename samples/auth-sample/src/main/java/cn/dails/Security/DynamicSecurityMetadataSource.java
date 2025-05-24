@@ -80,7 +80,7 @@ public class DynamicSecurityMetadataSource implements FilterInvocationSecurityMe
         String method = request.getMethod();
 
         // 放行公开路径
-        if (url.startsWith("/login") || url.startsWith("/public/")) {
+        if (url.startsWith("/login") || url.startsWith("/public/") || url.startsWith("/actuator")) {
             return SecurityConfig.createList("PERMIT_ALL");
         }
 
