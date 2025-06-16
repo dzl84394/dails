@@ -30,15 +30,17 @@ public class SubProjectEntity extends BaseEntity implements Serializable {
 
     //业务所有者团队
     private String businessOwner;
-
     //技术负责人
-    private String technologyOwner;
+    private String technologyOwner;//开发团队
+
+    private String devOwner;//运维团队
 
     private String level;//等级
 
     //代码库
     private String gitUrl;//代码库
 
+    private String type;
     //数据库，中间件其他依赖
     //开发，测试，生产，其他
 
